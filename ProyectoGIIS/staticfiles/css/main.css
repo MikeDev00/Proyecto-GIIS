@@ -3,7 +3,6 @@
 /* Padding below the footer and lighter body text */
 
 body {
-  padding-top: 3rem;
   padding-bottom: 3rem;
   color: #5a5a5a;
 }
@@ -128,4 +127,17 @@ body {
   .featurette-heading {
     margin-top: 7rem;
   }
+}
+
+#logo{
+  height: 100px;
+  width: 170px;
+}
+
+.navbar{
+  padding: 0px 25px;
+}
+
+.navbar a:hover, .navbar-nav .nav-link.active ,.navbar .active, .navbar .active:focus, .navbar li:hover > a {
+  color: #820d9d;
 }
