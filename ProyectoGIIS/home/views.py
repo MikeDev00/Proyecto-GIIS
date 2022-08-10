@@ -13,4 +13,7 @@ def bitacora(request):
 
 def blog(request):
     return render(request,"bitacora.html")
+
+def datos(request):
+    return render(request,"datos.html")
 # Create your views here.
