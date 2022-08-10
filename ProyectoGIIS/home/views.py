@@ -11,11 +11,6 @@ def bitacora(request):
     return render(request,"bitacora.html")
 
 
-def carslist(request):
-    return render(request, 'templates/carslist.html')
-
-
-
 def blog(request):
     return render(request,"bitacora.html")
 # Create your views here.
