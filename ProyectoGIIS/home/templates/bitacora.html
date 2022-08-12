@@ -50,21 +50,20 @@
                             <div class="mb-3 col-md-4 ">
                                 
                                    
-                                       <!-- Form code begins -->
+                                       
                                        <form method="post">
-                                         <div class="form-group"> <!-- Date input -->
+                                         <div class="form-group"> 
                                            <label class="control-label" for="date">Date</label>
                                            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
                                          </div>
-                                         
-                                        <!-- Form code ends -->       
-                                     
+                                              
                             </div>
 
 
+                            
                             <div class="mb-3 col-md-4">
                                 <label for="Hour">Hour<span class="text-danger">*</span></label>
-                                <input type="number" name="Hour" class="form-control" placeholder="Enter Hour" id="Hour">
+                                <input type="time" name="Hour" class="form-control" placeholder="Enter Hour" id="Hour">
                             </div>
 
                             <div class="mb-3 col-md-4">
@@ -73,19 +72,36 @@
                             </div>
 
                             <!-- Segunda Seccion del formulario -->
-                            <div class="mb-3 col-md-6">
+                            <div class="mb-3 col-md-3">
                                 <label for="Operator">Operator<span class="text-danger">*</span></label>
                                 <input type="text" name="Operator" class="form-control" placeholder="Enter Operator" id="Operator">
                             </div>
 
-                            <div class="mb-3 col-md-6">
-                                <label for=" Gpstype">GPS Type and # <span class="text-danger">*</span></label>
-                                <input type="text" name="Gpstype" class="form-control" placeholder="Enter GPS Type and # " id="Gpstype">
-                            </div>
-
+                           
                              <!-- Tercera  Seccion del formulario -->
 
                              <div class="mb-3 col-md-3">
+                                <label for="latitude">Latitude<span class="text-danger">*</span></label>
+                                <input type="number" name="Statype" class="form-control" placeholder="Enter Station Type" id="latitude">
+                            </div>
+
+                            <div class="mb-3 col-md-3">
+                                <label for="longitude">Longitude<span class="text-danger">*</span></label>
+                                <input type="number" name="Statype" class="form-control" placeholder="Enter Station Type" id="longitude">
+                            </div>
+                            
+                            <div class="mb-3 col-md-3">
+                                <label for="altitude">Altitude<span class="text-danger">*</span></label>
+                                <input type="number" name="Statype" class="form-control" placeholder="Enter Station Type" id="altitude">
+                            </div>
+
+
+
+
+
+                            <h5 class="mb-8 text-secondary">General Information </h5>
+
+                            <div class="mb-3 col-md-3">
                                 <label for="Statype">Station Type<span class="text-danger">*</span></label>
                                 <input type="text" name="Statype" class="form-control" placeholder="Enter Station Type" id="Statype">
                             </div>
@@ -97,30 +113,23 @@
                             
                             <div class="mb-3 col-md-3">
                                 <label for="Statnum">Station #<span class="text-danger">*</span></label>
-                                <input type="text" name="Statnum" class="form-control" placeholder="Enter Station #" id="Statnum">
+                                <input type="number" name="Statnum" class="form-control" placeholder="Enter Station #" id="Statnum">
                             </div>
 
                             <div class="mb-3 col-md-3">
                                 <label for="Sensnum">Sensor # <span class="text-danger">*</span></label>
-                                <input type="text" name="Sensnum" class="form-control" placeholder="Enter Sensor # " id="Sensnum">
+                                <input type="number" name="Sensnum" class="form-control" placeholder="Enter Sensor # " id="Sensnum">
                             </div>
 
                             <!-- Cuarta  Seccion del formulario -->
 
-                            <div class="mb-3 col-md-4 ">
-                                <label for="Disknum">Disk #<span class="text-danger">*</span></label>
-                                <input type="text" name="Disknum" class="form-control" placeholder="Enter Disk #" id="Disknum">
-                            </div>
     
                             <div class="mb-3 col-md-4">
                                 <label for="Flname">File Name<span class="text-danger">*</span></label>
                                 <input type="text" name="Flname" class="form-control" placeholder="Enter File Name" id="Flname">
                             </div>
 
-                            <div class="mb-3 col-md-4">
-                                <label for="Pnum">Point # <span class="text-danger">*</span></label>
-                                <input type="text" name="Pnum" class="form-control" placeholder="Enter Point #" id="Pnum">
-                            </div>
+                            
 
                             <!-- Quinta  Seccion del formulario -->
 
@@ -131,12 +140,12 @@
     
                             <div class="mb-3 col-md-4">
                                 <label for="Freq">SAMPL. FREQ. hz<span class="text-danger">*</span></label>
-                                <input type="text" name="Freq" class="form-control" placeholder="Enter SAMPL FREQ hz" id="Freq">
+                                <input type="number" name="Freq" class="form-control" placeholder="Enter SAMPL FREQ hz" id="Freq">
                             </div>
 
                             <div class="mb-3 col-md-4">
                                 <label for="Duration">Rec Duration <span class="text-danger">*</span></label>
-                                <input type="text" name="Duration" class="form-control" placeholder="Enter Rec Duration" id="Duration">
+                                <input type="number" name="Duration" class="form-control" placeholder="Enter Rec Duration" id="Duration">
                             </div>
 
                             <!-- Secta  Seccion del formulario -->
