@@ -41,7 +41,7 @@
         <div class="row">
             <div class="col-md-12 ">
                 <div class="signup-form">
-                    <form action="" class="mt-5 border p-4 bg-light shadow">
+                    <form action="" class="mt-5 border p-4 bg-light shadow" method = "POST">{% csrf_token %} 
                         <h4 class="text-center mb-5 text-secondary">Ingresar Datos de Bitácora de Mediciones</h4>
                         <div class="row">
 
@@ -64,7 +64,7 @@
 
                             <div class="mb-3 col-md-4">
                                 <label for="Hour">Hour<span class="text-danger">*</span></label>
-                                <input type="text" name="Hour" class="form-control" placeholder="Enter Hour" id="Hour">
+                                <input type="number" name="Hour" class="form-control" placeholder="Enter Hour" id="Hour">
                             </div>
 
                             <div class="mb-3 col-md-4">
@@ -163,12 +163,12 @@
 
                             <div class="mb-3 col-md-3 ">
                                 <label>Temperature<span class="text-danger">*</span></label>
-                                <input type="text" name="temp" class="form-control" placeholder="Enter Temperature">
+                                <input type="number" name="temp" class="form-control" placeholder="Enter Temperature">
                             </div>
 
                             <div class="mb-3 col-md-3 ">
-                                <label>remarks<span class="text-danger">*</span></label>
-                                <input type="text" name="remarks" class="form-control" placeholder="Enter remarks">
+                                <label form="remarkstemp">remarks<span class="text-danger">*</span></label>
+                                <input id="remarkstemp" type="text" name="remarks" class="form-control" placeholder="Enter remarks">
                             </div>
 
                             <!-- septima  Seccion del formulario -->
@@ -246,8 +246,8 @@
 
 
                             <div class="mb-3 col-md-4 ">
-                                <label>remarks<span class="text-danger">*</span></label>
-                                <input type="text" name="remarks" class="form-control" placeholder="Enter remarks">
+                                <label for="remarksgro">remarks<span class="text-danger">*</span></label>
+                                <input id="remarksgro" type="text" name="remarks" class="form-control" placeholder="Enter remarks">
                             </div>
 
                             <!-- septima  Seccion del formulario 
@@ -261,7 +261,7 @@
                             <div class="mb-3 col-md-12">
                                 <label for="Observations" class="col-3 col-form-label">Observations</label> 
                                 <div class="col-9">
-                                  <textarea id="Observations" name="Observations" cols="40" rows="5" class="form-control"></textarea>
+                                  <textarea id="Observations" name="Observations" cols="40" rows="5" class="form-control" placeholder="Enter Observations"></textarea>
                                 </div>
                               </div> 
 
@@ -278,7 +278,8 @@
         
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js"></script>
-     {%include "footer.html"%}
+    
+    {%include "footer.html"%}
 </body>
 
 
