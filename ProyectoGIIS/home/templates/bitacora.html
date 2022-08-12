@@ -11,6 +11,26 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>
+
+    <!-- Include jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+<script>
+    $(document).ready(function(){
+      var date_input=$('input[name="date"]'); //our date input has the name "date"
+      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var options={
+        format: 'mm/dd/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input.datepicker(options);
+    })
+</script>
         
 </head>
 
@@ -28,10 +48,20 @@
                             <!-- Primera Seccion del formulario -->
 
                             <div class="mb-3 col-md-4 ">
-                                <label for="Date">Date<span class="text-danger">*</span></label>
-                                <input type="text" name="Date" class="form-control" placeholder="Enter Date" id="Date">
+                                
+                                   
+                                       <!-- Form code begins -->
+                                       <form method="post">
+                                         <div class="form-group"> <!-- Date input -->
+                                           <label class="control-label" for="date">Date</label>
+                                           <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
+                                         </div>
+                                         
+                                        <!-- Form code ends -->       
+                                     
                             </div>
-    
+
+
                             <div class="mb-3 col-md-4">
                                 <label for="Hour">Hour<span class="text-danger">*</span></label>
                                 <input type="text" name="Hour" class="form-control" placeholder="Enter Hour" id="Hour">
@@ -112,23 +142,23 @@
                             <!-- Secta  Seccion del formulario -->
                             <h5 class="mb-8 text-secondary">Weather Conditions </h5>
                             <div class="mb-3 col-md-3">
-                                <label>Wind<span class="text-danger">*</span></label>
-                                <select class ="form-control">
-                                    <option value="nonew"> none</option>
-                                    <option value="weakw"> weak (5m/s)</option>
-                                    <option value="mediumw"> medium</option>
-                                    <option value="Strongw"> Strong</option>
-                                </select>   
+                                <label for="windopts"> Wind </label>
+                                <select id="windopts" name="windopts" class ="form-control">
+                                    <option value="none">None</option>
+                                    <option value="weak">Weak (5m/s)</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="strong">Strong</option>
+                                  </select>
                             </div>
 
                             <div class="mb-3 col-md-3">
-                                <label>Rain<span class="text-danger">*</span></label>
-                                <select class ="form-control">
-                                    <option value="noner"> none</option>
-                                    <option value="weakr"> weak</option>
-                                    <option value="mediumr"> medium</option>
-                                    <option value="Strongr"> Strong</option>
-                                </select>   
+                                <label for="rainopts" >Rain</label>
+                                <select id="rainopts" name="rainopts" class ="form-control">
+                                    <option value="Rnone">None</option>
+                                    <option value="Rweak">Weak (5m/s)</option>
+                                    <option value="Rmedium">Medium</option>
+                                    <option value="Rstrong">Strong</option>
+                                  </select>   
                             </div>
 
                             <div class="mb-3 col-md-3 ">
@@ -143,37 +173,97 @@
 
                             <!-- septima  Seccion del formulario -->
                             <h5 class="mb-8 text-secondary">Ground Type </h5>
+                            
+                            <div class="mb-3 col-md-4">
+                                <label for="Groundtyp" >Select Ground Type<span class="text-danger">*</span></label>
+                                <select id="Groundtyp" name="Groundtyp" class="form-control">
+                                    <option value="earth">Earth</option>
+                                    <option value="gravel">Gravel</option>
+                                    <option value="sand">Sand</option>
+                                    <option value="rock">Rock</option>
+                                    <option value="asphalt">Asphalt</option>
+                                    <option value="grass">Grass</option>
+                                    <option value="cement">Cement</option>
+                                    <option value="concrete">Concrete</option>
+                                    <option value="paved">Paved</option>
+                                    </select>
+                            </div>
+                            
 
-                            <div class="mb-3 col-md-4">
-                                <label>First options<span class="text-danger">*</span></label>
-                                <select class ="form-control selectpicker" >
-                                    <option value="earth"> earth</option>
-                                    <option value="gravel"> gravel</option>
-                                    <option value="sand"> sand</option>
-                                    <option value="rock"> rock</option>
-                                    <option value="grass"> grass</option>
-                                </select>   
-                            </div>
-                            <div class="mb-3 col-md-4">
-                                <label>First options<span class="text-danger">*</span></label>
-                                <select class ="form-control">
-                                    <option value="asphalt"> asphalt</option>
-                                    <option value="cement"> cement</option>
-                                    <option value="concrete"> concrete</option>
-                                    <option value="paved"> paved</option>
-                                </select>   
-                            </div>
+                            <!-- 
+
+                            <div class="form-check form-check-inline">
+                                <label class="col-md-12">Select Ground Type</label> 
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col">
+                                            <input name="Groundtyp" id="Groundtyp_0" type="checkbox" class="custom-control-input" value="earth"> 
+                                            <label for="Groundtyp_0" class="custom-control-label">Earth</label>
+                                        </div>
+                                        <div class="col">
+                                            <input name="Groundtyp" id="Groundtyp_1" type="checkbox" class="custom-control-input" value="gravel"> 
+                                            <label for="Groundtyp_1" class="custom-control-label">Gravel</label>
+                                        </div>
+                                        <div class="col">
+                                            <input name="Groundtyp" id="Groundtyp_2" type="checkbox" class="custom-control-input" value="sand"> 
+                                            <label for="Groundtyp_2" class="custom-control-label">Sand</label>
+                                        </div>
+                                    
+
+                                    
+                                        <div class="col">
+                                            <input name="Groundtyp" id="Groundtyp_3" type="checkbox" class="custom-control-input" value="rock"> 
+                                            <label for="Groundtyp_3" class="custom-control-label">Rock</label>
+                                        </div>
+                                        <div class="col">
+                                            <input name="Groundtyp" id="Groundtyp_4" type="checkbox" class="custom-control-input" value="grass"> 
+                                            <label for="Groundtyp_4" class="custom-control-label">Grass</label>
+                                        </div>
+                                        <div class="col">
+                                            <input name="Groundtyp" id="Groundtyp_5" type="checkbox" class="custom-control-input" value="asphalt"> 
+                                            <label for="Groundtyp_5" class="custom-control-label">Asphalt</label>
+                                        </div>
+
+                                        <div class="col">
+                                            <input name="Groundtyp" id="Groundtyp_6" type="checkbox" class="custom-control-input" value="cement"> 
+                                            <label for="Groundtyp_6" class="custom-control-label">Cement</label>
+                                          </div>
+                                        
+                                          <div class="col">
+                                            <input name="Groundtyp" id="Groundtyp_7" type="checkbox" class="custom-control-input" value="concrete"> 
+                                            <label for="Groundtyp_7" class="custom-control-label">Concrete</label>
+                                          </div>
+
+                                          <div class="col">
+                                            <input name="Groundtyp" id="Groundtyp_8" type="checkbox" class="custom-control-input" value="paved"> 
+                                            <label for="Groundtyp_8" class="custom-control-label">Paved</label>
+                                          </div>
+                                    </div>
+                                </div>
+                              </div> 
+
+                              -->
+
 
                             <div class="mb-3 col-md-4 ">
                                 <label>remarks<span class="text-danger">*</span></label>
                                 <input type="text" name="remarks" class="form-control" placeholder="Enter remarks">
                             </div>
 
-                            <!-- septima  Seccion del formulario -->
+                            <!-- septima  Seccion del formulario 
                             <div class="mb-3 col-md-12 ">
                                 <label>Observations<span class="text-danger">*</span></label>
                                 <input type="text" name="observa" class="form-control" placeholder="Enter Observations">
                             </div>
+
+                            -->
+
+                            <div class="mb-3 col-md-12">
+                                <label for="Observations" class="col-3 col-form-label">Observations</label> 
+                                <div class="col-9">
+                                  <textarea id="Observations" name="Observations" cols="40" rows="5" class="form-control"></textarea>
+                                </div>
+                              </div> 
 
     
                             <div class="col-md-12">
