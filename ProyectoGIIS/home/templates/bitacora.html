@@ -53,7 +53,7 @@
                                        
                                        <form method="post">
                                          <div class="form-group"> 
-                                           <label class="control-label" for="date">DATE</label>
+                                           <label class="control-label" for="date">Date</label>
                                            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
                                          </div>
                                               
@@ -107,8 +107,11 @@
                             </div>
 
                             <div class="mb-3 col-md-3">
-                                <label for="Senstype">Sensor Type <span class="text-danger">*</span></label>
-                                <input type="text" name="Senstype" class="form-control" placeholder="Enter Sensor Type " id="Senstype">
+                                <label for="Senstype"> Sensor Type </label>
+                                <select id="Senstype" name="Senstype" class ="form-control">
+                                    <option value="Edna">Edna</option>
+                                    <option value="Fisc">Fisc (5m/s)</option>
+                                  </select>
                             </div>
                             
                             <div class="mb-3 col-md-3">
@@ -290,5 +293,6 @@
     
     {%include "footer.html"%}
 </body>
+
 
 
