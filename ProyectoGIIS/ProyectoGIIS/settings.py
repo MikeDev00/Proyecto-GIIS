@@ -78,8 +78,14 @@ WSGI_APPLICATION = 'ProyectoGIIS.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'NAME': 'GIIS',
+        "CLIENT":{
+            'host': 'mongodb+srv://admin:1234@giis.lszcdmn.mongodb.net/?retryWrites=true&w=majority',
+            'username': 'admin',
+            'password': '1234',
+        },
+       # 'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
