@@ -1,5 +1,6 @@
 {%load static%}
 
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -15,23 +16,6 @@
     <!-- Include jQuery -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
-<!-- Include Date Range Picker -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-<script>
-    $(document).ready(function(){
-      var date_input=$('input[name="date"]'); //our date input has the name "date"
-      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-      var options={
-        format: 'mm/dd/yyyy',
-        container: container,
-        todayHighlight: true,
-        autoclose: true,
-      };
-      date_input.datepicker(options);
-    })
-</script>
-        
 </head>
 
 {% include "navbar.html" %}
@@ -48,13 +32,9 @@
                             <!-- Primera Seccion del formulario -->
 
                             <div class="mb-3 col-md-4 ">
-                                
-                                   
-                                       
-                                       <form method="post">
                                          <div class="form-group"> 
-                                           <label class="control-label" for="date">Date</label>
-                                           <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
+                                           <label for="date">Date</label>
+                                           <input class="form-control" id="fecha" name="fecha" placeholder="MM/DD/YYY" type="date" >
                                          </div>
                                               
                             </div>
@@ -62,19 +42,19 @@
 
                             
                             <div class="mb-3 col-md-4">
-                                <label for="Hour">Hour<span class="text-danger">*</span></label>
-                                <input type="time" name="Hour" class="form-control" placeholder="Enter Hour" id="hour">
+                                <label for="hour">Hour<span class="text-danger">*</span></label>
+                                <input type="time" name="hour" class="form-control" placeholder="Enter Hour" id="hour">
                             </div>
 
                             <div class="mb-3 col-md-4">
-                                <label for="Place">Place<span class="text-danger">*</span></label>
-                                <input type="text" name="Place" class="form-control" placeholder="Enter Place" id="place">
+                                <label for="place">Place<span class="text-danger">*</span></label>
+                                <input type="text" name="place" class="form-control" placeholder="Enter Place" id="place">
                             </div>
 
                             <!-- Segunda Seccion del formulario -->
                             <div class="mb-3 col-md-3">
-                                <label for="Operator">Operator<span class="text-danger">*</span></label>
-                                <input type="text" name="Operator" class="form-control" placeholder="Enter Operator" id="operator">
+                                <label for="operator">Operator<span class="text-danger">*</span></label>
+                                <input type="text" name="operator" class="form-control" placeholder="Enter Operator" id="operator">
                             </div>
 
                            
@@ -82,76 +62,68 @@
 
                              <div class="mb-3 col-md-3">
                                 <label for="latitude">Latitude<span class="text-danger">*</span></label>
-                                <input type="number" name="Statype" class="form-control" placeholder="Enter Station Type" id="latitude">
+                                <input type="text" name="latitude" class="form-control" placeholder="Enter Station Type" id="latitude">
                             </div>
 
                             <div class="mb-3 col-md-3">
                                 <label for="longitude">Longitude<span class="text-danger">*</span></label>
-                                <input type="number" name="Statype" class="form-control" placeholder="Enter Station Type" id="longitude">
+                                <input type="text" name="longitude" class="form-control" placeholder="Enter Station Type" id="longitude">
                             </div>
                             
                             <div class="mb-3 col-md-3">
                                 <label for="altitude">Altitude<span class="text-danger">*</span></label>
-                                <input type="number" name="Statype" class="form-control" placeholder="Enter Station Type" id="altitude">
+                                <input type="text" name="altitude" class="form-control" placeholder="Enter Station Type" id="altitude">
                             </div>
-
-
-
-
 
                             <h5 class="mb-8 text-secondary">General Information </h5>
 
                             <div class="mb-3 col-md-3">
-                                <label for="Statype">Station Type<span class="text-danger">*</span></label>
-                                <input type="text" name="Statype" class="form-control" placeholder="Enter Station Type" id="Statype">
+                                <label for="statype">Station Type<span class="text-danger">*</span></label>
+                                <input type="text" name="statype" class="form-control" placeholder="Enter Station Type" id="statype">
                             </div>
 
                             <div class="mb-3 col-md-3">
-                                <label for="Senstype"> Sensor Type </label>
-                                <select id="Senstype" name="Senstype" class ="form-control">
+                                <label for="senstype"> Sensor Type </label>
+                                <select id="senstype" name="senstype" class ="form-control">
                                     <option value="Edna">Edna</option>
-                                    <option value="Fisc">Fisc (5m/s)</option>
+                                    <option value="Fisc (5m/s)">Fisc (5m/s)</option>
                                   </select>
                             </div>
                             
                             <div class="mb-3 col-md-3">
-                                <label for="Statnum">Station #<span class="text-danger">*</span></label>
-                                <input type="number" name="Statnum" class="form-control" placeholder="Enter Station #" id="Statnum">
+                                <label for="statnum">Station #<span class="text-danger">*</span></label>
+                                <input type="text" name="statnum" class="form-control" placeholder="Enter Station #" id="statnum">
                             </div>
 
                             <div class="mb-3 col-md-3">
-                                <label for="Sensnum">Sensor # <span class="text-danger">*</span></label>
-                                <input type="number" name="Sensnum" class="form-control" placeholder="Enter Sensor # " id="Sensnum">
+                                <label for="sensnum">Sensor # <span class="text-danger">*</span></label>
+                                <input type="text" name="sensnum" class="form-control" placeholder="Enter Sensor # " id="sensnum">
                             </div>
 
                             <!-- Cuarta  Seccion del formulario -->
 
     
                             <div class="mb-3 col-md-4">
-                                <label for="Flname">File Name<span class="text-danger">*</span></label>
-                                <input type="text" name="Flname" class="form-control" placeholder="Enter File Name" id="Flname">
+                                <label for="flname">File Name<span class="text-danger">*</span></label>
+                                <input type="text" name="flname" class="form-control" placeholder="Enter File Name" id="flname">
                             </div>
 
                             
 
                             <!-- Quinta  Seccion del formulario -->
 
-                            <div class="mb-3 col-md-4 ">
-                                <label for="Gain">Gain<span class="text-danger">*</span></label>
-                                <input type="text" name="Gain" class="form-control" placeholder="Enter Gain" form="Gain">
-                            </div>
     
                             <div class="mb-3 col-md-4">
-                                <label for="Freq">SAMPL. FREQ. hz<span class="text-danger">*</span></label>
-                                <input type="number" name="Freq" class="form-control" placeholder="Enter SAMPL FREQ hz" id="Freq">
+                                <label for="freq">SAMPL. FREQ. hz<span class="text-danger">*</span></label>
+                                <input type="text" name="freq" class="form-control" placeholder="Enter SAMPL FREQ hz" id="freq">
                             </div>
 
                             <div class="mb-3 col-md-4">
-                                <label for="Duration">Rec Duration <span class="text-danger">*</span></label>
-                                <input type="number" name="Duration" class="form-control" placeholder="Enter Rec Duration" id="Duration">
+                                <label for="duration">Rec Duration (s) <span class="text-danger">*</span></label>
+                                <input type="text" name="duration" class="form-control" placeholder="Enter Rec Duration" id="duration">
                             </div>
 
-                            <!-- Secta  Seccion del formulario -->
+                            <!-- Sexta  Seccion del formulario -->
                             <h5 class="mb-8 text-secondary">Weather Conditions </h5>
                             <div class="mb-3 col-md-3">
                                 <label for="windopts"> Wind </label>
@@ -167,28 +139,28 @@
                                 <label for="rainopts" >Rain</label>
                                 <select id="rainopts" name="rainopts" class ="form-control">
                                     <option value="Rnone">None</option>
-                                    <option value="Rweak">Weak (5m/s)</option>
+                                    <option >Weak (5m/s)</option>
                                     <option value="Rmedium">Medium</option>
                                     <option value="Rstrong">Strong</option>
                                   </select>   
                             </div>
 
                             <div class="mb-3 col-md-3 ">
-                                <label>Temperature<span class="text-danger">*</span></label>
-                                <input type="number" name="temp" class="form-control" placeholder="Enter Temperature">
+                                <label for="temp">Temperature<span class="text-danger">*</span></label>
+                                <input type="text" name="temp" id="temp" class="form-control" placeholder="Enter Temperature">
                             </div>
 
                             <div class="mb-3 col-md-3 ">
                                 <label form="remarkstemp">remarks<span class="text-danger">*</span></label>
-                                <input id="remarkstemp" type="text" name="remarks" class="form-control" placeholder="Enter remarks">
+                                <input id="remarkstemp" type="text" name="remarkstemp" class="form-control" placeholder="Enter remarks">
                             </div>
 
                             <!-- septima  Seccion del formulario -->
                             <h5 class="mb-8 text-secondary">Ground Type </h5>
                             
                             <div class="mb-3 col-md-4">
-                                <label for="Groundtyp" >Select Ground Type<span class="text-danger">*</span></label>
-                                <select id="Groundtyp" name="Groundtyp" class="form-control">
+                                <label for="groundtyp" >Select Ground Type<span class="text-danger">*</span></label>
+                                <select id="groundtyp" name="groundtyp" class="form-control">
                                     <option value="earth">Earth</option>
                                     <option value="gravel">Gravel</option>
                                     <option value="sand">Sand</option>
@@ -200,86 +172,23 @@
                                     <option value="paved">Paved</option>
                                     </select>
                             </div>
-                            
-
-                            <!-- 
-
-                            <div class="form-check form-check-inline">
-                                <label class="col-md-12">Select Ground Type</label> 
-                                <div class="col-md-12">
-                                    <div class="row">
-                                        <div class="col">
-                                            <input name="Groundtyp" id="Groundtyp_0" type="checkbox" class="custom-control-input" value="earth"> 
-                                            <label for="Groundtyp_0" class="custom-control-label">Earth</label>
-                                        </div>
-                                        <div class="col">
-                                            <input name="Groundtyp" id="Groundtyp_1" type="checkbox" class="custom-control-input" value="gravel"> 
-                                            <label for="Groundtyp_1" class="custom-control-label">Gravel</label>
-                                        </div>
-                                        <div class="col">
-                                            <input name="Groundtyp" id="Groundtyp_2" type="checkbox" class="custom-control-input" value="sand"> 
-                                            <label for="Groundtyp_2" class="custom-control-label">Sand</label>
-                                        </div>
-                                    
-
-                                    
-                                        <div class="col">
-                                            <input name="Groundtyp" id="Groundtyp_3" type="checkbox" class="custom-control-input" value="rock"> 
-                                            <label for="Groundtyp_3" class="custom-control-label">Rock</label>
-                                        </div>
-                                        <div class="col">
-                                            <input name="Groundtyp" id="Groundtyp_4" type="checkbox" class="custom-control-input" value="grass"> 
-                                            <label for="Groundtyp_4" class="custom-control-label">Grass</label>
-                                        </div>
-                                        <div class="col">
-                                            <input name="Groundtyp" id="Groundtyp_5" type="checkbox" class="custom-control-input" value="asphalt"> 
-                                            <label for="Groundtyp_5" class="custom-control-label">Asphalt</label>
-                                        </div>
-
-                                        <div class="col">
-                                            <input name="Groundtyp" id="Groundtyp_6" type="checkbox" class="custom-control-input" value="cement"> 
-                                            <label for="Groundtyp_6" class="custom-control-label">Cement</label>
-                                          </div>
-                                        
-                                          <div class="col">
-                                            <input name="Groundtyp" id="Groundtyp_7" type="checkbox" class="custom-control-input" value="concrete"> 
-                                            <label for="Groundtyp_7" class="custom-control-label">Concrete</label>
-                                          </div>
-
-                                          <div class="col">
-                                            <input name="Groundtyp" id="Groundtyp_8" type="checkbox" class="custom-control-input" value="paved"> 
-                                            <label for="Groundtyp_8" class="custom-control-label">Paved</label>
-                                          </div>
-                                    </div>
-                                </div>
-                              </div> 
-
-                              -->
-
 
                             <div class="mb-3 col-md-4 ">
                                 <label for="remarksgro">remarks<span class="text-danger">*</span></label>
-                                <input id="remarksgro" type="text" name="remarks" class="form-control" placeholder="Enter remarks">
+                                <input id="remarksgro" type="text" name="remarksgro" class="form-control" placeholder="Enter remarks">
                             </div>
-
-                            <!-- septima  Seccion del formulario 
-                            <div class="mb-3 col-md-12 ">
-                                <label>Observations<span class="text-danger">*</span></label>
-                                <input type="text" name="observa" class="form-control" placeholder="Enter Observations">
-                            </div>
-
-                            -->
 
                             <div class="mb-3 col-md-12">
-                                <label for="Observations" class="col-3 col-form-label">Observations</label> 
+                                <label for="observations" class="col-3 col-form-label">Observations</label> 
                                 <div class="col-9">
-                                  <textarea id="Observations" name="Observations" cols="40" rows="5" class="form-control" placeholder="Enter Observations"></textarea>
+                                  <textarea id="observations" name="observations" cols="40" rows="5" class="form-control" placeholder="Enter Observations"></textarea>
                                 </div>
                               </div> 
-
     
                             <div class="col-md-12">
-                               <button class="btn btn-primary float-end">Registrar Bitacora</button>
+                                
+                               <button type="submit" class="btn btn-primary float-end">Registrar Bitacora</button>
+                               
                             </div>
                         </div>
                     </form>
@@ -291,8 +200,10 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js"></script>
     
-    {%include "footer.html"%}
+
 </body>
+
+{%include "footer.html"%}
 
 
 
