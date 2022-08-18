@@ -81,7 +81,7 @@ DATABASES = {
         'ENGINE': 'djongo',
         'NAME': 'GIIS',
         "CLIENT":{
-            'host': 'mongodb+srv://admin:1234@giis.lszcdmn.mongodb.net/?retryWrites=true&w=majority',
+            'host': 'mongodb+srv://admin:1234@proyecto.hxkzzt7.mongodb.net/?retryWrites=true&w=majority',
             'username': 'admin',
             'password': '1234',
         },
