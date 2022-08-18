@@ -16,3 +16,6 @@ def datos(request):
 
 def aboutus(request):
     return render(request,"aboutus.html")
+
+def maps(request):
+    return render(request,"maps.html")
