@@ -29,6 +29,7 @@ class BitacoraForm(forms.Form):
     groundtyp = forms.CharField()
     remarksgro = forms.CharField()
     observations = forms.CharField()
+    input2 = forms.FileField()
 
 
 
