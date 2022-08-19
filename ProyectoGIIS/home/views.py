@@ -16,6 +16,7 @@ def home(request):
 
 
 def bitacora(request):
+    context = {}
     if request.method == 'GET':
         return render(request,'bitacora.html')
     if request.method == 'POST':
@@ -42,6 +43,7 @@ def bitacora(request):
             groundtyp = form.cleaned_data.get("groundtyp")
             remarksgro = form.cleaned_data.get("remarksgro")
             observations = form.cleaned_data.get("observations")
+
         myDB = connectDB()
         bitacora = myDB["Bitacora"]
         bitacora.insert_one( { "Fecha": fecha ,"Hora": hour, "Lugar": place, "Operador": operator, "Latitud": latitude, "Longitud": longitude, 
