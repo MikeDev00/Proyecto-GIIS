@@ -1,3 +1,4 @@
+from email.policy import default
 from django import forms
 
 class CarForm(forms.Form):
@@ -8,28 +9,28 @@ class CarForm(forms.Form):
 
 
 class BitacoraForm(forms.Form):
-    fecha= forms.CharField()
-    hour= forms.CharField()
-    place= forms.CharField(max_length=100)
-    operator= forms.CharField(max_length=100)
-    latitude= forms.FloatField()
-    longitude= forms.FloatField()
-    altitude= forms.FloatField()
-    statype =  forms.CharField()
-    senstype = forms.CharField()
-    statnum  = forms.CharField()
-    sensnum = forms.CharField()
-    flname  = forms.CharField()
-    freq = forms.FloatField()
-    duration  = forms.FloatField()
-    windopts  = forms.CharField()
-    rainopts = forms.CharField()
-    temp = forms.FloatField()
-    remarkstemp = forms.CharField()
-    groundtyp = forms.CharField()
-    remarksgro = forms.CharField()
-    observations = forms.CharField()
-    input2 = forms.FileField()
+    fecha= forms.CharField(empty_value=None, required=False)
+    hour= forms.CharField(empty_value=None, required=False)
+    place= forms.CharField(max_length=100, empty_value=None, required=False)
+    operator= forms.CharField(max_length=100, empty_value=None, required=False)
+    latitude= forms.FloatField(required=False)
+    longitude= forms.FloatField(required=False)
+    altitude= forms.FloatField(required=False)
+    statype =  forms.CharField(empty_value=None, required=False)
+    senstype = forms.CharField(empty_value=None, required=False)
+    statnum  = forms.CharField(empty_value=None, required=False)
+    sensnum = forms.CharField(empty_value=None, required=False)
+    flname  = forms.CharField(empty_value=None, required=False)
+    freq = forms.FloatField(required=False)
+    duration  = forms.FloatField(required=False)
+    windopts  = forms.CharField(empty_value=None, required=False)
+    rainopts = forms.CharField(empty_value=None, required=False)
+    temp = forms.FloatField(required=False)
+    remarkstemp = forms.CharField(empty_value=None, required=False)
+    groundtyp = forms.CharField(empty_value=None, required=False)
+    remarksgro = forms.CharField(empty_value=None, required=False)
+    observations = forms.CharField(empty_value=None, required=False)
+    
 
 
 
