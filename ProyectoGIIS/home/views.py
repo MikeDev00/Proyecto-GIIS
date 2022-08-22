@@ -14,6 +14,9 @@ def connectDB():
 def home(request):
     return render (request, 'home.html')
 
+def prueba(request):
+    return render (request, 'prueba.html')
+
 
 def bitacora(request):
     context = {}
