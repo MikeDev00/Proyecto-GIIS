@@ -11,7 +11,7 @@ class CarForm(forms.Form):
 class BitacoraForm(forms.Form):
     fecha= forms.CharField(empty_value=None, required=False)
     hour= forms.CharField(empty_value=None, required=False)
-    place= forms.CharField(max_length=100, empty_value=None, required=False)
+    place= forms.CharField(max_length=100, empty_value=None, required=True)
     operator= forms.CharField(max_length=100, empty_value=None, required=False)
     latitude= forms.FloatField(required=False)
     longitude= forms.FloatField(required=False)
