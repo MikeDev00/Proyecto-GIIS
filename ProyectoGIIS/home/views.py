@@ -61,3 +61,15 @@ def aboutus(request):
 
 def maps(request):
     return render(request,"maps.html")
+
+
+def bitacoralist(request):
+    bitas = []
+    giisDB = connectDB()
+    tblBita = giisDB["Bitacora"]
+
+    for bita in tblBita.find():
+        bitas.append({ "Fecha": bita["fecha"], "Operador": bita["operador"] })
+        return render(request, 'datos.html', {'bitas':bita})
+
+
