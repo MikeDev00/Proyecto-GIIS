@@ -18,10 +18,20 @@ def prueba(request):
     return render (request, 'prueba.html')
 
 
+def bitacoralist(request):
+    BitacoraForm = []
+    myDB = connectDB()
+    bitacora = myDB["Bitacora"]
+
+    for bita in bitacora.find():
+        BitacoraForm.append({ "Fecha": bita["fecha"],"Lugar": bita["place"], "Operador": bita["operador"] })
+        return render(request, 'datos.html', {'bitas':bita})
+
+
 def bitacora(request):
     context = {}
     if request.method == 'GET':
-        return render(request,'bitacora.html')
+        return render(request,'bitacora.html', {'bita':{}})
     if request.method == 'POST':
         form = BitacoraForm(request.POST or None)
         if form.is_valid():
@@ -53,7 +63,8 @@ def bitacora(request):
         "Altitud": altitude, "Statype": statype, "Senstype": senstype, "Statnum": statnum, "Sensnum": sensnum, "FlName": flname, "Freq" : freq,
         "Duration": duration, "WindOpts": windopts, "RainOpts":rainopts, "Temp":temp, "RemarksTemp":remarkstemp, "GroundType": groundtyp,
         "RemarksGround": remarksgro, "Observations": observations } )
-        return redirect('home')
+        return redirect('datos')
+        
 
 
 def datos(request):
@@ -66,13 +77,5 @@ def maps(request):
     return render(request,"maps.html")
 
 
-def bitacoralist(request):
-    bitas = []
-    giisDB = connectDB()
-    tblBita = giisDB["Bitacora"]
-
-    for bita in tblBita.find():
-        bitas.append({ "Fecha": bita["fecha"], "Operador": bita["operador"] })
-        return render(request, 'datos.html', {'bitas':bita})
 
 

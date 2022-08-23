@@ -20,12 +20,21 @@
     <table class="table">
         <thead>
             <tr>
-            <th scope="col">fecha</th>
-            <th scope="col">Place</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Lugar</th>
             <th scope="col">Operator</th>
-            <th scope="col">windopts</th>
             </tr>
         </thead>
+        <tbody>
+            {% for BitacoraForm in bitas %}
+                <tr>
+                    <td>{{ bita.fecha }}</td>
+                    <td>{{ bita.lugar }}</td>
+                    <td>{{ bita.operator }}</td>
+                    
+                </tr>
+            {% endfor %}
+        </tbody>
        
     </table>
 
