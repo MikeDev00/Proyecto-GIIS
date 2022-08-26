@@ -2,6 +2,10 @@ from django.shortcuts import render, redirect
 from django.apps import apps
 import pymongo
 
+from flask import Flask
+from .models import User
+
+
 from .forms import BitacoraForm
 from .forms import CarForm
 
@@ -19,13 +23,14 @@ def prueba(request):
 
 
 def bitacoralist(request):
-    BitacoraForm = []
+    datosbita = []
     myDB = connectDB()
     bitacora = myDB["Bitacora"]
-
-    for bita in bitacora.find():
-        BitacoraForm.append({ "Fecha": bita["fecha"],"Lugar": bita["place"], "Operador": bita["operador"] })
-        return render(request, 'datos.html', {'bitas':bita})
+    x = bitacora.find()
+    
+    for bita in x:
+        datosbita.append({ "fecha": bita["Fecha"],"place": bita["Lugar"], "operator": bita["Operador"] })
+    return render(request, 'datos.html', {'datosbita':datosbita})
 
 
 def bitacora(request):
@@ -75,6 +80,14 @@ def aboutus(request):
 
 def maps(request):
     return render(request,"maps.html")
+
+
+def login(request):
+    return render(request,"login.html")
+
+def signup ():
+    return User().signup()
+
 
 
 
