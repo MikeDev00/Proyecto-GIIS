@@ -16,26 +16,32 @@
 {% include "navbar.html" %}
 
 <body>
-    <h1>Datosss</h1>
-    <table class="table">
-        <thead>
-            <tr>
-            <th scope="col">Fecha</th>
-            <th scope="col">Lugar</th>
-            <th scope="col">Operator</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for bita in datosbita %}
-                <tr>
-                    <td>{{bita.fecha}}</td>
-                    <td>{{bita.place}}</td>
-                    <td>{{bita.operator}}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-       
-    </table>
+
+    <section  class="bg-light p-5">
+        <h1>Datosss</h1>
+            <div class="table-responsive">
+                <table class="table bg-white">
+                    <thead class="table-dark">
+                        <tr>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Lugar</th>
+                        <th scope="col">Operator</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for bita in datosbita %}
+                            <tr>
+                                <td>{{bita.fecha}}</td>
+                                <td>{{bita.place}}</td>
+                                <td>{{bita.operator}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                
+                </table>
+
+            </div>
+    </section>
 
 </body>
 </html>

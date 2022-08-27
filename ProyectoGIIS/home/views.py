@@ -17,7 +17,6 @@ def connectDB():
     giisDB = datosBitacora.GIIS
     return giisDB
 
-
 def home(request):
     return render (request, 'home.html')
 
@@ -25,16 +24,16 @@ def prueba(request):
     return render (request, 'prueba.html')
 
 
-def bitacoralist(request):
+def datos(request):
     datosbita = []
     myDB = connectDB()
     bitacora = myDB["Bitacora"]
-    x = bitacora.find()
     
-    for bita in x:
+    for bita in bitacora.find():
         datosbita.append({ "fecha": bita["Fecha"],"place": bita["Lugar"], "operator": bita["Operador"] })
     return render(request, 'datos.html', {'datosbita':datosbita})
 
+    
 
 def bitacora(request):
     context = {}
@@ -74,7 +73,7 @@ def bitacora(request):
         bitacora.insert_one( { "Fecha": fecha ,"Hora": hour, "Lugar": place, "Operador": operator, "Latitud": latitude, "Longitud": longitude, 
         "Altitud": altitude, "Statype": statype, "Senstype": senstype, "Statnum": statnum, "Sensnum": sensnum, "FlName": flname, "Freq" : freq,
         "Duration": duration, "WindOpts": windopts, "RainOpts":rainopts, "Temp":temp, "RemarksTemp":remarkstemp, "GroundType": groundtyp,
-        "RemarksGround": remarksgro, "Observations": observations, "Documento": file } )
+        "RemarksGround": remarksgro, "Observations": observations } )
         return redirect('datos')
         
 
@@ -84,8 +83,8 @@ def handle_uploaded_file(f):
         for chunk in f.chunks():  
             destination.write(chunk)
 
-def datos(request):
-    return render(request,"datos.html")
+
+
 
 def aboutus(request):
     return render(request,"aboutus.html")
