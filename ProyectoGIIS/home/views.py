@@ -30,10 +30,10 @@ def datos(request):
     bitacora = myDB["Bitacora"]
     
     for bita in bitacora.find():
-        datosbita.append({ "fecha": bita["Fecha"],"place": bita["Lugar"], "operator": bita["Operador"] })
+        datosbita.append({ "fecha": bita["Fecha"],"place": bita["Lugar"], "operator": bita["Operador"]})
     return render(request, 'datos.html', {'datosbita':datosbita})
 
-    
+
 
 def bitacora(request):
     context = {}
