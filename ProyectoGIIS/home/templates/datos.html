@@ -17,6 +17,11 @@
 
 <body>
     <h1>Datosss</h1>
+    
+    {%if url %}
+        <p>Documentos subidos: <a href="{{url}}">{{url}}</a></p>
+    {%endif %}
+                   
     <table class="table">
         <thead>
             <tr>
