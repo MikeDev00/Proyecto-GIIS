@@ -3,6 +3,9 @@ from django.apps import apps
 import pymongo
 from django.core.files.storage import FileSystemStorage
 
+from flask import Flask
+from .models import User
+
 
 from .forms import BitacoraForm
 
@@ -12,7 +15,6 @@ def connectDB():
     giisDB = datosBitacora.GIIS
     return giisDB
 
-
 def home(request):
     return render (request, 'home.html')
 
@@ -20,14 +22,15 @@ def prueba(request):
     return render (request, 'prueba.html')
 
 
-def bitacoralist(request):
-    BitacoraForm = []
+def datos(request):
+    datosbita = []
     myDB = connectDB()
     bitacora = myDB["Bitacora"]
-
+    
     for bita in bitacora.find():
-        BitacoraForm.append({ "Fecha": bita["fecha"],"Lugar": bita["place"], "Operador": bita["operador"] })
-        return render(request, 'datos.html', {'bitas':bita})
+        datosbita.append({ "fecha": bita["Fecha"],"place": bita["Lugar"], "operator": bita["Operador"], "observations":bita["Observations"]})
+    return render(request, 'datos.html', {'datosbita':datosbita})
+
 
 
 def bitacora(request):
@@ -72,21 +75,25 @@ def bitacora(request):
         "Altitud": altitude, "Statype": statype, "Senstype": senstype, "Statnum": statnum, "Sensnum": sensnum, "FlName": flname, "Freq" : freq,
         "Duration": duration, "WindOpts": windopts, "RainOpts":rainopts, "Temp":temp, "RemarksTemp":remarkstemp, "GroundType": groundtyp,
         "RemarksGround": remarksgro, "Observations": observations } )
-        return render(request, 'datos.html', context)
+        return redirect('datos')
         
 
 
 
-            
-
-def datos(request):
-    return render(request,"datos.html")
 
 def aboutus(request):
     return render(request,"aboutus.html")
 
 def maps(request):
     return render(request,"maps.html")
+
+
+def login(request):
+    return render(request,"login.html")
+
+def signup ():
+    return User().signup()
+
 
 
 

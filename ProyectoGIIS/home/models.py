@@ -9,6 +9,21 @@ class File(models.Model):
     autor = models.CharField(max_length=100)
     documento = models.FileField(upload_to='bitacoras/')
 
+from flask import Flask, jsonify
+
+class User:
+    
+    def signup (self):
+        user = {
+            "_id" : "",
+            "name": "",
+            "email":"",
+            "password":""
+
+        }
+
+        return jsonify(User), 200
+
     def __str__(self) -> str:
         return self.title
     
