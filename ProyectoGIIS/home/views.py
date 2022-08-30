@@ -26,7 +26,7 @@ def datos(request):
     datosbita = []
     myDB = connectDB()
     bitacora = myDB["Bitacora"]
-    
+        
     for bita in bitacora.find():
         datosbita.append({ "fecha": bita["Fecha"],"place": bita["Lugar"], "operator": bita["Operador"], "observations":bita["Observations"]})
     return render(request, 'datos.html', {'datosbita':datosbita})
@@ -86,6 +86,14 @@ def aboutus(request):
 
 def maps(request):
     return render(request,"maps.html")
+
+
+def login(request):
+    return render(request,"login.html")
+
+def signup ():
+    return User().signup()
+
 
 
 def login(request):
