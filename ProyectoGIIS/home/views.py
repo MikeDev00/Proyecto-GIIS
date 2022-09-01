@@ -1,3 +1,6 @@
+from multiprocessing import context
+from pyexpat import model
+from warnings import filters
 from django.shortcuts import render, redirect
 from django.apps import apps
 import pymongo
@@ -5,9 +8,12 @@ from django.core.files.storage import FileSystemStorage
 
 from flask import Flask
 from .models import User
-
+from .models import BitacoraInfo
 
 from .forms import BitacoraForm, DocumentoForm
+from .filters  import SnippetFilter
+
+
 
 
 def connectDB():
@@ -31,14 +37,19 @@ def prueba(request):
     })
   
 
+def prueba(ListView):
+    model= BitacoraInfo
+    template_name ='prueba.html'
+    
 
 def datos(request):
+   
     datosbita = []
     myDB = connectDB()
     bitacora = myDB["Bitacora"]
         
     for bita in bitacora.find():
-        datosbita.append({ "fecha": bita["Fecha"],"place": bita["Lugar"], "operator": bita["Operador"], "observations":bita["Observations"]})
+        datosbita.append({ "fecha": bita["Fecha"],"place": bita["Lugar"], "operator": bita["Operador"], "statnum":bita["Statnum"]})
     return render(request, 'datos.html', {'datosbita':datosbita})
 
 
@@ -114,6 +125,8 @@ def signup ():
     return User().signup()
 
 
+<<<<<<< HEAD
+=======
 
 def login(request):
     return render(request,"login.html")
@@ -122,6 +135,12 @@ def signup ():
     return User().signup()
 
 
+
+def login(request):
+    return render(request,"login.html")
+
+def signup ():
+    return User().signup()
 
 
 
