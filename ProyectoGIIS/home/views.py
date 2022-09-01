@@ -118,22 +118,6 @@ def maps(request):
     return render(request,"maps.html")
 
 
-def login(request):
-    return render(request,"login.html")
-
-def signup ():
-    return User().signup()
-
-
-<<<<<<< HEAD
-=======
-
-def login(request):
-    return render(request,"login.html")
-
-def signup ():
-    return User().signup()
-
 
 
 def login(request):
