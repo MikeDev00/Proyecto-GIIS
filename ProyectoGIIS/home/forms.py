@@ -1,6 +1,6 @@
 from dataclasses import fields
 from email.policy import default
-from msilib.schema import File
+
 from pyexpat import model
 from django import forms
 
