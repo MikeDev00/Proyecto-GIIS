@@ -24,18 +24,6 @@ def connectDB():
 def home(request):
     return render (request, 'home.html')
 
-def prueba(request):
-    if request.method =='POST':
-        docform = DocumentoForm(request.POST, request.FILES)
-        if docform.is_valid():
-            docform.save()
-            return redirect('datos')
-    else:
-        docform = DocumentoForm()
-    return render(request, 'prueba.html',  {
-            'docform': docform
-    })
-  
 
 def prueba(ListView):
     model= BitacoraInfo
