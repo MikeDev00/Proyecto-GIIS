@@ -1,15 +1,13 @@
+from dataclasses import fields
 from email.policy import default
+from msilib.schema import File
+from pyexpat import model
 from django import forms
-from gridfs_storage.storage import GridFSStorage
 
-class CarForm(forms.Form):
-    id= forms.IntegerField()
-    name= forms.CharField(max_length=100)
-    year= forms.IntegerField()
-    price= forms.FloatField()
+from .models import Documentos
 
 
-class BitacoraForm(forms.Form):
+class BitacoraForm(forms.ModelForm):
     fecha= forms.CharField(empty_value=None, required=False)
     hour= forms.CharField(empty_value=None, required=False)
     place= forms.CharField(max_length=100, empty_value=None, required=True)
@@ -31,5 +29,10 @@ class BitacoraForm(forms.Form):
     groundtyp = forms.CharField(empty_value=None, required=False)
     remarksgro = forms.CharField(empty_value=None, required=False)
     observations = forms.CharField(empty_value=None, required=False)
-    
+
+
+class DocumentoForm(forms.ModelForm):   
+    class Meta:
+        model= Documentos
+        fields = ( 'nombre', 'autor', 'documento')
     

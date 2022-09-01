@@ -1,15 +1,18 @@
 from django.db import models
-from django.conf import settings
-from djongo.storage import GridFSStorage
+from flask import Flask, jsonify
 
-grid_fs_storage = GridFSStorage(collection='file_storage')
 
-class File(models.Model):
+
+class Documentos(models.Model):
+    
     nombre = models.CharField(max_length=100)
     autor = models.CharField(max_length=100)
-    documento = models.FileField(upload_to='bitacoras/')
+    documento = models.FileField(upload_to='bitacoras/', )
 
-from flask import Flask, jsonify
+    def __str__(self):
+        return self.title
+
+
 
 class User:
     
@@ -24,6 +27,5 @@ class User:
 
         return jsonify(User), 200
 
-    def __str__(self) -> str:
-        return self.title
+    
     
