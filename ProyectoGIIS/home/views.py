@@ -1,12 +1,10 @@
 from multiprocessing import context
 from pyexpat import model
-from tkinter import Grid
 from warnings import filters
 from django.shortcuts import render, redirect
 from django.apps import apps
 import pymongo
-import gridfs
-
+from django.core.files.storage import FileSystemStorage
 
 from flask import Flask
 from .models import User
@@ -41,7 +39,7 @@ def datos(request):
     datosbita = []
     myDB = connectDB()
     bitacora = myDB["Bitacora"]
-    
+        
     for bita in bitacora.find():
         datosbita.append({ "fecha": bita["Fecha"],"place": bita["Lugar"], "operator": bita["Operador"], "statnum":bita["Statnum"]})
     return render(request, 'datos.html', {'datosbita':datosbita})
@@ -54,8 +52,7 @@ def bitacora(request):
         return render(request,'bitacora.html', {'bita':{}})
     if request.method == 'POST':
         form = BitacoraForm(request.POST or None, request.FILES)
-        myDB = connectDB()
-        fs = gridfs.GridFS(myDB)
+        upload_file = request.FILES['file']
         
         if form.is_valid():
             fecha = form.cleaned_data.get("fecha")
@@ -79,9 +76,13 @@ def bitacora(request):
             groundtyp = form.cleaned_data.get("groundtyp")
             remarksgro = form.cleaned_data.get("remarksgro")
             observations = form.cleaned_data.get("observations")
-           
+            fs = FileSystemStorage()
+            name = fs.save(upload_file.name, upload_file)
+            context['url'] = fs.url(name)
 
-        
+           # handle_uploaded_file(request.FILES['file'])
+
+        myDB = connectDB()
         bitacora = myDB["Bitacora"]
         bitacora.insert_one( { "Fecha": fecha ,"Hora": hour, "Lugar": place, "Operador": operator, "Latitud": latitude, "Longitud": longitude, 
         "Altitud": altitude, "Statype": statype, "Senstype": senstype, "Statnum": statnum, "Sensnum": sensnum, "FlName": flname, "Freq" : freq,
@@ -89,12 +90,6 @@ def bitacora(request):
         "RemarksGround": remarksgro, "Observations": observations } )
         return redirect('datos')
         
-
-def handle_uploaded_file(f):  
-    with open('C:/Users/yexil/Environments/Proyecto GIIS/ProyectoGIIS/staticfiles/upload ' + f.name, 'wb+') as destination:  
-        
-        for chunk in f.chunks():  
-            destination.write(chunk)
 
 
 
@@ -111,5 +106,24 @@ def login(request):
 
 def signup ():
     return User().signup()
+
+
+<<<<<<< HEAD
+=======
+
+def login(request):
+    return render(request,"login.html")
+
+def signup ():
+    return User().signup()
+
+
+
+def login(request):
+    return render(request,"login.html")
+
+def signup ():
+    return User().signup()
+
 
 

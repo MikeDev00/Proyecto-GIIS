@@ -35,6 +35,11 @@
 {% include "navbar.html" %}
 
 <body>
+    <h1>Datosss</h1>
+    
+    {%if url %}
+        <p>Documentos subidos: <a href="{{url}}">{{url}}</a></p>
+    {%endif %}
 <script>
 $(document).ready(function() {
     $(".search").keyup(function () {
