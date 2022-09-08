@@ -37,9 +37,7 @@
 <body>
     <h1>Datos de Bitácora</h1>
     
-    {%if url %}
-        <p>Documentos subidos: <a href="{{url}}">{{url}}</a></p>
-    {%endif %}
+    
 <script>
 $(document).ready(function() {
     $(".search").keyup(function () {
@@ -70,19 +68,13 @@ $(document).ready(function() {
 </script>
 
 
-<script>
-
-$(document).ready(function () {
-    $('table#example').DataTable();
-});
-</script>
-
 
 &nbsp;
 <div class="form-group pull-right">
     <input type="text" class="search form-control" placeholder="Buscar...">
 </div>
 &nbsp;
+
 
 
 <table id="example" class="table table-hover table-bordered results bg-white">

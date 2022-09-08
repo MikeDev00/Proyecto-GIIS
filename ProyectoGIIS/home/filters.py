@@ -1,10 +1,12 @@
-from dataclasses import fields
-from pyexpat import model
 import django_filters
-from .models import BitacoraInfo
+from .models import Documentos
+#from .models import BitacoraInfo
+#from .forms import BitacoraForm
 
-
-class SnippetFilter(django_filters.FilterSet):
+import django_filters
+ 
+class UserFilter(django_filters.FilterSet):
+    #nombre__name:django_filters.CharFilter(lookup_expr='icontains')
     class Meta:
-        model = BitacoraInfo
-        fields = ('fecha','place','operator')
+        model = Documentos
+        fields = ['nombre','autor']

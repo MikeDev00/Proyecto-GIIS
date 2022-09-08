@@ -1,3 +1,4 @@
+from collections import UserList
 from multiprocessing import context
 from pyexpat import model
 from warnings import filters
@@ -6,12 +7,15 @@ from django.apps import apps
 import pymongo
 from django.core.files.storage import FileSystemStorage
 
-from flask import Flask
-from .models import User
-from .models import BitacoraInfo
+from home.filters import UserFilter
+
+from home.models import Documentos, User, BitacoraInfo
+
 
 from .forms import BitacoraForm, DocumentoForm
-from .filters  import SnippetFilter
+
+
+
 
 
 
@@ -25,10 +29,27 @@ def home(request):
     return render (request, 'home.html')
 
 
-def prueba(ListView):
-    model= BitacoraInfo
-    template_name ='prueba.html'
+def prueba(request):
+  datosbita = []
+  myDB = connectDB()
+  bitacora = myDB["Bitacora"]
     
+  for bita in bitacora.find():
+        datosbita.append({ "fecha": bita["Fecha"],"place": bita["Lugar"], "operator": bita["Operador"], "statnum":bita["Statnum"],
+        "groundtyp": bita["GroundType"], "freq" : bita ["Freq"],"duration": bita["Duration"] })
+  return render(request, 'prueba.html', {'datosbita':datosbita})
+    
+
+def search (request):
+    user_list = Documentos.objects.all()
+    user_filter = UserFilter(request.GET, queryset= user_list)
+    return render(request, 'user_list.html', {'filter': user_filter})
+
+    
+
+
+
+
 
 def datos(request):
    
@@ -39,6 +60,7 @@ def datos(request):
     for bita in bitacora.find():
         datosbita.append({ "fecha": bita["Fecha"],"place": bita["Lugar"], "operator": bita["Operador"], "statnum":bita["Statnum"]})
     return render(request, 'datos.html', {'datosbita':datosbita})
+
 
 
 
