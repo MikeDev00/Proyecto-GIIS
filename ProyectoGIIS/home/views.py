@@ -1,6 +1,7 @@
 from collections import UserList
 from gettext import find
 from multiprocessing import context
+from pydoc import Doc
 from pyexpat import model
 from warnings import filters
 from django.shortcuts import render, redirect
@@ -40,6 +41,7 @@ def prueba(request):
         "groundtyp": bita["GroundType"], "freq" : bita ["Freq"],"duration": bita["Duration"] })
   return render(request, 'prueba.html', {'datosbita':datosbita})
     
+
 
 def search (request):
     user_list = Documentos.objects.all()
