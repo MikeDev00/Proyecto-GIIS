@@ -8,13 +8,14 @@ from django.shortcuts import render, redirect
 from django.apps import apps
 import pymongo
 from django.core.files.storage import FileSystemStorage
+from home.models import PruebaBit
 
 from home.filters import UserFilter
 
-from home.models import Documentos, User, BitacoraInfo
+from home.models import Documentos
 
 
-from .forms import BitacoraForm, DocumentoForm
+from .forms import BitacoraForm, DocumentoForm, PruebaBitaForm
 
 
 
@@ -44,7 +45,7 @@ def prueba(request):
 
 
 def search (request):
-    user_list = Documentos.objects.all()
+    user_list = PruebaBit.objects.all()
     user_filter = UserFilter(request.GET, queryset= user_list)
     return render(request, 'user_list.html', {'filter': user_filter})
 
@@ -94,10 +95,7 @@ def bitacora(request):
             groundtyp = form.cleaned_data.get("groundtyp")
             remarksgro = form.cleaned_data.get("remarksgro")
             observations = form.cleaned_data.get("observations")
-            form.save()
-            #fs = FileSystemStorage()
-            #name = fs.save(upload_file.name, upload_file)
-            #context['url'] = fs.url(name)
+            
         myDB = connectDB()
         bitacora = myDB["Bitacora"]
         bitacora.insert_one( { "Fecha": fecha ,"Hora": hour, "Lugar": place, "Operador": operator, "Latitud": latitude, "Longitud": longitude, 
@@ -120,7 +118,17 @@ def bitacora(request):
     })
         
         
-
+def pruebabit(request):
+    if request.method =='POST':
+        pruebaform = PruebaBitaForm(request.POST, request.FILES)
+        if pruebaform.is_valid():
+            pruebaform.save()
+            return redirect('datos')
+    else:
+        pruebaform=PruebaBitaForm()
+    return render(request, 'pruebabit.html',  {
+            'pruebaform': pruebaform
+    })
 
 
 
@@ -136,8 +144,6 @@ def maps(request):
 def login(request):
     return render(request,"login.html")
 
-def signup ():
-    return User().signup()
 
 
 

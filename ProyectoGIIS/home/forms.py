@@ -4,7 +4,7 @@ from email.policy import default
 from pyexpat import model
 from django import forms
 
-from .models import Documentos
+from .models import Documentos, PruebaBit
 
 
 class BitacoraForm(forms.ModelForm):
@@ -29,6 +29,8 @@ class BitacoraForm(forms.ModelForm):
     groundtyp = forms.CharField(empty_value=None, required=False)
     remarksgro = forms.CharField(empty_value=None, required=False)
     observations = forms.CharField(empty_value=None, required=False)
+   
+  
 
 
 class DocumentoForm(forms.ModelForm):   
@@ -36,3 +38,9 @@ class DocumentoForm(forms.ModelForm):
         model= Documentos
         fields = ( 'nombre', 'autor', 'documento')
     
+class PruebaBitaForm(forms.ModelForm):
+    class Meta:
+        model=PruebaBit
+        fields = ('fecha', 'hour', 'place', 'operator', 'latitude', 'longitude', 'altitude', 'statype', 'senstype', 
+        'statnum', 'sensnum', 'flname', 'freq', 'duration', 'windopts',
+        'rainopts', 'temp', 'remarkstemp', 'groundtyp', 'remarksgro', 'observations', 'nombre', 'autor', 'documento')

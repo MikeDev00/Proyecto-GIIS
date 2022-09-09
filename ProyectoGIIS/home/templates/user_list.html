@@ -59,6 +59,7 @@
           </div>
           
         </div>
+        <br>
         <button type="submit" class="btn btn-primary">
           <span class="glyphicon glyphicon-search"></span> Search
         </button>
@@ -77,11 +78,11 @@
         </tr>
       </thead>
       <tbody>
-        {% for Documentos in filter.qs %}
+        {% for PruebaBit in filter.qs %}
           <tr>
-            <td>{{ Documentos.nombre }}</td>
-            <td>{{ Documentos.autor }}</td>
-            <td>{{ Documentos.documento }}</td>
+            <td>{{ PruebaBit.nombre }}</td>
+            <td>{{ PruebaBit.autor }}</td>
+            <td>{{ PruebaBit.documento }}</td>
            
           </tr>
         {% empty %}
