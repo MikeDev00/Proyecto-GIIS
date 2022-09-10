@@ -36,7 +36,7 @@ class PruebaBit(models.Model):
     remarkstemp = models.CharField(max_length=100, blank=True, null = True)
     groundtyp = models.CharField(max_length=100, blank=True, null = True)
     remarksgro = models.CharField(max_length=100, blank=True, null = True)
-    observations = models.CharField(max_length=100, blank=True, null = True)
+    observations = models.TextField(max_length=100, blank=True, null = True)
     nombre = models.CharField(max_length=100, blank=True, null = True)
     autor = models.CharField(max_length=100, blank=True, null = True)
     documento = models.FileField(upload_to='bitacora/', blank=True, null = True)

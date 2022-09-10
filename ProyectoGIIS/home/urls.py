@@ -19,6 +19,9 @@ urlpatterns = [
     re_path(r'^search/$', views.search, name='search'),
 
     
+    re_path(r'^filterbit/$', views.filterbit, name='filterbit'),
+
+    
 ]
 
 if settings.DEBUG:

@@ -10,15 +10,12 @@ import pymongo
 from django.core.files.storage import FileSystemStorage
 from home.models import PruebaBit
 
-from home.filters import UserFilter
+from home.filters import UserFilter, BitFilter
 
 from home.models import Documentos
 
 
 from .forms import BitacoraForm, DocumentoForm, PruebaBitaForm
-
-
-
 
 
 
@@ -43,11 +40,19 @@ def prueba(request):
   return render(request, 'prueba.html', {'datosbita':datosbita})
     
 
+# Filtros 
 
 def search (request):
     user_list = PruebaBit.objects.all()
     user_filter = UserFilter(request.GET, queryset= user_list)
     return render(request, 'user_list.html', {'filter': user_filter})
+
+def filterbit (request):
+    bit_filt = PruebaBit.objects.all()
+    bita_filter = BitFilter(request.GET, queryset= bit_filt)
+    return render(request, 'datosfilt.html', {'filter': bita_filter})
+
+
 
     
 
