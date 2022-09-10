@@ -128,7 +128,7 @@ def pruebabit(request):
         pruebaform = PruebaBitaForm(request.POST, request.FILES)
         if pruebaform.is_valid():
             pruebaform.save()
-            return redirect('datos')
+            return redirect('filterbit')
     else:
         pruebaform=PruebaBitaForm()
     return render(request, 'pruebabit.html',  {
