@@ -73,21 +73,28 @@
         <tr>
           <th>Nombre</th>
           <th>Autor</th>
-          <th>documento</th>
+          <th>Documento</th>
          
         </tr>
       </thead>
       <tbody>
-        {% for PruebaBit in filter.qs %}
+        {% for list in filter.qs %}
           <tr>
-            <td>{{ PruebaBit.nombre }}</td>
-            <td>{{ PruebaBit.autor }}</td>
-            <td>{{ PruebaBit.documento }}</td>
+            <td>{{ list.nombre }}</td>
+            <td>{{ list.autor }}</td>
+           
+            <td>
+              <a href="{{ list.documento.url }}" class="btn btn-primary btn-sm" target="_blank">
+                Descargar Archivo
+              </a>
+            </td>
            
           </tr>
         {% empty %}
           <tr>
-            <td colspan="5">No data</td>
+            <td colspan="5"> 
+              <span class="text-muted">No data</span>
+            </td>
           </tr>
         {% endfor %}
       </tbody>

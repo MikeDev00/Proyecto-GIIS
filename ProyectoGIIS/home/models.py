@@ -44,5 +44,13 @@ class PruebaBit(models.Model):
     def __str__(self) -> str:
         return self.documento
 
+    @property
+    def fileURL(self):
+        try:
+            url = self.documento.url
+        except:
+            url=''
+        return url
+
    
     
