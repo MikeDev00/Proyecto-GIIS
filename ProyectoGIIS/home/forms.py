@@ -50,32 +50,32 @@ SENSORES = (
 )
 
 VIENTO = (
-    ('', 'Seleccionar...'),
-    ('1', 'None'),
-    ('2', 'Débil (5 m/s)'),
-    ('3', 'Medio'),
-    ('4', 'Fuerte'),
+    ('Seleccionar...', 'Seleccionar...'),
+    ('None', 'None'),
+    ('Débil (5 m/s)', 'Débil (5 m/s)'),
+    ('Medio', 'Medio'),
+    ('Fuerte', 'Fuerte'),
 )
 
 LLUVIA = (
-    ('', 'Seleccionar...'),
-    ('1', 'None'),
-    ('2', 'Débil (5 m/s)'),
-    ('3', 'Medio'),
-    ('4', 'Fuerte'),
+    ('Seleccionar...', 'Seleccionar...'),
+    ('None', 'None'),
+    ('Débil (5 m/s)', 'Débil (5 m/s)'),
+    ('Medio', 'Medio'),
+    ('Fuerte', 'Fuerte'),
 )
 
 TIERRA = (
-    ('', 'Seleccionar...'),
-    ('1', 'None'),
-    ('2', 'Grava'),
-    ('3', 'Arena'),
-    ('4', 'Roca'),
-    ('5', 'Asfalto'),
-    ('6', 'Hierba'),
-    ('7', 'Cemento'),
-    ('8', 'Concreto'),
-    ('9', 'Pavimentado'),
+    ('Seleccionar...', 'Seleccionar...'),
+    ('None', 'None'),
+    ('Grava', 'Grava'),
+    ('Arena', 'Arena'),
+    ('Roca', 'Roca'),
+    ('Asfalto', 'Asfalto'),
+    ('Hierba', 'Hierba'),
+    ('Cemento', 'Cemento'),
+    ('Concreto', 'Concreto'),
+    ('9Pavimentado', 'Pavimentado'),
 )
 
 
