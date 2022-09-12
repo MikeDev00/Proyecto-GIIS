@@ -119,7 +119,7 @@ class PruebaBitaForm(forms.ModelForm):
         'flname', 'freq', 'duration', 'windopts',
         'rainopts', 'temp', 'remarkstemp', 
         'groundtyp', 'remarksgro', 
-        'observations', 'nombre', 'autor', 'documento')
+        'observations', 'is_completed','revisado','nombre', 'autor', 'documento',)
         
 
         widgets = {

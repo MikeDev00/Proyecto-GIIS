@@ -86,6 +86,8 @@
           <th>fecha</th>
           <th>place</th>
           <th>senstype</th>
+          <th>Revisado <i class="bi bi-check"></i> </th>
+          <th>Acciones <i class="bi bi-check"></i> </th>
         </tr>
       </thead>
       <tbody>
@@ -95,6 +97,59 @@
             <td>{{ PruebaBit.fecha }}</td>
             <td>{{ PruebaBit.place }}</td>
             <td>{{ PruebaBit.senstype }}</td>
+            <td>
+                
+                {% if PruebaBit.is_completed%}
+                
+                Sí <i class="bi bi-check"></i>
+
+                {% else %}
+
+                No
+
+                {% endif %}
+
+            </td>
+            <td>
+                <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Observar  </button>
+
+                    <!-- Modal -->
+                    <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Informacion de la Bitacora</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                                
+                                
+                               
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                        </div>
+
+                    </div>
+                    </div>
+
+            </td>
+
+
+
+
+
+
+
+
+
+
+
            
           </tr>
         {% empty %}
