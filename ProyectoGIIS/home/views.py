@@ -1,21 +1,12 @@
-from collections import UserList
-from gettext import find
-from multiprocessing import context
-from pydoc import Doc
-from pyexpat import model
-from warnings import filters
 from django.shortcuts import render, redirect
-from django.apps import apps
 import pymongo
-from django.core.files.storage import FileSystemStorage
 from home.models import PruebaBit
+import zipfile
 
 from home.filters import UserFilter, BitFilter
 
-from home.models import Documentos
 
-
-from .forms import BitacoraForm, DocumentoForm, PruebaBitaForm
+from .forms import BitacoraForm, PruebaBitaForm
 
 
 
@@ -51,13 +42,6 @@ def filterbit (request):
     bit_filt = PruebaBit.objects.all()
     bita_filter = BitFilter(request.GET, queryset= bit_filt)
     return render(request, 'datosfilt.html', {'filter': bita_filter})
-
-
-
-    
-
-
-
 
 
 def datos(request):
@@ -110,23 +94,17 @@ def bitacora(request):
         
     return render(request, 'bitacora.html')
 
-def bitacora(request):
-    if request.method =='POST':
-        docform = DocumentoForm(request.POST, request.FILES)
-        if docform.is_valid():
-            docform.save()
-            return redirect('datos')
-    else:
-        docform = DocumentoForm()
-    return render(request, 'bitacora.html',  {
-            'docform': docform
-    })
         
         
 def pruebabit(request):
     if request.method =='POST':
         pruebaform = PruebaBitaForm(request.POST, request.FILES)
+        documentos = request.FILES.getlist('documento')
         if pruebaform.is_valid():
+            file_instance = []
+            for f in documentos:
+                  file_instance= PruebaBit(documento=f)       
+           
             pruebaform.save()
             return redirect('datos')
     else:

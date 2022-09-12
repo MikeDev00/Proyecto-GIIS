@@ -6,7 +6,7 @@ from pyexpat import model
 from tkinter import Place
 from django import forms
 
-from .models import Documentos, PruebaBit
+from .models import PruebaBit
 
 
 class BitacoraForm(forms.ModelForm):
@@ -42,10 +42,6 @@ class DateTimeInput2(forms.DateTimeInput):
 
 
 
-class DocumentoForm(forms.ModelForm):   
-    class Meta:
-        model= Documentos
-        fields = ( 'nombre', 'autor', 'documento')
     
 SENSORES = (
     ('', 'Seleccionar...'),
@@ -108,6 +104,7 @@ class PruebaBitaForm(forms.ModelForm):
     windopts = forms.ChoiceField(choices=VIENTO)
     rainopts = forms.ChoiceField(choices=LLUVIA)
     groundtyp = forms.ChoiceField(choices=TIERRA)
+    documento = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}))
 
 
     class Meta:

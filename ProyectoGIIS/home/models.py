@@ -39,18 +39,11 @@ class PruebaBit(models.Model):
     observations = models.TextField(max_length=100, blank=True, null = True)
     nombre = models.CharField(max_length=100, blank=True, null = True)
     autor = models.CharField(max_length=100, blank=True, null = True)
-    documento = models.FileField(upload_to='bitacora/', blank=True, null = True)
+    documento = models.FileField(upload_to='bitacora/', blank=True, null = False)
 
     def __str__(self) -> str:
         return self.documento
 
-    @property
-    def fileURL(self):
-        try:
-            url = self.documento.url
-        except:
-            url=''
-        return url
 
    
     
