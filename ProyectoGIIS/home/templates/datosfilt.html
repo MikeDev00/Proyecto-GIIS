@@ -27,6 +27,7 @@
         .results tr[visible='true']{
         display:table-row;
         }
+        
 
        
 </style>
@@ -42,11 +43,12 @@
 
 
 
-   
+  
   {% block content %}
     <form method="get">
       <div class="well">
         <h4 style="margin-top: 0">Filter</h4>
+        <h1>Billt </h1>
         <div class="row">
           <div class="form-group col-sm-4 col-md-3">
             {{ filter.form.operator.label_tag }}
@@ -101,7 +103,7 @@
                 
                 {% if PruebaBit.is_completed%}
                 
-                Sí <i class="bi bi-check"></i>
+                Sí <i class="check icon green "></i>
 
                 {% else %}
 
