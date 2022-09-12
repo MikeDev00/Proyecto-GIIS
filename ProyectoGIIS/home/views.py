@@ -101,12 +101,11 @@ def pruebabit(request):
         pruebaform = PruebaBitaForm(request.POST, request.FILES)
         documentos = request.FILES.getlist('documento')
         if pruebaform.is_valid():
-            file_instance = []
-            for f in documentos:
-                  file_instance= PruebaBit(documento=f)       
-           
+            for file in documentos:
+                PruebaBit.objects.create(documento = file)
+        # PruebaBit.objects.all()
             pruebaform.save()
-            return redirect('filterbit')
+            return redirect('datos')
     else:
         pruebaform=PruebaBitaForm()
     return render(request, 'pruebabit.html',  {

@@ -1,7 +1,7 @@
 from unicodedata import name
 from django.db import models
 from flask import Flask, jsonify
-
+from djongo import models
 
 
 class Documentos(models.Model):
@@ -41,11 +41,16 @@ class PruebaBit(models.Model):
     revisado= models.CharField('Revisado por',max_length=100, blank=True, null = True)
     nombre = models.CharField(max_length=100, blank=True, null = True)
     autor = models.CharField(max_length=100, blank=True, null = True)
-    documento = models.FileField(upload_to='bitacora/', blank=True, null = False)
+    documento = models.FileField( upload_to='bitacora/', blank=True, null = False)
 
     def __str__(self) -> str:
         return self.documento
 
+"""class ListaDocumentos(models.Model):
+    documentos = models.ArrayField(
+        model_container= PruebaBit
+    )
+"""
 
    
     
