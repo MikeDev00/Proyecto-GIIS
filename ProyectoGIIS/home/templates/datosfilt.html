@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>
- 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
    <style>
     body{
         padding:20px 20px;
@@ -84,12 +84,12 @@
     <table class="table table-bordered">
       <thead  class="table-dark">
         <tr>
-          <th>operator</th>
-          <th>fecha</th>
-          <th>place</th>
-          <th>senstype</th>
-          <th>Revisado <i class="bi bi-check"></i> </th>
-          <th>Acciones <i class="bi bi-check"></i> </th>
+          <th>Operator</th>
+          <th>Fecha</th>
+          <th>Lugar</th>
+          <th>Tipo de Sensor</th>
+          <th>Revisado</th>
+          <th>Acciones </th>
         </tr>
       </thead>
       <tbody>
@@ -103,7 +103,7 @@
                 
                 {% if PruebaBit.is_completed%}
                 
-                Sí <i class="check icon green "></i>
+                Sí <i class="bi bi-check-circle-fill" style="color: green;"></i>
 
                 {% else %}
 

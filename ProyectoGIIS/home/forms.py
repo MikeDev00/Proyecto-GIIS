@@ -44,9 +44,9 @@ class DateTimeInput2(forms.DateTimeInput):
 
     
 SENSORES = (
-    ('', 'Seleccionar...'),
-    ('1', 'ETNA ALTUS SERIES'),
-    ('2', 'GEOTINY'),
+    ('Seleccionar...', 'Seleccionar...'),
+    ('ETNA ALTUS SERIES', 'ETNA ALTUS SERIES'),
+    ('GEOTINY', 'GEOTINY'),
 )
 
 VIENTO = (
