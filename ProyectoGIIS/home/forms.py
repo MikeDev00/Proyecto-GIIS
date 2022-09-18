@@ -75,7 +75,7 @@ TIERRA = (
     ('Hierba', 'Hierba'),
     ('Cemento', 'Cemento'),
     ('Concreto', 'Concreto'),
-    ('9Pavimentado', 'Pavimentado'),
+    ('Pavimentado', 'Pavimentado'),
 )
 
 
