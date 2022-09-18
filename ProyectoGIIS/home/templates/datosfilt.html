@@ -41,14 +41,18 @@
 <body>
  
 
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">   
 
 
   
   {% block content %}
     <form method="get">
+      <br>
+      <br>
       <div class="well">
-        <h4 style="margin-top: 0">Filter</h4>
-        <h1>Billt </h1>
+        
         <div class="row">
           <div class="form-group col-sm-4 col-md-3">
             {{ filter.form.operator.label_tag }}
@@ -81,25 +85,25 @@
     </form>
 
 
-    <table class="table table-bordered">
+    <table id="example"  class="table table-bordered">
       <thead  class="table-dark">
         <tr>
-          <th>Operator</th>
-          <th>Fecha</th>
+          <th style="width:200px" >Operator</th>
+          <th style="width:130px">Fecha</th>
           <th>Lugar</th>
-          <th>Tipo de Sensor</th>
-          <th>Revisado</th>
+          <th style="width:200px" >Tipo de Sensor</th>
+          <th style="width:50px">Revisado</th>
           <th>Acciones </th>
         </tr>
       </thead>
       <tbody>
         {% for PruebaBit in filter.qs %}
           <tr>
-            <td>{{ PruebaBit.operator }}</td>
-            <td>{{ PruebaBit.fecha }}</td>
+            <td style="width:200px"  >{{ PruebaBit.operator }}</td>
+            <td style="width:130px">{{ PruebaBit.fecha }}</td>
             <td>{{ PruebaBit.place }}</td>
-            <td>{{ PruebaBit.senstype }}</td>
-            <td>
+            <td style="width:200px" >{{ PruebaBit.senstype }}</td>
+            <td style="width:50px">
                 
                 {% if PruebaBit.is_completed%}
                 
@@ -162,6 +166,43 @@
       </tbody>
     </table>
   {% endblock %}
+
+
+
+  <script>
+    $(document).ready(function () {
+    $('#example').DataTable({
+      "searching": false,
+      "info": false,
+      "ininfoFilteredfo": false,
+      
+      
+      language: {
+        processing:     "Busqueda en curso...",
+        search:         "Rechercher&nbsp;:",
+        lengthMenu:    "Para mostrar _MENU_ Elementos",
+        info:           "Affichage de l'&eacute;lement _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
+        infoEmpty:      "Affichage de l'&eacute;lement 0 &agrave; 0 sur 0 &eacute;l&eacute;ments",
+        infoFiltered:   "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
+        infoPostFix:    "",
+        loadingRecords: "Cargando...",
+        zeroRecords:    "Aucun &eacute;l&eacute;ment &agrave; afficher",
+        emptyTable:     "No hay datos disponibles en la tabla",
+        paginate: {
+            first:      "Primera",
+            previous:   "Anterior",
+            next:       "Siguiente",
+            last:       "Ultima"
+        },
+        aria: {
+            sortAscending:  ": activer pour trier la colonne par ordre croissant",
+            sortDescending: ": activer pour trier la colonne par ordre décroissant"
+        }
+    }
+    });
+});
+</script>
+
   
 
 
