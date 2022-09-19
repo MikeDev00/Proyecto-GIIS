@@ -81,29 +81,30 @@ TIERRA = (
 
 
 class PruebaBitaForm(forms.ModelForm):
-    place = forms.CharField( widget=forms.TextInput(attrs={'placeholder': 'Insertar Lugar'}),required=False)
-    operator = forms.CharField( widget=forms.TextInput(attrs={'placeholder': 'Insertar Operador'}),required=False)
-    latitude= forms.FloatField(widget=forms.TextInput(attrs={'placeholder': 'Insertar Latitud'}),required=False)
-    longitude= forms.FloatField(widget=forms.TextInput(attrs={'placeholder': 'Insertar Longitud'}),required=False)
-    altitude= forms.FloatField(widget=forms.TextInput(attrs={'placeholder': 'Insertar Altitud'}),required=False)
-    statype =  forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Insertar tipo de estación'}),empty_value=None, required=False)
+    place = forms.CharField( label='Lugar',widget=forms.TextInput(attrs={'placeholder': 'Insertar Lugar'}),required=False)
+    operator = forms.CharField( label='Operador',widget=forms.TextInput(attrs={'placeholder': 'Insertar Operador'}),required=False)
+    latitude= forms.FloatField(label='Latitud', widget=forms.TextInput(attrs={'placeholder': 'Insertar Latitud'}),required=False)
+    longitude= forms.FloatField(label='Longitud', widget=forms.TextInput(attrs={'placeholder': 'Insertar Longitud'}),required=False)
+    altitude= forms.FloatField(label='Altitud',widget=forms.TextInput(attrs={'placeholder': 'Insertar Altitud'}),required=False)
+    statype =  forms.CharField(label='Tipo de Estación',widget=forms.TextInput(attrs={'placeholder': 'Insertar tipo de estación'}),empty_value=None, required=False)
    
-    statnum  = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Insertar # de estación'}),empty_value=None, required=False)
-    sensnum = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Insertar # de sensor'}),empty_value=None, required=False)
-    flname  = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Insertar nombre de archivo'}),empty_value=None, required=False)
-    freq = forms.FloatField(widget=forms.TextInput(attrs={'placeholder': 'Insertar Frecuencia'}),required=False)
-    duration  = forms.FloatField(widget=forms.TextInput(attrs={'placeholder': 'Insertar Duración'}),required=False)
+    statnum  = forms.CharField(label='Número de Estación',widget=forms.TextInput(attrs={'placeholder': 'Insertar # de estación'}),empty_value=None, required=False)
+    sensnum = forms.CharField(label='Número de Sensor',widget=forms.TextInput(attrs={'placeholder': 'Insertar # de sensor'}),empty_value=None, required=False)
+#    flname  = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder': 'Insertar nombre de archivo'}),empty_value=None, required=False)
+    freq = forms.FloatField(label='Frecuencia Inicial (Hz)',widget=forms.TextInput(attrs={'placeholder': 'Insertar Frecuencia'}),required=False)
+    freq2 = forms.FloatField(label='Frecuencia Final (Hz)',widget=forms.TextInput(attrs={'placeholder': 'Insertar Frecuencia'}),required=False)
+    duration  = forms.FloatField(label='Duración',widget=forms.TextInput(attrs={'placeholder': 'Insertar Duración'}),required=False)
     
-    temp = forms.FloatField(widget=forms.TextInput(attrs={'placeholder': 'Insertar Temperatura'}),required=False)
-    remarkstemp = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Insertar Remarks'}),empty_value=None, required=False)
+    temp = forms.FloatField(label='Temperatura',widget=forms.TextInput(attrs={'placeholder': 'Insertar Temperatura'}),required=False)
+    remarkstemp = forms.CharField(label='Observaciones de Temperatura',widget=forms.TextInput(attrs={'placeholder': 'Insertar Remarks'}),empty_value=None, required=False)
    
-    remarksgro = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Insertar remarks'}),empty_value=None, required=False)
+    remarksgro = forms.CharField(label='Observaciones de Tierra',widget=forms.TextInput(attrs={'placeholder': 'Insertar remarks'}),empty_value=None, required=False)
    
 
-    senstype = forms.ChoiceField(choices=SENSORES)
-    windopts = forms.ChoiceField(choices=VIENTO)
-    rainopts = forms.ChoiceField(choices=LLUVIA)
-    groundtyp = forms.ChoiceField(choices=TIERRA)
+    senstype = forms.ChoiceField(label='Tipo de Sensor', choices=SENSORES)
+    windopts = forms.ChoiceField(label='Condiciones de Viento',choices=VIENTO)
+    rainopts = forms.ChoiceField(label='Condiciones de Lluvia',choices=LLUVIA)
+    groundtyp = forms.ChoiceField(label='Tipo de Suelo',choices=TIERRA)
     documento = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}))
 
 
@@ -113,7 +114,7 @@ class PruebaBitaForm(forms.ModelForm):
         'fecha', 'hour', 'place', 'operator',
         'latitude', 'longitude', 'altitude',
         'statype', 'senstype', 'statnum', 'sensnum',
-        'flname', 'freq', 'duration', 'windopts',
+        'freq','freq2', 'duration', 'windopts',
         'rainopts', 'temp', 'remarkstemp', 
         'groundtyp', 'remarksgro', 
         'observations', 'is_completed','revisado','nombre', 'autor', 'documento',)
