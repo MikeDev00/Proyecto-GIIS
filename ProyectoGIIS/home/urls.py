@@ -4,7 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
-
+#app_name = 'aplication'
 
 urlpatterns = [
     path('', views.home, name = 'home'),
@@ -17,9 +17,10 @@ urlpatterns = [
     path('pruebabit/', views.pruebabit,name='pruebabit'),
 
     re_path(r'^search/$', views.search, name='search'),
-
-    
     re_path(r'^filterbit/$', views.filterbit, name='filterbit'),
+
+
+    path('detail_<int:id>/', views.detail, name= 'detail')
 
     
 ]

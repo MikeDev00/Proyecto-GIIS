@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect
+from multiprocessing import context
+from django.shortcuts import render, redirect, get_object_or_404
 import pymongo
 from home.models import PruebaBit
 import zipfile
@@ -128,4 +129,9 @@ def login(request):
 
 
 
-
+def detail(request, id):
+    detail_bita = get_object_or_404(PruebaBit, pk = id) 
+    context = {
+        'detail_bita' : detail_bita
+    }
+    return render ( request, "detail.html", context)

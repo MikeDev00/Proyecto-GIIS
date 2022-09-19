@@ -78,7 +78,8 @@
         </div>
         <br>
         <button type="submit" class="btn btn-primary">
-          <span class="glyphicon glyphicon-search"></span> Search
+         <i class="bi bi-search"></i> &nbsp
+          Search
         </button>
       </div>
       &nbsp;
@@ -88,6 +89,7 @@
     <table id="example"  class="table table-bordered">
       <thead  class="table-dark">
         <tr>
+         
           <th style="width:200px" >Operator</th>
           <th style="width:130px">Fecha</th>
           <th>Lugar</th>
@@ -99,6 +101,7 @@
       <tbody>
         {% for PruebaBit in filter.qs %}
           <tr>
+            
             <td style="width:200px"  >{{ PruebaBit.operator }}</td>
             <td style="width:130px">{{ PruebaBit.fecha }}</td>
             <td>{{ PruebaBit.place }}</td>
@@ -116,51 +119,15 @@
                 {% endif %}
 
             </td>
-            <td>
-                <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Observar  </button>
-
-                    <!-- Modal -->
-                    <div id="myModal" class="modal fade" role="dialog">
-                    <div class="modal-dialog">
-
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Informacion de la Bitacora</h4>
-                        </div>
-                        <div class="modal-body">
-                            <p>
-                                
-                                
-                               
-                            </p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                        </div>
-
-                    </div>
-                    </div>
-
+            <td >
+                <a href="{% url 'detail' PruebaBit.id  %}" class="btn btn-danger m-1"> ver más</a>
+                <a class="btn btn-success m-1"> Editar</a>
+                <a class="btn btn-primary m-1"> Eliminar</a>
             </td>
-
-
-
-
-
-
-
-
-
-
-
-           
           </tr>
         {% empty %}
           <tr>
-            <td colspan="5">No data</td>
+            <td colspan="5">No hay datos Disponibles</td>
           </tr>
         {% endfor %}
       </tbody>
@@ -180,7 +147,7 @@
       language: {
         processing:     "Busqueda en curso...",
         search:         "Rechercher&nbsp;:",
-        lengthMenu:    "Para mostrar _MENU_ Elementos",
+        lengthMenu:     "Mostrar _MENU_ Elementos",
         info:           "Affichage de l'&eacute;lement _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
         infoEmpty:      "Affichage de l'&eacute;lement 0 &agrave; 0 sur 0 &eacute;l&eacute;ments",
         infoFiltered:   "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
