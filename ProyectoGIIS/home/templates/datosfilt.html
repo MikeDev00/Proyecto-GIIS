@@ -59,11 +59,7 @@
             {% render_field filter.form.operator class="form-control" %}
           </div>
           
-          <div class="form-group col-sm-4 col-md-3">
-            {{ filter.form.fecha.label_tag }}
-            {% render_field filter.form.fecha class="form-control" %}
-          </div>
-
+         
           <div class="form-group col-sm-4 col-md-3">
             {{ filter.form.place.label_tag }}
             {% render_field filter.form.place class="form-control" %}
@@ -85,8 +81,9 @@
       &nbsp;
     </form>
 
-
+    
     <table id="example"  class="table table-bordered">
+  
       <thead  class="table-dark">
         <tr>
          
@@ -120,9 +117,9 @@
 
             </td>
             <td >
-                <a href="{% url 'detail' PruebaBit.id  %}" class="btn btn-danger m-1"> ver más</a>
-                <a class="btn btn-success m-1"> Editar</a>
-                <a class="btn btn-primary m-1"> Eliminar</a>
+               
+                <a href="{% url 'editar' PruebaBit.id  %}" class="btn btn-success m-1"> Editar</a>
+                <a href="{% url 'eliminar' PruebaBit.id  %}" class="btn btn-danger m-1"> Eliminar</a>
             </td>
           </tr>
         {% empty %}

@@ -20,7 +20,9 @@ urlpatterns = [
     re_path(r'^filterbit/$', views.filterbit, name='filterbit'),
 
 
-    path('detail_<int:id>/', views.detail, name= 'detail')
+ 
+    path('editar_<int:id>/', views.editar, name= 'editar'),
+    path('eliminar_<int:id>/', views.eliminar, name= 'eliminar')
 
     
 ]
