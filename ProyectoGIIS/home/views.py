@@ -129,9 +129,22 @@ def login(request):
 
 
 
-def detail(request, id):
-    detail_bita = get_object_or_404(PruebaBit, pk = id) 
-    context = {
-        'detail_bita' : detail_bita
-    }
-    return render ( request, "detail.html", context)
+def editar(request, id):
+    bit = get_object_or_404(PruebaBit, id = id)
+    data  = {'pruebaform':PruebaBitaForm(instance=bit) }
+    if request.method =='POST':
+        pruebaform = PruebaBitaForm(request.POST, request.FILES, instance=bit)
+        if pruebaform.is_valid():
+            pruebaform.save()
+            return redirect('filterbit')
+    else : 
+            pruebaform=PruebaBitaForm()
+    return render(request, 'pruebabit.html',data)
+
+
+
+
+def eliminar(request, id):
+    bita = get_object_or_404(PruebaBit, id = id)
+    bita.delete()
+    return redirect(to="filterbit")
