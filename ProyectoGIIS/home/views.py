@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 import pymongo
 from home.models import PruebaBit
 import zipfile
+import os
 
 from home.filters import UserFilter, BitFilter
 
@@ -101,10 +102,27 @@ def pruebabit(request):
     if request.method =='POST':
         pruebaform = PruebaBitaForm(request.POST, request.FILES)
         documentos = request.FILES.getlist('documento')
+        nombre = request.POST.get('nombre')
         if pruebaform.is_valid():
-            for file in documentos:
-                PruebaBit.objects.create(documento = file)
-        # PruebaBit.objects.all()
+            try:
+                ext_w = "*"
+                newFileZip = zipfile.ZipFile(f"{nombre}.zip", "w")
+
+                
+                for file_w in documentos:
+                    if ext_w != "*" and file_w.endswith(ext_w):
+                        newFileZip.write(
+                            os.path.join(file_w),
+                            os.path.realpath(os.path.join(file_w)),
+                            compress_type= zipfile.ZIP_DEFLATED
+                        )
+                        PruebaBit.objects.create(newFileZip = file_w)
+                    else:
+                        pass
+                        
+            except FileNotFoundError:
+                print("ERROR ARCHIVO O DIRECTORIO NO EXISTE")
+            
             pruebaform.save()
             return redirect('datos')
     else:
@@ -112,7 +130,6 @@ def pruebabit(request):
     return render(request, 'pruebabit.html',  {
             'pruebaform': pruebaform
     })
-
 
 
 def aboutus(request):
