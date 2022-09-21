@@ -89,7 +89,7 @@
          
           <th style="width:200px" >Operator</th>
           <th style="width:130px">Fecha</th>
-          <th>Lugar</th>
+          <th style="width:130px">Lugar</th>
           <th style="width:200px" >Tipo de Sensor</th>
           <th style="width:50px">Revisado</th>
           <th>Acciones </th>
@@ -101,7 +101,7 @@
             
             <td style="width:200px"  >{{ PruebaBit.operator }}</td>
             <td style="width:130px">{{ PruebaBit.fecha }}</td>
-            <td>{{ PruebaBit.place }}</td>
+            <td style="width:130px">{{ PruebaBit.place }}</td>
             <td style="width:200px" >{{ PruebaBit.senstype }}</td>
             <td style="width:50px">
                 
@@ -116,10 +116,10 @@
                 {% endif %}
 
             </td>
-            <td >
+            <td style="width:230px" >
                
-                <a href="{% url 'editar' PruebaBit.id  %}" class="btn btn-success m-1"> Editar</a>
-                <a href="{% url 'eliminar' PruebaBit.id  %}" class="btn btn-danger m-1"> Eliminar</a>
+                <a href="{% url 'editar' PruebaBit.id  %}" class="btn btn-success m-1"> <i class="bi bi-pencil-square"></i> Editar</a>
+                <a href="{% url 'eliminar' PruebaBit.id  %}" class="btn btn-danger m-1"> <i class="bi bi-x-circle"></i> Eliminar</a>
             </td>
           </tr>
         {% empty %}
