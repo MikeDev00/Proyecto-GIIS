@@ -115,36 +115,35 @@ def pruebabit(request):
                              #print ("AQUIIIIIIIIIIIIIIII", os.getcwd(file)) 
                         archive.write(f'{file.name}')
                     os.remove( f'{file.name}')   
-                PruebaBit.objects.create(documento= f"{nombre}.zip",
-                        'fecha',
-                        'hour',
-                        'place',
-                        'operator',
-                        'latitude', 
-                        'longitude', 
-                        'altitude',
-                        'statype', 
-                        'senstype', 
-                        'statnum', 
-                        'sensnum',
-                        'freq',
-                        'freq2', 
-                        'duration', 
-                        'windopts',
-                        'rainopts', 
-                        'temp', 
-                        'remarkstemp', 
-                        'groundtyp', 
-                        'remarksgro', 
-                        'observations', 
-                        'is_completed',
-                        'revisado',
-                        'nombre', 
-                        'autor', 
-                        'documento',)
+                prueba = PruebaBit(documento= f"{nombre}.zip",
+                        fecha = request.POST.get('fecha') ,
+                        hour = request.POST.get('hour'),
+                        place =request.POST.get('place'),
+                        operator = request.POST.get('operator'),
+                        latitude = request.POST.get('latitude'), 
+                        longitude = request.POST.get('longitude'), 
+                        altitude = request.POST.get('altitude'),
+                        statype = request.POST.get('statype'), 
+                        senstype = request.POST.get('senstype'), 
+                        statnum = request.POST.get('statnum'), 
+                        sensnum =request.POST.get('sensnum'),
+                        freq = request.POST.get('freq'),
+                        freq2 = request.POST.get('freq2'), 
+                        duration =request.POST.get('duration'), 
+                        windopts = request.POST.get('windopts'),
+                        rainopts = request.POST.get('rainopts'), 
+                        temp = request.POST.get('temp'), 
+                        remarkstemp =request.POST.get('remarkstemp'), 
+                        groundtyp = request.POST.get('groundtyp'), 
+                        remarksgro = request.POST.get('remarksgro'), 
+                        observations = request.POST.get('observations'), 
+                        is_completed = request.POST.get('is_completed'),
+                        revisado = request.POST.get('revisado'),
+                        nombre = request.POST.get('nombre'), 
+                        autor = request.POST.get('autor'), )
  
-                pruebaform = PruebaBitaForm (request.POST, documento = f"{nombre}.zip" )
-            pruebaform.save()
+            #    pruebaform = PruebaBitaForm (request.POST, documento = f"{nombre}.zip" )
+            prueba.save()
             return redirect('datos')
     else:
         pruebaform=PruebaBitaForm()
