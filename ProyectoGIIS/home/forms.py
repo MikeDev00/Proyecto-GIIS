@@ -94,6 +94,7 @@ class PruebaBitaForm(forms.ModelForm):
     duration  = forms.FloatField(label='Duración',widget=forms.TextInput(attrs={'placeholder': 'Insertar Duración'}),required=True)
     temp = forms.FloatField(label='Temperatura',widget=forms.TextInput(attrs={'placeholder': 'Insertar Temperatura'}),required=True)
     remarkstemp = forms.CharField(label='Observaciones de Temperatura',widget=forms.TextInput(attrs={'placeholder': 'Insertar Remarks'}),empty_value=None, required=False)
+    
    
     remarksgro = forms.CharField(label='Observaciones de Tierra',widget=forms.TextInput(attrs={'placeholder': 'Insertar remarks'}),empty_value=None, required=False)
    

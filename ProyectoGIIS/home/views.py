@@ -1,6 +1,9 @@
+from importlib.resources import path
 from multiprocessing import context
 from pathlib import Path
+from posixpath import dirname
 from pydoc import doc, resolve
+import shutil
 from django.shortcuts import render, redirect, get_object_or_404
 import pymongo
 from home.models import PruebaBit
@@ -108,12 +111,15 @@ def pruebabit(request):
         if pruebaform.is_valid():
            
             with zipfile.ZipFile(f"{nombre}.zip", mode= "w") as archive:
+                name = f"{nombre}.zip"
                 for file in documentos:
                     with open(f'{file.name}', 'wb+') as destination:
                         for chunk in file.chunks():
                              destination.write(chunk)
-                             #print ("AQUIIIIIIIIIIIIIIII", os.getcwd(file)) 
+                             
                         archive.write(f'{file.name}')
+                   
+                        
                     os.remove( f'{file.name}')   
                 prueba = PruebaBit(documento= f"{nombre}.zip",
                         fecha = request.POST.get('fecha') ,
@@ -137,14 +143,20 @@ def pruebabit(request):
                         groundtyp = request.POST.get('groundtyp'), 
                         remarksgro = request.POST.get('remarksgro'), 
                         observations = request.POST.get('observations'), 
-                        is_completed = request.POST.get('is_completed'),
+                        #is_completed = request.POST.get('is_completed'),
                         revisado = request.POST.get('revisado'),
                         nombre = request.POST.get('nombre'), 
                         autor = request.POST.get('autor'), )
- 
+                #Path("/ProyectoGIIS/name").rename("/ProyectoGIIS/media/bitacora")
             #    pruebaform = PruebaBitaForm (request.POST, documento = f"{nombre}.zip" )
             prueba.save()
-            return redirect('datos')
+           
+            
+            ruta = r"./media/bitacora"
+            shutil.move(f'{nombre}.zip',ruta)
+            
+        return redirect('datos')
+        
     else:
         pruebaform=PruebaBitaForm()
     return render(request, 'pruebabit.html',  {
