@@ -90,7 +90,7 @@ class PruebaBitaForm(forms.ModelForm):
    
     statnum  = forms.CharField(label='Número de Estación',widget=forms.TextInput(attrs={'placeholder': 'Insertar # de estación'}),empty_value=None, required=False)
     sensnum = forms.CharField(label='Número de Sensor',widget=forms.TextInput(attrs={'placeholder': 'Insertar # de sensor'}),empty_value=None, required=False)
-#    flname  = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder': 'Insertar nombre de archivo'}),empty_value=None, required=False)
+#   flname  = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder': 'Insertar nombre de archivo'}),empty_value=None, required=False)
     freq = forms.FloatField(label='Frecuencia Inicial (Hz)',widget=forms.TextInput(attrs={'placeholder': 'Insertar Frecuencia'}),required=False)
     freq2 = forms.FloatField(label='Frecuencia Final (Hz)',widget=forms.TextInput(attrs={'placeholder': 'Insertar Frecuencia'}),required=False)
     duration  = forms.FloatField(label='Duración',widget=forms.TextInput(attrs={'placeholder': 'Insertar Duración'}),required=False)

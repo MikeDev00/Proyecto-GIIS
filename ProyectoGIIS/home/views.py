@@ -1,4 +1,6 @@
 from multiprocessing import context
+from pathlib import Path
+from pydoc import doc, resolve
 from django.shortcuts import render, redirect, get_object_or_404
 import pymongo
 from home.models import PruebaBit
@@ -104,25 +106,44 @@ def pruebabit(request):
         documentos = request.FILES.getlist('documento')
         nombre = request.POST.get('nombre')
         if pruebaform.is_valid():
-            try:
-                ext_w = "*"
-                newFileZip = zipfile.ZipFile(f"{nombre}.zip", "w")
-
-                
-                for file_w in documentos:
-                    if ext_w != "*" and file_w.endswith(ext_w):
-                        newFileZip.write(
-                            os.path.join(file_w),
-                            os.path.realpath(os.path.join(file_w)),
-                            compress_type= zipfile.ZIP_DEFLATED
-                        )
-                        PruebaBit.objects.create(newFileZip = file_w)
-                    else:
-                        pass
-                        
-            except FileNotFoundError:
-                print("ERROR ARCHIVO O DIRECTORIO NO EXISTE")
-            
+           
+            with zipfile.ZipFile(f"{nombre}.zip", mode= "w") as archive:
+                for file in documentos:
+                    with open(f'{file.name}', 'wb+') as destination:
+                        for chunk in file.chunks():
+                             destination.write(chunk)
+                             #print ("AQUIIIIIIIIIIIIIIII", os.getcwd(file)) 
+                        archive.write(f'{file.name}')
+                    os.remove( f'{file.name}')   
+                PruebaBit.objects.create(documento= f"{nombre}.zip",
+                        'fecha',
+                        'hour',
+                        'place',
+                        'operator',
+                        'latitude', 
+                        'longitude', 
+                        'altitude',
+                        'statype', 
+                        'senstype', 
+                        'statnum', 
+                        'sensnum',
+                        'freq',
+                        'freq2', 
+                        'duration', 
+                        'windopts',
+                        'rainopts', 
+                        'temp', 
+                        'remarkstemp', 
+                        'groundtyp', 
+                        'remarksgro', 
+                        'observations', 
+                        'is_completed',
+                        'revisado',
+                        'nombre', 
+                        'autor', 
+                        'documento',)
+ 
+                pruebaform = PruebaBitaForm (request.POST, documento = f"{nombre}.zip" )
             pruebaform.save()
             return redirect('datos')
     else:
