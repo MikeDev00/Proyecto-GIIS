@@ -152,7 +152,7 @@ def pruebabit(request):
             prueba.save()
            
             
-            ruta = r"./media/bitacora"
+            ruta = r"./media"
             shutil.move(f'{nombre}.zip',ruta)
             
         return redirect('datos')
