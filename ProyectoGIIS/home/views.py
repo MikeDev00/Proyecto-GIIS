@@ -182,10 +182,60 @@ def editar(request, id):
     bit = get_object_or_404(PruebaBit, id = id)
     data  = {'pruebaform':PruebaBitaForm(instance=bit) }
     if request.method =='POST':
-        pruebaform = PruebaBitaForm(request.POST, request.FILES, instance=bit)
+        pruebaform = PruebaBitaForm(request.POST, request.FILES)
+        documentos = request.FILES.getlist('documento')
+        nombre = request.POST.get('nombre')
+         
         if pruebaform.is_valid():
-            pruebaform.save()
-            return redirect('filterbit')
+           
+            with zipfile.ZipFile(f"{nombre}.zip", mode= "w") as archive:
+                
+                name = f"{nombre}.zip"
+                for file in documentos:
+                    with open(f'{file.name}', 'wb+') as destination:
+                        for chunk in file.chunks():
+                             destination.write(chunk)
+                             
+                        archive.write(f'{file.name}')
+                   
+                        
+                    os.remove( f'{file.name}')   
+                prueba = PruebaBit(documento= f"{nombre}.zip",
+                        fecha = request.POST.get('fecha') ,
+                        hour = request.POST.get('hour'),
+                        place =request.POST.get('place'),
+                        operator = request.POST.get('operator'),
+                        latitude = request.POST.get('latitude'), 
+                        longitude = request.POST.get('longitude'), 
+                        altitude = request.POST.get('altitude'),
+                        statype = request.POST.get('statype'), 
+                        senstype = request.POST.get('senstype'), 
+                        statnum = request.POST.get('statnum'), 
+                        sensnum =request.POST.get('sensnum'),
+                        freq = request.POST.get('freq'),
+                        freq2 = request.POST.get('freq2'), 
+                        duration =request.POST.get('duration'), 
+                        windopts = request.POST.get('windopts'),
+                        rainopts = request.POST.get('rainopts'), 
+                        temp = request.POST.get('temp'), 
+                        remarkstemp =request.POST.get('remarkstemp'), 
+                        groundtyp = request.POST.get('groundtyp'), 
+                        remarksgro = request.POST.get('remarksgro'), 
+                        observations = request.POST.get('observations'), 
+                        #is_completed = request.POST.get('is_completed'),
+                        revisado = request.POST.get('revisado'),
+                        nombre = request.POST.get('nombre',), 
+                        autor = request.POST.get('autor'), )
+                #Path("/ProyectoGIIS/name").rename("/ProyectoGIIS/media/bitacora")
+            #    pruebaform = PruebaBitaForm (request.POST, documento = f"{nombre}.zip" )
+            
+            prueba.save()
+           
+            
+            ruta = r"./media"
+            shutil.move(f'{nombre}.zip',ruta)
+            
+        return redirect('filterbit')
     else : 
             pruebaform=PruebaBitaForm()
     return render(request, 'pruebabit.html',data)

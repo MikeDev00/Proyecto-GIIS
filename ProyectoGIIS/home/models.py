@@ -42,7 +42,7 @@ class PruebaBit(models.Model):
     revisado= models.CharField('Revisado por',max_length=100, blank=True, null = True)
     nombre = models.CharField('Nombre de Archivo',max_length=100, blank=True, null = True)
     autor = models.CharField('Autor del archivo',max_length=100, blank=True, null = True)
-    documento = models.FileField( upload_to='bitacora/', blank=True, null = False)
+    documento = models.FileField( upload_to='bitacora/', blank=True, null = False,)
 
     def __str__(self) -> str:
         return self.documento
