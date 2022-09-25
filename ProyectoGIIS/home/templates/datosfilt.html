@@ -75,23 +75,25 @@
         <br>
         <button type="submit" class="btn btn-primary">
          <i class="bi bi-search"></i> &nbsp
-          Search
+          Buscar
         </button>
       </div>
       &nbsp;
     </form>
 
     
-    <table id="example"  class="table table-bordered">
+    <table id="example"  class="table-bordered table table-hover">
   
       <thead  class="table-dark">
         <tr>
          
-          <th style="width:200px" >Operator</th>
-          <th style="width:130px">Fecha</th>
-          <th style="width:130px">Lugar</th>
-          <th style="width:200px" >Tipo de Sensor</th>
-          <th style="width:50px">Revisado</th>
+          <th style="width:60px" >Operator</th>
+          <th style="width:70px">Fecha</th>
+          <th style="width:100px">Lugar</th>
+          <th style="width:110px" >Tipo de Sensor</th>
+          <th style="width:25px">Revisado</th>
+          <th style="width:50px">Revisado por</th>
+          <th style="width:50px">Nombre Archivo</th>
           <th>Acciones </th>
         </tr>
       </thead>
@@ -99,10 +101,10 @@
         {% for PruebaBit in filter.qs %}
           <tr>
             
-            <td style="width:200px"  >{{ PruebaBit.operator }}</td>
-            <td style="width:130px">{{ PruebaBit.fecha }}</td>
-            <td style="width:130px">{{ PruebaBit.place }}</td>
-            <td style="width:200px" >{{ PruebaBit.senstype }}</td>
+            <td style="width:60px"  >{{ PruebaBit.operator }}</td>
+            <td style="width:90px">{{ PruebaBit.fecha }}</td>
+            <td style="width:100px">{{ PruebaBit.place }}</td>
+            <td style="width:125px" >{{ PruebaBit.senstype }}</td>
             <td style="width:50px">
                 
                 {% if PruebaBit.is_completed%}
@@ -116,11 +118,16 @@
                 {% endif %}
 
             </td>
+            <td style="width:50px" >{{ PruebaBit.revisado }}</td>
+            <td style="width:50px" >{{ PruebaBit.nombre }}</td>
+
             <td style="width:230px" >
                
-                <a href="{% url 'editar' PruebaBit.id  %}" class="btn btn-success m-1"> <i class="bi bi-pencil-square"></i> Editar</a>
-                <a href="{% url 'eliminar' PruebaBit.id  %}" class="btn btn-danger m-1"> <i class="bi bi-x-circle"></i> Eliminar</a>
+                <a href="{% url 'editar' PruebaBit.id  %}" class="btn btn-success m-1  btn-sm"> <i class="bi bi-pencil-square"></i> Bitacora</a>
+                <a href="{% url 'editar2' PruebaBit.id  %}" class="btn btn-warning m-1  btn-sm"> <i class="bi bi-pencil-square"></i> Archivos</a>
+                <a href="{% url 'eliminar' PruebaBit.id  %}" class="btn btn-danger m-1 btn-sm"> <i class="bi bi-x-circle"></i> Eliminar</a>
             </td>
+          
           </tr>
         {% empty %}
           <tr>
@@ -172,7 +179,8 @@
 
 </body>
 
-
+<br>
+{%include "footer.html"%}
 
 </html>
 

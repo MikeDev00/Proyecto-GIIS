@@ -1,3 +1,4 @@
+from copyreg import pickle
 from importlib.resources import path
 from multiprocessing import context
 from pathlib import Path
@@ -16,7 +17,7 @@ from home.filters import UserFilter, BitFilter
 from .forms import BitacoraForm, PruebaBitaForm
 
 
-
+nomarch = "" 
 
 def connectDB():
     datosBitacora = pymongo.MongoClient("mongodb+srv://admin:1234@proyecto.hxkzzt7.mongodb.net/?retryWrites=true&w=majority")
@@ -55,10 +56,30 @@ def datos(request):
    
     datosbita = []
     myDB = connectDB()
-    bitacora = myDB["Bitacora"]
+    bitacora = myDB["home_pruebabit"]
         
     for bita in bitacora.find():
-        datosbita.append({ "fecha": bita["Fecha"],"place": bita["Lugar"], "operator": bita["Operador"], "statnum":bita["Statnum"]})
+        datosbita.append({ 
+            "fecha": bita["fecha"],
+            "place": bita["place"], 
+            "operator": bita["operator"], 
+            "latitude":bita["latitude"],
+            "longitude":bita["longitude"],
+            "senstype":bita["senstype"],
+            "freq":bita["freq"],
+            "freq2":bita["freq2"],
+            "remarkstemp":bita["remarkstemp"],
+            "remarksgro":bita["remarksgro"],
+
+            
+            
+            
+            
+            
+            
+            
+            
+            })
     return render(request, 'datos.html', {'datosbita':datosbita})
 
 
@@ -151,7 +172,11 @@ def pruebabit(request):
             #    pruebaform = PruebaBitaForm (request.POST, documento = f"{nombre}.zip" )
             prueba.save()
            
-            
+            global nomarch
+            nomarch= (f'{nombre}')
+        
+            print(nomarch)
+
             ruta = r"./media"
             shutil.move(f'{nombre}.zip',ruta)
             
@@ -162,6 +187,12 @@ def pruebabit(request):
     return render(request, 'pruebabit.html',  {
             'pruebaform': pruebaform
     })
+
+
+
+
+
+
 
 
 def aboutus(request):
@@ -178,19 +209,72 @@ def login(request):
 
 
 
+
+#pruebabita
+
+
 def editar(request, id):
     bit = get_object_or_404(PruebaBit, id = id)
     data  = {'pruebaform':PruebaBitaForm(instance=bit) }
     if request.method =='POST':
-        pruebaform = PruebaBitaForm(request.POST, request.FILES)
+        pruebaform = PruebaBitaForm(request.POST, instance=bit)
+        documentos = request.FILES.getlist('documento')
+        nombre = request.POST.get('nombre')
+        
+
+        if pruebaform.is_valid():
+            global nomarch
+            if nombre == nomarch:
+                print("AAAaaaAAAAAAAASASASASASAS")
+            pruebaform.save()
+            return redirect('filterbit')
+    else : 
+            pruebaform=PruebaBitaForm()
+    return render(request, 'editar.html',data)
+"""
+Funciona el edit sin problemas con los archivos, además se pueden descargar los zip y la edicion de la bitacora ready 
+pero no se pueden crear nuevos zips
+
+def editar(request, id):
+    bit = get_object_or_404(PruebaBit, id = id)
+    data  = {'pruebaform':PruebaBitaForm(instance=bit) }
+    if request.method =='POST':
+        pruebaform = PruebaBitaForm(request.POST, instance=bit)
+        documentos = request.FILES.getlist('documento')
+        nombre = request.POST.get('nombre')
+        
+
+        if pruebaform.is_valid():
+            global nomarch
+            if nombre == nomarch:
+                print("AAAaaaAAAAAAAASASASASASAS")
+            pruebaform.save()
+            return redirect('filterbit')
+    else : 
+            pruebaform=PruebaBitaForm()
+    return render(request, 'editar.html',data)
+
+"""
+
+
+
+
+
+
+def editar2(request, id):
+    bit = get_object_or_404(PruebaBit, id = id)
+    data  = {'pruebaform':PruebaBitaForm(instance=bit) }
+    if request.method =='POST':
+        pruebaform = PruebaBitaForm(request.POST, request.FILES, instance=bit)
         documentos = request.FILES.getlist('documento')
         nombre = request.POST.get('nombre')
          
         if pruebaform.is_valid():
            
+    
             with zipfile.ZipFile(f"{nombre}.zip", mode= "w") as archive:
                 
-                name = f"{nombre}.zip"
+              
                 for file in documentos:
                     with open(f'{file.name}', 'wb+') as destination:
                         for chunk in file.chunks():
@@ -200,7 +284,8 @@ def editar(request, id):
                    
                         
                     os.remove( f'{file.name}')   
-                prueba = PruebaBit(documento= f"{nombre}.zip",
+                prueba = PruebaBit(
+                        documento= f"{nombre}.zip",
                         fecha = request.POST.get('fecha') ,
                         hour = request.POST.get('hour'),
                         place =request.POST.get('place'),
@@ -222,7 +307,7 @@ def editar(request, id):
                         groundtyp = request.POST.get('groundtyp'), 
                         remarksgro = request.POST.get('remarksgro'), 
                         observations = request.POST.get('observations'), 
-                        #is_completed = request.POST.get('is_completed'),
+                        is_completed = bool(request.POST.get('is_completed')),
                         revisado = request.POST.get('revisado'),
                         nombre = request.POST.get('nombre',), 
                         autor = request.POST.get('autor'), )
@@ -238,7 +323,7 @@ def editar(request, id):
         return redirect('filterbit')
     else : 
             pruebaform=PruebaBitaForm()
-    return render(request, 'pruebabit.html',data)
+    return render(request, 'editar2.html',data)
 
 
 
