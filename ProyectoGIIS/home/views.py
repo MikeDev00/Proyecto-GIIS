@@ -17,7 +17,7 @@ from home.filters import UserFilter, BitFilter
 from .forms import BitacoraForm, PruebaBitaForm
 
 
-nomarch = "" 
+
 
 def connectDB():
     datosBitacora = pymongo.MongoClient("mongodb+srv://admin:1234@proyecto.hxkzzt7.mongodb.net/?retryWrites=true&w=majority")
@@ -71,13 +71,6 @@ def datos(request):
             "remarkstemp":bita["remarkstemp"],
             "remarksgro":bita["remarksgro"],
 
-            
-            
-            
-            
-            
-            
-            
             
             })
     return render(request, 'datos.html', {'datosbita':datosbita})
@@ -210,9 +203,6 @@ def login(request):
 
 
 
-#pruebabita
-
-
 def editar(request, id):
     bit = get_object_or_404(PruebaBit, id = id)
     data  = {'pruebaform':PruebaBitaForm(instance=bit) }
@@ -223,9 +213,7 @@ def editar(request, id):
         
 
         if pruebaform.is_valid():
-            global nomarch
-            if nombre == nomarch:
-                print("AAAaaaAAAAAAAASASASASASAS")
+           
             pruebaform.save()
             return redirect('filterbit')
     else : 
