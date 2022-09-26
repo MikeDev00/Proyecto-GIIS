@@ -8,19 +8,18 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.home, name = 'home'),
-    path('bitacora/',views.bitacora ,name='bitacora'),
     path('datos/',views.datos, name='datos'),
     path('aboutus/', views.aboutus,name='AboutUs'),
-    path('maps/', views.maps,name='Maps'),
-    path('prueba/', views.prueba,name='prueba'),
+    path('Mapa/', views.maps,name='Maps'),
     path('login/', views.login,name='login'),
-    path('pruebabit/', views.pruebabit,name='pruebabit'),
+    path('Bitacora/', views.pruebabit,name='pruebabit'),
 
+    #URL dinamicas 
     re_path(r'^search/$', views.search, name='search'),
     re_path(r'^filterbit/$', views.filterbit, name='filterbit'),
 
 
- 
+    # URL Con objetos ID para identificar elementos 
     path('editar_<int:id>/', views.editar, name= 'editar'),
     path('editar2_<int:id>/', views.editar2, name= 'editar2'),
     path('eliminar_<int:id>/', views.eliminar, name= 'eliminar')
