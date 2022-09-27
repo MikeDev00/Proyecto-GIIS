@@ -104,6 +104,10 @@ class PruebaBitaForm(forms.ModelForm):
     rainopts = forms.ChoiceField(label='Condiciones de Lluvia',choices=LLUVIA)
     groundtyp = forms.ChoiceField(label='Tipo de Suelo',choices=TIERRA)
     documento = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}))
+    medtype = forms.CharField(label='Tipo de Medición', widget=forms.TextInput(attrs={'placeholder': ''}),required=False )
+    medicion = forms.CharField(label='Medición', widget=forms.TextInput(attrs={'placeholder': ''}),required=False)
+    unidad = forms.CharField(label='Unidad', widget=forms.TextInput(attrs={'placeholder': ''}),required=False)
+
 
 
     class Meta:
@@ -115,7 +119,8 @@ class PruebaBitaForm(forms.ModelForm):
         'freq','freq2', 'duration', 'windopts',
         'rainopts', 'temp', 'remarkstemp', 
         'groundtyp', 'remarksgro', 
-        'observations', 'is_completed','revisado','nombre', 'autor', 'documento',)
+        'observations', 'is_completed','revisado','nombre', 'autor',
+        'documento', 'medtype', 'medicion', 'unidad')
         
 
         widgets = {
