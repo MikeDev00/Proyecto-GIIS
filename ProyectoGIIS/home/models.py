@@ -18,7 +18,7 @@ class PruebaBit(models.Model):
  
     fecha= models.CharField('Fecha', max_length=100, blank=True, null= True)
     hour= models.CharField('Hora', max_length=100, blank=True, null = True)
-    place= models.CharField('Lugar', max_length=100, blank=True, null = True)
+    place= models.CharField( max_length=100, blank=True, null = True)
     operator= models.CharField('Operador',max_length=100, blank=True, null = True)
     latitude= models.FloatField('Latitud',max_length=100, blank=True, null = True)
     longitude= models.FloatField('Longitud',max_length=100, blank=True, null = True)
@@ -36,14 +36,18 @@ class PruebaBit(models.Model):
     remarkstemp = models.CharField('Observaciones de temperatura',max_length=100, blank=True, null = True)
     groundtyp = models.CharField('Tipo de Suelo',max_length=100, blank=True, null = True)
     remarksgro = models.CharField('Observaciones de Tierra',max_length=100, blank=True, null = True)
-    observations = models.TextField('Observaciones',max_length=300, blank=True, null = True)
+    observations = models.TextField('Observaciones',max_length=100, blank=True, null = True)
     is_completed = models.BooleanField('Revisado',default=False)
     revisado= models.CharField('Revisado por',max_length=100, blank=True, null = True)
     nombre = models.CharField('Nombre de Archivo',max_length=100, blank=True, null = True)
     autor = models.CharField('Autor del archivo',max_length=100, blank=True, null = True)
+<<<<<<< HEAD
     documento = models.FileField( upload_to='bitacora/', blank=True, null = False,)
     infinitos = models.ForeignKey(Infinitos, on_delete=models.CASCADE)
 
+=======
+    documento = models.FileField( upload_to='bitacora/', blank=True, null = False)
+>>>>>>> 4af9bd863a16e73c0aac985ce23c9150d1a32f5e
 
     def __str__(self) -> str:
         return self.documento
