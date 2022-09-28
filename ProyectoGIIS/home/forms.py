@@ -105,6 +105,16 @@ ESTRUC = (
 
 
 
+Estacion = (
+    ('', 'Seleccionar...'),
+    ('Móvil', 'Móvil'),
+    ('Fijo', 'Fijo'),
+)
+
+
+
+
+
 
 
 class PruebaBitaForm(forms.ModelForm):
