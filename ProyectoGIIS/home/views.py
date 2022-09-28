@@ -112,7 +112,7 @@ def pruebabit(request):
                         observations = request.POST.get('observations'), 
                         #is_completed = request.POST.get('is_completed'),
                         revisado = request.POST.get('revisado'),
-                        nombre = request.POST.get('nombre'), 
+                        nombre = request.POST.get('nombre'.upper), 
                         autor = request.POST.get('autor'), )
                 #Path("/ProyectoGIIS/name").rename("/ProyectoGIIS/media/bitacora")
             #    pruebaform = PruebaBitaForm (request.POST, documento = f"{nombre}.zip" )

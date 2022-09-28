@@ -73,10 +73,37 @@ TIERRA = (
     ('Roca', 'Roca'),
     ('Asfalto', 'Asfalto'),
     ('Hierba', 'Hierba'),
-    ('Cemento', 'Cemento'),
     ('Concreto', 'Concreto'),
-    ('Pavimentado', 'Pavimentado'),
 )
+
+
+CLIMA = (
+    ('', 'Seleccionar...'),
+    ('Lluvia', 'Lluvia'),
+    ('Soleado', 'Soleado'),
+    ('Nublado', 'Nublado'),
+)
+
+
+
+TRAFICO = (
+    ('', 'Seleccionar...'),
+    ('Denso', 'Denso (Vehículo en Tranque)'),
+    ('Moderado', 'Moderado (constante)'),
+    ('Bajo', 'Bajo ( Menor de 20 Vehiculos durante la medición'),
+    ('Nulo', 'Nulo'),
+)
+
+
+ESTRUC = (
+    ('', 'Seleccionar...'),
+    ('Denso', 'Denso (Locales Comerciales)'),
+    ('Moderado', 'Moderado (Residencias)'),
+    ('Bajo', 'Bajo ( Arboles, Cercas, Etc...'),
+    ('Nulo', 'Nulo'),
+)
+
+
 
 
 
