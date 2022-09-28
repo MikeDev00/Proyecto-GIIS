@@ -41,13 +41,13 @@ class PruebaBit(models.Model):
     revisado= models.CharField('Revisado por',max_length=100, blank=True, null = True)
     nombre = models.CharField('Nombre de Archivo',max_length=100, blank=True, null = True)
     autor = models.CharField('Autor del archivo',max_length=100, blank=True, null = True)
-<<<<<<< HEAD
-    documento = models.FileField( upload_to='bitacora/', blank=True, null = False,)
-    infinitos = models.ForeignKey(Infinitos, on_delete=models.CASCADE)
 
-=======
+    #documento = models.FileField( upload_to='bitacora/', blank=True, null = False,)
+    #infinitos = models.ForeignKey(Infinitos, on_delete=models.CASCADE)
+
+
     documento = models.FileField( upload_to='bitacora/', blank=True, null = False)
->>>>>>> 4af9bd863a16e73c0aac985ce23c9150d1a32f5e
+
 
     def __str__(self) -> str:
         return self.documento
@@ -58,5 +58,15 @@ class Infinitos(models.Model):
     medicion = models.FloatField(max_length=100, blank=True, null = True)
     unidad = models.CharField(max_length=100, blank=True, null = True)
     
+    def __str__(self) -> str:
+        return self.medtype
+
+
+
+class Graficos(models.Model):
+    xarch = models.FileField( upload_to='bitacora/', blank=True, null = False,)
+    yarch = models.FileField( upload_to='bitacora/', blank=True, null = False,)
+    zarch = models.FileField( upload_to='bitacora/', blank=True, null = False,)
+
     def __str__(self) -> str:
         return self.medtype
