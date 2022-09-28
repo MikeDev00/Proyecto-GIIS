@@ -27,7 +27,6 @@ class PruebaBit(models.Model):
     senstype = models.CharField('Tipo de Sensor',max_length=100, blank=True, null = True)
     statnum  = models.CharField('# de Estación',max_length=100, blank=True, null = True)
     sensnum = models.CharField('# de Sensor',max_length=100, blank=True, null = True)
-#    flname  = models.CharField('Nombre de Archivo',max_length=100, blank=True, null = True)
     freq = models.FloatField('Frecuencia (Hz)',max_length=100, blank=True, null = True)
     freq2 = models.FloatField('Frecuencia (Hz)',max_length=100, blank=True, null = True)
     duration  = models.FloatField('Duración',max_length=100, blank=True, null = True)
@@ -42,16 +41,22 @@ class PruebaBit(models.Model):
     revisado= models.CharField('Revisado por',max_length=100, blank=True, null = True)
     nombre = models.CharField('Nombre de Archivo',max_length=100, blank=True, null = True)
     autor = models.CharField('Autor del archivo',max_length=100, blank=True, null = True)
+<<<<<<< HEAD
+    documento = models.FileField( upload_to='bitacora/', blank=True, null = False,)
+    infinitos = models.ForeignKey(Infinitos, on_delete=models.CASCADE)
+
+=======
     documento = models.FileField( upload_to='bitacora/', blank=True, null = False)
+>>>>>>> 4af9bd863a16e73c0aac985ce23c9150d1a32f5e
 
     def __str__(self) -> str:
         return self.documento
 
-"""class ListaDocumentos(models.Model):
-    documentos = models.ArrayField(
-        model_container= PruebaBit
-    )
-"""
-
    
+class Infinitos(models.Model):
+    medtype = models.CharField(max_length=100, blank=True, null = True)
+    medicion = models.FloatField(max_length=100, blank=True, null = True)
+    unidad = models.CharField(max_length=100, blank=True, null = True)
     
+    def __str__(self) -> str:
+        return self.medtype
