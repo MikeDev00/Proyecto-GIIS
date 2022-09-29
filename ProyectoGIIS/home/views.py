@@ -60,8 +60,8 @@ def datos(request):
             "senstype":bita["senstype"],
             "freq":bita["freq"],
             "freq2":bita["freq2"],
-            "remarkstemp":bita["remarkstemp"],
-            "remarksgro":bita["remarksgro"],
+            "clima":bita["clima"],
+            "groundtyp":bita["groundtyp"],
             })
     return render(request, 'datos.html', {'datosbita':datosbita})
 
@@ -113,8 +113,12 @@ def pruebabit(request):
                         observations = request.POST.get('observations'), 
                         #is_completed = request.POST.get('is_completed'),
                         revisado = request.POST.get('revisado'),
-                        nombre = request.POST.get('nombre'.upper), 
-                        autor = request.POST.get('autor'), )
+                        nombre = request.POST.get('nombre'), 
+                        autor = request.POST.get('autor'), 
+                        clima = request.POST.get('clima'),
+                        Estruc = request.POST.get('Estruc'),
+                        Traf = request.POST.get('Traf'), )
+                        
                 #Path("/ProyectoGIIS/name").rename("/ProyectoGIIS/media/bitacora")
             #    pruebaform = PruebaBitaForm (request.POST, documento = f"{nombre}.zip" )
             prueba.save()
@@ -225,7 +229,11 @@ def editar2(request, id):
                         is_completed = bool(request.POST.get('is_completed')),
                         revisado = request.POST.get('revisado'),
                         nombre = request.POST.get('nombre',), 
-                        autor = request.POST.get('autor'), )
+                        autor = request.POST.get('autor'), 
+                        clima = request.POST.get('clima'),
+                        Estruc = request.POST.get('Estruc'),
+                        Traf = request.POST.get('Traf') 
+                        )
                 #Path("/ProyectoGIIS/name").rename("/ProyectoGIIS/media/bitacora")
             #    pruebaform = PruebaBitaForm (request.POST, documento = f"{nombre}.zip" )
             

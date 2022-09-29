@@ -31,6 +31,9 @@ class BitacoraForm(forms.ModelForm):
     groundtyp = forms.CharField(empty_value=None, required=False)
     remarksgro = forms.CharField(empty_value=None, required=False)
     observations = forms.CharField(empty_value=None, required=False)
+    clima = forms.CharField(empty_value=None, required=False)
+    Estruc = forms.CharField(empty_value=None, required=False)
+    Traf = forms.CharField(empty_value=None, required=False)
    
   
 class DateTimeInput(forms.DateTimeInput):
@@ -77,6 +80,8 @@ TIERRA = (
 )
 
 
+
+
 CLIMA = (
     ('', 'Seleccionar...'),
     ('Lluvia', 'Lluvia'),
@@ -90,7 +95,7 @@ TRAFICO = (
     ('', 'Seleccionar...'),
     ('Denso', 'Denso (Vehículo en Tranque)'),
     ('Moderado', 'Moderado (constante)'),
-    ('Bajo', 'Bajo ( Menor de 20 Vehiculos durante la medición'),
+    ('Bajo', 'Bajo ( Menor de 20 Vehiculos durante la medición)'),
     ('Nulo', 'Nulo'),
 )
 
@@ -99,13 +104,13 @@ ESTRUC = (
     ('', 'Seleccionar...'),
     ('Denso', 'Denso (Locales Comerciales)'),
     ('Moderado', 'Moderado (Residencias)'),
-    ('Bajo', 'Bajo ( Arboles, Cercas, Etc...'),
+    ('Bajo', 'Bajo ( Arboles, Cercas, Etc...)'),
     ('Nulo', 'Nulo'),
 )
 
 
 
-Estacion = (
+ESTACION = (
     ('', 'Seleccionar...'),
     ('Móvil', 'Móvil'),
     ('Fijo', 'Fijo'),
@@ -123,12 +128,12 @@ class PruebaBitaForm(forms.ModelForm):
     latitude= forms.FloatField(label='Latitud', widget=forms.TextInput(attrs={'placeholder': 'Insertar Latitud'}),required=True)
     longitude= forms.FloatField(label='Longitud', widget=forms.TextInput(attrs={'placeholder': 'Insertar Longitud'}),required=True)
     altitude= forms.FloatField(label='Altitud',widget=forms.TextInput(attrs={'placeholder': 'Insertar Altitud'}),required=True)
-    statype =  forms.CharField(label='Tipo de Estación',widget=forms.TextInput(attrs={'placeholder': 'Insertar tipo de estación'}),empty_value=None, required=False)
-    statnum  = forms.CharField(label='Número de Estación',widget=forms.TextInput(attrs={'placeholder': 'Insertar # de estación'}),empty_value=None, required=False)
+   
+    statnum  = forms.CharField(label='Número de Medición',widget=forms.TextInput(attrs={'placeholder': 'Insertar # de Medición'}),empty_value=None, required=False)
     sensnum = forms.CharField(label='Número de Sensor',widget=forms.TextInput(attrs={'placeholder': 'Insertar # de sensor'}),empty_value=None, required=False)
     freq = forms.FloatField(label='Frecuencia Inicial (Hz)',widget=forms.TextInput(attrs={'placeholder': 'Insertar Frecuencia'}),required=True)
     freq2 = forms.FloatField(label='Frecuencia Final (Hz)',widget=forms.TextInput(attrs={'placeholder': 'Insertar Frecuencia'}),required=True)
-    duration  = forms.FloatField(label='Duración',widget=forms.TextInput(attrs={'placeholder': 'Insertar Duración'}),required=True)
+    duration  = forms.FloatField(label='Duración (Min)',widget=forms.TextInput(attrs={'placeholder': 'Insertar Duración'}),required=True)
     temp = forms.FloatField(label='Temperatura',widget=forms.TextInput(attrs={'placeholder': 'Insertar Temperatura'}),required=True)
     remarkstemp = forms.CharField(label='Observaciones de Temperatura',widget=forms.TextInput(attrs={'placeholder': 'Insertar Remarks'}),empty_value=None, required=False)
     
@@ -136,6 +141,11 @@ class PruebaBitaForm(forms.ModelForm):
     remarksgro = forms.CharField(label='Observaciones de Tierra',widget=forms.TextInput(attrs={'placeholder': 'Insertar remarks'}),empty_value=None, required=False)
    
     nombre = forms.CharField(label='Nombre del Archivo', widget=forms.TextInput(attrs={'placeholder': 'Inserte el nombre del archivo'}),empty_value=None, required=True)
+
+    Estruc = forms.ChoiceField(label='Estructuras Cercanas',choices=ESTRUC)
+    Traf = forms.ChoiceField(label='Tráfico',choices=TRAFICO)
+    clima =  forms.ChoiceField(label='Tipo de Estación',choices=CLIMA)
+    statype =  forms.ChoiceField(label='Tipo de Estación',choices=ESTACION)
     senstype = forms.ChoiceField(label='Tipo de Sensor', choices=SENSORES)
     windopts = forms.ChoiceField(label='Condiciones de Viento',choices=VIENTO)
     rainopts = forms.ChoiceField(label='Condiciones de Lluvia',choices=LLUVIA)
@@ -154,8 +164,9 @@ class PruebaBitaForm(forms.ModelForm):
         'latitude', 'longitude', 'altitude',
         'statype', 'senstype', 'statnum', 'sensnum',
         'freq','freq2', 'duration', 'windopts',
-        'rainopts', 'temp', 'remarkstemp', 
+        'rainopts', 'temp','clima', 'remarkstemp', 
         'groundtyp', 'remarksgro', 
+        'Estruc','Traf',
         'observations', 'is_completed','revisado','nombre', 'autor',
         'documento', 'medtype', 'medicion', 'unidad')
         

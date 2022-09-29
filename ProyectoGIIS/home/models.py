@@ -41,6 +41,14 @@ class PruebaBit(models.Model):
     revisado= models.CharField('Revisado por',max_length=100, blank=True, null = True)
     nombre = models.CharField('Nombre de Archivo',max_length=100, blank=True, null = True)
     autor = models.CharField('Autor del archivo',max_length=100, blank=True, null = True)
+    
+    Prueba =models.CharField('Clima',max_length=100, blank=True, null = True)
+    clima= models.CharField('Clima',max_length=100, blank=True, null = True)
+    Estruc= models.CharField('Estructura',max_length=100, blank=True, null = True)
+    Traf= models.CharField('Trafico',max_length=100, blank=True, null = True)
+
+
+
 
     #documento = models.FileField( upload_to='bitacora/', blank=True, null = False,)
     #infinitos = models.ForeignKey(Infinitos, on_delete=models.CASCADE)
