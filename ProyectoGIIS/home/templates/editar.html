@@ -116,14 +116,20 @@
                                 <div class="mb-3 col-md-3 ">
                                     {{pruebaform.rainopts|as_crispy_field}}
                                 </div>
-                    
+                                 
                                 <div class="mb-3 col-md-3 ">
                                     {{pruebaform.temp|as_crispy_field}}
                                 </div>
+                                
+                                <div class="mb-3 col-md-3 ">
+                                    {{pruebaform.clima|as_crispy_field}}
+                                </div>
+
 
                                 <div class="mb-3 col-md-3 ">
                                     {{pruebaform.remarkstemp|as_crispy_field}}
                                 </div>
+                    
                     
                     
                                 &nbsp; 
@@ -146,6 +152,15 @@
                                 <!-- 7 Seccion del formulario -->
                                 <h5 class="mb-8 text-secondary">Información adicional</h5>
                     
+                                <div class="mb-3 col-md-4 ">
+                                    {{pruebaform.Estruc|as_crispy_field}}
+                                </div>
+
+                                <div class="mb-3 col-md-4 ">
+                                    {{pruebaform.Traf|as_crispy_field}}
+                                </div>
+
+
                                 <div class="col-md-12">
                                     {{pruebaform.observations|as_crispy_field}}
                                 </div>
@@ -157,6 +172,7 @@
                                 <div class="col-md-12">
                                     {{pruebaform.revisado|as_crispy_field}}
                                 </div>
+                                
                                 <!-- 8 Seccion del formulario -->
                                 <br>
                                 <h5 class="mb-8 text-secondary">Datos de Archivos</h5>
