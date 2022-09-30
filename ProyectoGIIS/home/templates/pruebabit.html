@@ -12,6 +12,7 @@
     <link href="{%static '/css/main.css' %}" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>
 
     <!-- Include jQuery -->
@@ -22,6 +23,7 @@
 {% load crispy_forms_tags %}
 
 {%block content%}
+
     <body>
         <div class="container">
             <div class="row">
@@ -197,12 +199,21 @@
                                         <div class="col-md-6">
                                             <br>
                                             <h5 class="mb-4 text-secondary">Información adicional</h5>
-                                                <table class="table">
+                                                <table class="table form-wrapper">
                                                     <tr>
                                                         <th style="width: 20% ;">{{pruebaform.medtype|as_crispy_field}}</th>
                                                         <th style="width: 15% ;">{{pruebaform.medicion|as_crispy_field}}</th>
-                                                        <th style="width: 10% ;">{{pruebaform.unidad|as_crispy_field}}
-                                                        </th>
+                                                        <th style="width: 10% ;">{{pruebaform.unidad|as_crispy_field}}</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th style="width: 20% ;">{{pruebaform.medtype|as_crispy_field}}</th>
+                                                        <th style="width: 15% ;">{{pruebaform.medicion|as_crispy_field}}</th>
+                                                        <th style="width: 10% ;">{{pruebaform.unidad|as_crispy_field}}</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th style="width: 20% ;">{{pruebaform.medtype|as_crispy_field}}</th>
+                                                        <th style="width: 15% ;">{{pruebaform.medicion|as_crispy_field}}</th>
+                                                        <th style="width: 10% ;">{{pruebaform.unidad|as_crispy_field}}</th>
                                                     </tr>
                                                 </table>  
                                                     
@@ -213,8 +224,10 @@
                                <br>
                             </div>
                             <!--{{ pruebaform|crispy }}-->
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <button type="submit" class="btn" style="background-color: #820d9d; color: white;" >Registrar Bitacora</button>
+                            </div>
                             
-                            <button type="submit" class="btn btn-primary ">Registrar Bitacora</button>
                         </form>
                     </div>
                 </div>
@@ -226,3 +239,4 @@
 <br>
 {%include "footer.html"%}
 </html>
+

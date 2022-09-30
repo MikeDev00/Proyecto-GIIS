@@ -19,7 +19,7 @@ from .forms import BitacoraForm, GraficasFrom, PruebaBitaForm
 
 import numpy as np
 import matplotlib.pyplot as plt
-import pyfftw as fftw
+#import pyfftw as fftw
 
 # conector con la base de datos MongoDb
 def connectDB():
@@ -189,8 +189,12 @@ def editar2(request, id):
     if request.method =='POST':
         pruebaform = PruebaBitaForm(request.POST, request.FILES, instance=bit)
         documentos = request.FILES.getlist('documento')
-        nombre = request.POST.get('nombre')
-         
+        nombre = request.POST.get('nombre')   
+        altitude = request.POST.get('altitude')
+        
+        if altitude =='':
+            altitude: None
+            
         if pruebaform.is_valid():
            
             #creación de archivo Zip
@@ -205,7 +209,9 @@ def editar2(request, id):
                         archive.write(f'{file.name}')
                    
                         
-                    os.remove( f'{file.name}')   
+                    os.remove( f'{file.name}') 
+                
+
                 prueba = PruebaBit(
                         documento= f"{nombre}.zip",
                         fecha = request.POST.get('fecha') ,
@@ -237,6 +243,8 @@ def editar2(request, id):
                         Estruc = request.POST.get('Estruc'),
                         Traf = request.POST.get('Traf') 
                         )
+
+                        
                 #Path("/ProyectoGIIS/name").rename("/ProyectoGIIS/media/bitacora")
             #    pruebaform = PruebaBitaForm (request.POST, documento = f"{nombre}.zip" )
             
@@ -326,7 +334,7 @@ def Graficas(request):
             spectral_ratios=[]
             output=np.empty(int(win_size/2+1),dtype='complex128')
             input_array=np.empty(int(win_size),dtype='float64')
-            fft=fftw.FFTW(input_array,output)
+            #fft=fftw.FFTW(input_array,output)
 
             #Smooth parameters
             index_zoom=1000000
@@ -355,7 +363,7 @@ def Graficas(request):
             frequency_sum=0    
             for a in range(win_number):
                 for b in range(3):           
-                    fast_fourier=abs(fft(input_array=data[b][d_x[a]:d_x[a]+win_size]))
+                    fast_fourier=abs(input_array=data[b][d_x[a]:d_x[a]+win_size])
                     for c in range(HVy_min,HVy_max): 
                         sum_weight=0.
                         sum_amp=0.

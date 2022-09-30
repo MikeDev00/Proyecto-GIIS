@@ -22,7 +22,7 @@ class PruebaBit(models.Model):
     operator= models.CharField('Operador',max_length=100, blank=True, null = True)
     latitude= models.FloatField('Latitud',max_length=100, blank=True, null = True)
     longitude= models.FloatField('Longitud',max_length=100, blank=True, null = True)
-    altitude= models.FloatField('Altitud',max_length=100, blank=True, null = True)
+    altitude= models.FloatField('Altitud',max_length=100, default= 0.0)
     statype =  models.CharField('Tipo de Estación',max_length=100, blank=True, null = True)
     senstype = models.CharField('Tipo de Sensor',max_length=100, blank=True, null = True)
     statnum  = models.CharField('# de Estación',max_length=100, blank=True, null = True)
