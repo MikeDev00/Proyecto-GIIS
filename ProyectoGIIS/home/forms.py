@@ -6,7 +6,7 @@ from pyexpat import model
 from tkinter import Place
 from django import forms
 
-from .models import PruebaBit
+from .models import Graficos, PruebaBit
 
 
 class BitacoraForm(forms.ModelForm):
@@ -155,8 +155,6 @@ class PruebaBitaForm(forms.ModelForm):
     medicion = forms.CharField(label='Medición', widget=forms.TextInput(attrs={'placeholder': ''}),required=False)
     unidad = forms.CharField(label='Unidad', widget=forms.TextInput(attrs={'placeholder': ''}),required=False)
 
-
-
     class Meta:
         model=PruebaBit
         fields = (
@@ -177,3 +175,14 @@ class PruebaBitaForm(forms.ModelForm):
             'hour': DateTimeInput2(attrs={'class': 'form-control'}),
    
         }
+
+
+
+class GraficasFrom(forms.ModelForm):
+    xarch :forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}))
+    yarch :forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}))
+    zarch:forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}))
+
+    class Meta:
+        model = Graficos
+        fields = ('nomx','nomy','nomz', 'xarch','yarch','zarch')

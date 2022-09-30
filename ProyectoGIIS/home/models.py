@@ -75,6 +75,25 @@ class Graficos(models.Model):
     xarch = models.FileField( upload_to='bitacora/', blank=True, null = False,)
     yarch = models.FileField( upload_to='bitacora/', blank=True, null = False,)
     zarch = models.FileField( upload_to='bitacora/', blank=True, null = False,)
+    nomx =  models.CharField('Nombre de Archivo',max_length=100, blank=True, null = True)
+    nomy =  models.CharField('Nombre de Archivo',max_length=100, blank=True, null = True)
+    nomz =  models.CharField('Nombre de Archivo',max_length=100, blank=True, null = True)
 
     def __str__(self) -> str:
-        return self.medtype
+        return self.xarch
+
+    def __str__(self) -> str:
+        return self.yarch
+
+    def __str__(self) -> str:
+        return self.zarch
+    
+    def __str__(self) -> str:
+        return self.nomx
+    
+    def __str__(self) -> str:
+        return self.nomy
+    
+    def __str__(self) -> str:
+        return self.nomz
+

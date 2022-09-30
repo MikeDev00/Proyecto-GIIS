@@ -13,6 +13,10 @@ urlpatterns = [
     path('Mapa/', views.maps,name='Maps'),
     path('login/', views.login,name='login'),
     path('Bitacora/', views.pruebabit,name='pruebabit'),
+    path('graficas/', views.Graficas,name='graficas'),
+
+
+
 
     #URL dinamicas 
     re_path(r'^search/$', views.search, name='search'),
