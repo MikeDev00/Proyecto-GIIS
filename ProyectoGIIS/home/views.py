@@ -116,7 +116,8 @@ def pruebabit(request):
                         observations = request.POST.get('observations'), 
                         #is_completed = request.POST.get('is_completed'),
                         revisado = request.POST.get('revisado'),
-                        nombre = request.POST.get('nombre'), 
+                        nombre = request.POST.get('nombre'),
+                      
                         autor = request.POST.get('autor'), 
                         clima = request.POST.get('clima'),
                         Estruc = request.POST.get('Estruc'),
@@ -157,10 +158,6 @@ def maps(request):
 # pagina del login sin crear
 def login(request):
     return render(request,"login.html")
-
-
-
-
 
 
 # Accion de edicion de en los filtros
