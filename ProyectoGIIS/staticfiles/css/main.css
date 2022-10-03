@@ -2,11 +2,12 @@
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
 
-.homee {
+.home {
   padding-bottom: 0;
   color: #5a5a5a;
-  background: #820d9d;
+  background: white;
 }
+
 .bd-placeholder-img {
   font-size: 1.125rem;
   text-anchor: middle;

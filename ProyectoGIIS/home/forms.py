@@ -127,7 +127,7 @@ class PruebaBitaForm(forms.ModelForm):
     operator = forms.CharField( label='Operador',widget=forms.TextInput(attrs={'placeholder': 'Insertar Operador'}),required=False)
     latitude= forms.FloatField(label='Latitud', widget=forms.TextInput(attrs={'placeholder': 'Insertar Latitud'}),required=True)
     longitude= forms.FloatField(label='Longitud', widget=forms.TextInput(attrs={'placeholder': 'Insertar Longitud'}),required=True)
-    altitude= forms.FloatField(label='Altitud',widget=forms.TextInput(attrs={'placeholder': 'Insertar Altitud'}),required=True)
+    altitud= forms.DecimalField(label='Altitud',widget=forms.TextInput(attrs={'placeholder': 'Insertar Altitud'}),required=False)
    
     statnum  = forms.CharField(label='Número de Medición',widget=forms.TextInput(attrs={'placeholder': 'Insertar # de Medición'}),empty_value=None, required=False)
     sensnum = forms.CharField(label='Número de Sensor',widget=forms.TextInput(attrs={'placeholder': 'Insertar # de sensor'}),empty_value=None, required=False)
@@ -159,7 +159,7 @@ class PruebaBitaForm(forms.ModelForm):
         model=PruebaBit
         fields = (
         'fecha', 'hour', 'place', 'operator',
-        'latitude', 'longitude', 'altitude',
+        'latitude', 'longitude', 'altitud',
         'statype', 'senstype', 'statnum', 'sensnum',
         'freq','freq2', 'duration', 'windopts',
         'rainopts', 'temp','clima', 'remarkstemp', 

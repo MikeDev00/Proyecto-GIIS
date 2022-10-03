@@ -5,6 +5,7 @@ from pathlib import Path
 from posixpath import dirname
 from pydoc import doc, resolve
 import shutil
+from wsgiref.validate import validator
 from django.shortcuts import render, redirect, get_object_or_404
 import pymongo
 from home.models import PruebaBit
@@ -79,6 +80,8 @@ def pruebabit(request):
         pruebaform = PruebaBitaForm(request.POST, request.FILES)
         documentos = request.FILES.getlist('documento')
         nombre = request.POST.get('nombre')
+        
+        
         if pruebaform.is_valid():
            
             with zipfile.ZipFile(f"{nombre}.zip", mode= "w") as archive:
@@ -92,6 +95,7 @@ def pruebabit(request):
                    
                         
                     os.remove( f'{file.name}')   
+                   
                 prueba = PruebaBit(documento= f"{nombre}.zip",
                         fecha = request.POST.get('fecha') ,
                         hour = request.POST.get('hour'),
@@ -99,7 +103,7 @@ def pruebabit(request):
                         operator = request.POST.get('operator'),
                         latitude = request.POST.get('latitude'), 
                         longitude = request.POST.get('longitude'), 
-                        altitude = request.POST.get('altitude'),
+                        altitud = request.POST.get('altitude'),
                         statype = request.POST.get('statype'), 
                         senstype = request.POST.get('senstype'), 
                         statnum = request.POST.get('statnum'), 
@@ -118,10 +122,17 @@ def pruebabit(request):
                         revisado = request.POST.get('revisado'),
                         nombre = request.POST.get('nombre'), 
                         autor = request.POST.get('autor'), 
+                        medtype = request.POST.get('medtype'),
+                        medicion = request.POST.get('medicion'),
+                        unidad = request.POST.get('unidad'),
                         clima = request.POST.get('clima'),
                         Estruc = request.POST.get('Estruc'),
-                        Traf = request.POST.get('Traf'), )
+                        Traf = request.POST.get('Traf'),
                         
+        
+                         )
+                        
+
                 #Path("/ProyectoGIIS/name").rename("/ProyectoGIIS/media/bitacora")
             #    pruebaform = PruebaBitaForm (request.POST, documento = f"{nombre}.zip" )
             prueba.save()
