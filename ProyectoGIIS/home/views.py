@@ -19,7 +19,7 @@ from .forms import BitacoraForm, PruebaBitaForm
 
 import numpy as np
 import matplotlib.pyplot as plt
-import pyfftw as fftw
+#import pyfftw as fftw
 
 # conector con la base de datos MongoDb
 def connectDB():
@@ -186,8 +186,12 @@ def editar2(request, id):
     if request.method =='POST':
         pruebaform = PruebaBitaForm(request.POST, request.FILES, instance=bit)
         documentos = request.FILES.getlist('documento')
-        nombre = request.POST.get('nombre')
-         
+        nombre = request.POST.get('nombre')   
+        altitude = request.POST.get('altitude')
+        
+        if altitude =='':
+            altitude: None
+            
         if pruebaform.is_valid():
            
             #creación de archivo Zip
@@ -202,7 +206,9 @@ def editar2(request, id):
                         archive.write(f'{file.name}')
                    
                         
-                    os.remove( f'{file.name}')   
+                    os.remove( f'{file.name}') 
+                
+
                 prueba = PruebaBit(
                         documento= f"{nombre}.zip",
                         fecha = request.POST.get('fecha') ,
@@ -234,6 +240,8 @@ def editar2(request, id):
                         Estruc = request.POST.get('Estruc'),
                         Traf = request.POST.get('Traf') 
                         )
+
+                        
                 #Path("/ProyectoGIIS/name").rename("/ProyectoGIIS/media/bitacora")
             #    pruebaform = PruebaBitaForm (request.POST, documento = f"{nombre}.zip" )
             
