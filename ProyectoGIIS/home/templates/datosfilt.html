@@ -43,10 +43,10 @@
 <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">   
 
   <div>
+    <h2 style="text-align: center;">Edición de Archivos</h2>
   
   {% block content %}
     <form method="get">
-      <br>
       <br>
       <div class="well">
         
@@ -67,13 +67,15 @@
             {% render_field filter.form.senstype class="form-control" %}
           </div>
           
+          <div class="col-sm-3" style="display: flex; align-items: flex-end; justify-content: center" >
+            <button type="submit" class="btn " style="background-color: #820d9d; color: white;">
+              <span class="glyphicon glyphicon-search"></span> <i class="bi bi-search"></i> Buscar
+            </button>
+          </div>
           
         </div>
         <br>
-        <button type="submit" class="btn btn-primary">
-         <i class="bi bi-search"></i> &nbsp
-          Buscar
-        </button>
+        
       </div>
       &nbsp;
     </form>
