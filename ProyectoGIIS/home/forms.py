@@ -9,42 +9,12 @@ from django import forms
 from .models import PruebaBit
 
 
-class BitacoraForm(forms.ModelForm):
-    fecha= forms.CharField(empty_value=None, required=False)
-    hour= forms.CharField(empty_value=None, required=False)
-    place= forms.CharField(max_length=100, empty_value=None, required=True)
-    operator= forms.CharField(max_length=100, empty_value=None, required=False)
-    latitude= forms.FloatField(required=True)
-    longitude= forms.FloatField(required=True)
-    altitude= forms.FloatField(required=True)
-    statype =  forms.CharField(empty_value=None, required=False)
-    senstype = forms.CharField(empty_value=None, required=False)
-    statnum  = forms.CharField(empty_value=None, required=False)
-    sensnum = forms.CharField(empty_value=None, required=False)
-    flname  = forms.CharField(empty_value=None, required=False)
-    freq = forms.FloatField(required=False)
-    duration  = forms.FloatField(required=False)
-    windopts  = forms.CharField(empty_value=None, required=False)
-    rainopts = forms.CharField(empty_value=None, required=False)
-    temp = forms.FloatField(required=False)
-    remarkstemp = forms.CharField(empty_value=None, required=False)
-    groundtyp = forms.CharField(empty_value=None, required=False)
-    remarksgro = forms.CharField(empty_value=None, required=False)
-    observations = forms.CharField(empty_value=None, required=False)
-    clima = forms.CharField(empty_value=None, required=False)
-    Estruc = forms.CharField(empty_value=None, required=False)
-    Traf = forms.CharField(empty_value=None, required=False)
-   
   
 class DateTimeInput(forms.DateTimeInput):
     input_type = 'date'
 
 class DateTimeInput2(forms.DateTimeInput):
     input_type = 'time'
-
-
-
-
     
 SENSORES = (
     ('', 'Seleccionar...'),
@@ -80,15 +50,12 @@ TIERRA = (
 )
 
 
-
-
 CLIMA = (
     ('', 'Seleccionar...'),
     ('Lluvia', 'Lluvia'),
     ('Soleado', 'Soleado'),
     ('Nublado', 'Nublado'),
 )
-
 
 
 TRAFICO = (
@@ -109,17 +76,11 @@ ESTRUC = (
 )
 
 
-
 ESTACION = (
     ('', 'Seleccionar...'),
     ('Móvil', 'Móvil'),
     ('Fijo', 'Fijo'),
 )
-
-
-
-
-
 
 
 class PruebaBitaForm(forms.ModelForm):
@@ -128,7 +89,6 @@ class PruebaBitaForm(forms.ModelForm):
     latitude= forms.FloatField(label='Latitud', widget=forms.TextInput(attrs={'placeholder': 'Insertar Latitud'}),required=True)
     longitude= forms.FloatField(label='Longitud', widget=forms.TextInput(attrs={'placeholder': 'Insertar Longitud'}),required=True)
     altitud= forms.DecimalField(label='Altitud',widget=forms.TextInput(attrs={'placeholder': 'Insertar Altitud'}),required=False)
-   
     statnum  = forms.CharField(label='Número de Medición',widget=forms.TextInput(attrs={'placeholder': 'Insertar # de Medición'}),empty_value=None, required=False)
     sensnum = forms.CharField(label='Número de Sensor',widget=forms.TextInput(attrs={'placeholder': 'Insertar # de sensor'}),empty_value=None, required=False)
     freq = forms.FloatField(label='Frecuencia Inicial (Hz)',widget=forms.TextInput(attrs={'placeholder': 'Insertar Frecuencia'}),required=True)
@@ -136,12 +96,8 @@ class PruebaBitaForm(forms.ModelForm):
     duration  = forms.FloatField(label='Duración (Min)',widget=forms.TextInput(attrs={'placeholder': 'Insertar Duración'}),required=True)
     temp = forms.FloatField(label='Temperatura',widget=forms.TextInput(attrs={'placeholder': 'Insertar Temperatura'}),required=True)
     remarkstemp = forms.CharField(label='Observaciones de Temperatura',widget=forms.TextInput(attrs={'placeholder': 'Insertar Remarks'}),empty_value=None, required=False)
-    
-   
     remarksgro = forms.CharField(label='Observaciones de Tierra',widget=forms.TextInput(attrs={'placeholder': 'Insertar remarks'}),empty_value=None, required=False)
-   
     nombre = forms.CharField(label='Nombre del Archivo', widget=forms.TextInput(attrs={'placeholder': 'Inserte el nombre del archivo'}),empty_value=None, required=True)
-
     Estruc = forms.ChoiceField(label='Estructuras Cercanas',choices=ESTRUC)
     Traf = forms.ChoiceField(label='Tráfico',choices=TRAFICO)
     clima =  forms.ChoiceField(label='Tipo de Estación',choices=CLIMA)

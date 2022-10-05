@@ -93,10 +93,18 @@ DATABASES = {
             'host': 'mongodb+srv://admin:1234@proyecto.hxkzzt7.mongodb.net/?retryWrites=true&w=majority',
             'username': 'admin',
             'password': '1234',
-        },
-       # 'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    },
+        'users': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': 'users',
     }
+       # 'NAME': BASE_DIR / 'db.sqlite3',
 }
+
+
+DATABASE_ROUTERS = ('db_routers.DatabaseRouter',)
+
 
 
 

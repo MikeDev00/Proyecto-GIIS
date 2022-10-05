@@ -16,7 +16,7 @@ from django.forms import formset_factory
 from home.filters import UserFilter, BitFilter
 
 
-from .forms import BitacoraForm, PruebaBitaForm
+from .forms import PruebaBitaForm
 
 import numpy as np
 import matplotlib.pyplot as plt

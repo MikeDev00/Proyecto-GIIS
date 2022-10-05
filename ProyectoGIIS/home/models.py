@@ -1,21 +1,15 @@
 from email.policy import default
 from unicodedata import name
+from django import db
 from django.db import models
 from flask import Flask, jsonify
 from djongo import models
 
 
-class Documentos(models.Model):
-    
-    nombre = models.CharField(max_length=100)
-    autor = models.CharField(max_length=100)
-    documento = models.FileField(upload_to='bitacoras/', )
-
-    def __str__(self):
-        return self.nombre
-
-
 class PruebaBit(models.Model):
+
+    class params:
+        db = 'default'
  
     fecha= models.CharField('Fecha', max_length=100, blank=True, null= True)
     hour= models.CharField('Hora', max_length=100, blank=True, null = True)
@@ -49,16 +43,12 @@ class PruebaBit(models.Model):
     clima= models.CharField('Clima',max_length=100, blank=True, null = True)
     Estruc= models.CharField('Estructura',max_length=100, blank=True, null = True)
     Traf= models.CharField('Trafico',max_length=100, blank=True, null = True)
-
-
-
-
-    #documento = models.FileField( upload_to='bitacora/', blank=True, null = False,)
-    #infinitos = models.ForeignKey(Infinitos, on_delete=models.CASCADE)
-
-
     documento = models.FileField( upload_to='bitacora/', blank=True, null = False)
-
-
+    
     def __str__(self) -> str:
         return self.altitude,
+
+class Usuario(models.Model):
+    class params:
+        db='users'
+        
