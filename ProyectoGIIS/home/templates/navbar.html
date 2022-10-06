@@ -33,34 +33,35 @@
 
           {% if user.is_authenticated %}
 
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'pruebabit' %}">Bitácora</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'search' %}">Descargas</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'filterbit' %}">Filtro</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'pruebabit' %}">Bitácora</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'search' %}">Descargas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'filterbit' %}">Filtro</a>
+            </li>
 
-          <li class="nav-item">
-            <a class="nav-link {% block add_blogs_active %} {% endblock add_blogs_active %}" href="/add_blogs/">Add Blogs</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link {% block add_blogs_active %} {% endblock add_blogs_active %}" href="/add_blogs/">Add Blogs</a>
+            </li>
 
-
-
-        </ul>
-        <div>
-            <a class="nav-link" href="/logout/">Logout</a>
-        </div>
+          </ul>
+        
+          <div class="btn" style="background-color: #af4ac5;  ">
+          <strong><a href="/logout/" style="text-decoration: none; color: white;"><i class="bi bi-box-arrow-left" style="font-size: 20px;"></i>&nbsp; Logout</a></strong>
+          </div>
         {% else %}
-
-        <div>
-          <i class="bi bi-people-fill" style="font-size: 30px;"></i>&nbsp;<a href="{% url 'login' %}"">Iniciar sesión</a>
-        </div>
+        </ul>
+          <div class="btn" style="background-color: #af4ac5; text-align: right; ">
+            <strong><a href="/login/" style="text-decoration: none; color: white;"><i class="bi bi-people-fill" style="font-size: 20px;"></i>&nbsp; Iniciar Sesión</a></strong>
+          </div>
+        {% endif %}
+        
         
       </div>
-      {% endif %}
+      
     </div>
   </nav>
 
