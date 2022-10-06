@@ -6,7 +6,7 @@ from pyexpat import model
 from tkinter import Place
 from django import forms
 
-from .models import PruebaBit
+from .models import BlogPost, PruebaBit
 
 
   
@@ -133,3 +133,12 @@ class PruebaBitaForm(forms.ModelForm):
         }
 
 
+class BlogPostForm(forms.ModelForm):
+    class Meta:
+        model = BlogPost
+        fields = ('title', 'slug', 'content', 'image')
+        widgets = {
+            'title': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Título del Blog'}),
+            'slug': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Copie el título sin espacios y con un guión en el medio'}),
+            'content': forms.Textarea(attrs={'class':'form-control', 'placeholder':'Contenido del Blog'}),
+        }
