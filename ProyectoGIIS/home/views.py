@@ -32,6 +32,9 @@ def connectDB():
 
 # Primera vista de plataforma 
 def home(request):
+    posts = BlogPost.objects.all()
+    posts = BlogPost.objects.filter().order_by('-dateTime')
+    return render(request, "home.html", {'posts':posts})
     return render (request, 'home.html')
 
 

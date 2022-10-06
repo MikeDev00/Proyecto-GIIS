@@ -33,7 +33,7 @@
 {% include "navbar.html" %}
 
 <body>
-
+  <h1 style="margin-top: 10px; text-align: center;">Noticias</h1>
   <div class="container mt-5 mb-3">
 
     <div class="row">
@@ -44,7 +44,7 @@
                 <div class="card-body">
                   <h5 class="card-title">{{post.title}} <br><small>by {{post.author}}</small></h5>
                   <p class="card-text">{{post.content| truncatechars:210}}</p>
-                  <a href="blog/{{post.slug}}" class="btn btn-primary">Read More {% if user.is_superuser %}<a href="delete_blog_post/{{post.slug}}/" class="btn btn-danger mx-4">Delete Blog</a>{% endif %}</a>
+                  <a href="blog/{{post.slug}}" class="btn " style="background-color: #800a9b; color: white;">Leer más {% if user.is_superuser %}<a href="delete_blog_post/{{post.slug}}/" class="btn btn-danger mx-4">Delete Blog</a>{% endif %}</a>
                 </div>
               </div>
         </div>
