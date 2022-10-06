@@ -15,8 +15,9 @@
           <li class="nav-item ">
             <a class="nav-link active" aria-current="page" href="{%url 'home'%}">Inicio </a>
           </li>
+          
           <li class="nav-item">
-            <a class="nav-link" href="{%url 'datos'%}">Datos</a>
+            <a class="nav-link"href="{%url 'datos'%}">Datos</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" >Noticias</a>
@@ -25,35 +26,34 @@
           <li class="nav-item">
             <a class="nav-link" href="{%url 'AboutUs' %}">Sobre Nosotros</a>
           </li>
-
-
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'pruebabit' %}">Bitácora</a>
-          </li>
-
           <li class="nav-item">
             <a class="nav-link" href="{% url 'Maps' %}">Mapa</a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'login' %}">login</a>
-          </li>
+          {% if user.is_authenticated %}
 
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'pruebabit' %}">Bitácora</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'search' %}">Descargas</a>
           </li>
-
           <li class="nav-item">
             <a class="nav-link" href="{% url 'filterbit' %}">Filtro</a>
           </li>
 
-
-
         </ul>
-        
         <div>
-          <i class="bi bi-people-fill" style="font-size: 30px;"></i>&nbsp;<a href="">Iniciar sesión</a>
+            <a class="nav-link" href="/logout/">Logout</a>
         </div>
+        {% else %}
+
+        <div>
+          <i class="bi bi-people-fill" style="font-size: 30px;"></i>&nbsp;<a href="{% url 'login' %}"">Iniciar sesión</a>
+        </div>
+        
       </div>
+      {% endif %}
     </div>
   </nav>
+

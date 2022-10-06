@@ -1,17 +1,14 @@
-from copyreg import pickle
-from importlib.resources import path
-from multiprocessing import context
-from pathlib import Path
-from posixpath import dirname
-from pydoc import doc, resolve
 import shutil
-from wsgiref.validate import validator
 from django.shortcuts import render, redirect, get_object_or_404
 import pymongo
 from home.models import PruebaBit
 import zipfile
 import os
-from django.forms import formset_factory
+from django.contrib.auth  import authenticate,  login, logout
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User, auth
+
 
 from home.filters import UserFilter, BitFilter
 
@@ -167,8 +164,27 @@ def maps(request):
 
 
 # pagina del login sin crear
-def login(request):
-    return render(request,"login.html")
+
+
+def login_user(request):
+    if request.method=="POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect("home")
+        else:
+            messages.error(request, "El Nombre de Usuario o Contraseña son inválidos.")
+            return redirect('login')
+    else:   
+        return render(request, "login.html")
+
+def Logout(request):
+    logout(request)
+    messages.success(request, "Successfully logged out")
+    return redirect('/login')
 
 
 # Accion de edicion de en los filtros
