@@ -1,4 +1,6 @@
+from doctest import testfile
 import shutil
+from xml.dom.minidom import Element
 from django.shortcuts import render, redirect, get_object_or_404
 import pymongo
 from home.models import PruebaBit, BlogPost, Comment
@@ -30,7 +32,7 @@ def connectDB():
 # Primera vista de plataforma 
 def home(request):
     posts = BlogPost.objects.all()
-    posts = BlogPost.objects.filter().order_by('-dateTime')
+    posts = BlogPost.objects.filter().order_by('-dateTime')[:3]
     return render(request, "home.html", {'posts':posts})
     return render (request, 'home.html')
 
