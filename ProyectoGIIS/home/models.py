@@ -1,4 +1,4 @@
-from audioop import reverse
+from django.urls import reverse
 from email.policy import default
 from unicodedata import name
 from django import db
@@ -7,6 +7,7 @@ from flask import Flask, jsonify
 from djongo import models
 from django.contrib.auth.models import User
 from django.utils.timezone import now
+
 
 
 
@@ -57,11 +58,11 @@ class Usuario(models.Model):
         db='users'
 
 class BlogPost(models.Model):
-    title=models.CharField(max_length=255)
+    title=models.CharField('Titulo',max_length=255)
     author= models.ForeignKey(User, on_delete=models.CASCADE)
-    slug=models.CharField(max_length=130)
-    content=models.TextField()
-    image = models.ImageField(upload_to="profile_pics", blank=True, null=True)
+    slug=models.CharField("Titulo-URL",max_length=130)
+    content=models.TextField("Contenido")
+    image = models.ImageField("Imagen",upload_to="profile_pics", blank=True, null=True)
     dateTime=models.DateTimeField(auto_now_add=True)
     
     def __str__(self):

@@ -32,12 +32,13 @@
 {% include "navbar.html" %}
 
 <body>
-
+  <h1 style="margin-top: 10px; text-align: center;">Eliminar Noticias</h1>
+  <br>
   <form enctype="multipart/form-data" method="POST"> {% csrf_token %}
-<div class="container mt-4">
+<div class="container mt-4 d-flex justify-content-center align-items-center h-100" >
     <div class="card">
         <div class="card-body">
-          <h5 class="card-title">¿Está seguro de que desea eliminar este blog?</h5>
+          <h5 class="card-title">¿Está seguro de que desea eliminar esta Noticia?</h5>
           <form action="/delete_blog_post/{{posts.slug}}/" method="POST">				
             {% csrf_token %}
           <a href="/" class="btn btn-success">Cancelar</a>
@@ -49,7 +50,10 @@
 </div>
 
 
-
+<br>
+<br>
+<br>
+<br><br><br> <br>
 </body>
 
 <br>

@@ -169,7 +169,6 @@ def maps(request):
     return render(request,"maps.html")
 
 
-# pagina del login sin crear
 
 
 def login_user(request):
@@ -310,7 +309,7 @@ def Delete_Blog_Post(request, slug):
         return redirect('/')
     return render(request, 'delete_blog_post.html', {'posts':posts})
 
-#@login_required(login_url = '/login')
+@login_required(login_url = '/login')
 def add_blogs(request):
     if request.method=="POST":
         form = BlogPostForm(data=request.POST, files=request.FILES)
@@ -330,6 +329,7 @@ class UpdatePostView(UpdateView):
     model = BlogPost
     template_name = 'edit_blog_post.html'
     fields = ['title', 'slug', 'content', 'image']
+    
 
 
 def blogs_comments(request, slug):
