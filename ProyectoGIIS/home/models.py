@@ -7,6 +7,7 @@ from flask import Flask, jsonify
 from djongo import models
 from django.contrib.auth.models import User
 from django.utils.timezone import now
+from ckeditor.fields import RichTextField 
 
 
 
@@ -62,6 +63,7 @@ class BlogPost(models.Model):
     author= models.ForeignKey(User, on_delete=models.CASCADE)
     slug=models.CharField("Titulo-URL",max_length=130)
     content=models.TextField("Contenido")
+    prueba = RichTextField(null=True, blank=True)
     image = models.ImageField("Imagen",upload_to="profile_pics", blank=True, null=True)
     dateTime=models.DateTimeField(auto_now_add=True)
     
@@ -78,6 +80,7 @@ class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
     blog = models.ForeignKey(BlogPost, on_delete=models.CASCADE)
+    prueba = RichTextField(null=True, blank=True)
     parent_comment = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)   
     dateTime=models.DateTimeField(default=now)
 

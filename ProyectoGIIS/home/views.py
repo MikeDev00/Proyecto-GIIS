@@ -79,6 +79,9 @@ def datos(request):
         
 #pagina de bitacora      
 def pruebabit(request):
+    myDB = connectDB()
+    nusuario = myDB["auth_user"]
+
     if request.method =='POST':
         pruebaform = PruebaBitaForm(request.POST, request.FILES)
         documentos = request.FILES.getlist('documento')
@@ -338,7 +341,8 @@ def blogs_comments(request, slug):
     if request.method=="POST":
         user = request.user
         content = request.POST.get('content','')
+        prueba = request.POST.get('content','')
         blog_id =request.POST.get('blog_id','')
-        comment = Comment(user = user, content = content, blog=post)
+        comment = Comment(user = user, content = content,prueba=prueba, blog=post)
         comment.save()
     return render(request, "blog_comments.html", {'post':post, 'comments':comments})

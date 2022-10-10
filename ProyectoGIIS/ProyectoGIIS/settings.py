@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_filters',
     'widget_tweaks',
+    'ckeditor',
 ]
 
 
@@ -165,3 +166,10 @@ MESSAGE_TAGS = {
         messages.WARNING: 'alert-warning',
         messages.ERROR: 'alert-danger',
  }
+ 
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar' : 'full',
+    }
+}
