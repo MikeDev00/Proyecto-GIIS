@@ -1,4 +1,16 @@
 {%load static%}
+
+{% url 'home' as home %}
+{% url 'datos' as datos %}
+{% url 'blogs' as blogs %}
+{% url 'AboutUs' as AboutUs %}
+{% url 'Maps' as Maps %}
+{% url 'pruebabit' as pruebabit %}
+{% url 'search' as search %}
+{% url 'filterbit' as filterbit %}
+{% url 'add_blogs' as add_blogs %}
+
+
 <link href="{%static '/css/main.css' %}" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
@@ -9,42 +21,44 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       &nbsp
+      
+      
 
       <div class="collapse navbar-collapse" id="navbarCollapse" style="color: #820d9d ;">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item ">
-            <a class="nav-link active" aria-current="page" href="{%url 'home'%}">Inicio </a>
+            <a class="nav-link {% if request.path == home %} active {% endif %}" aria-current="page" href="{%url 'home'%}">Inicio </a>
           </li>
           
           <li class="nav-item">
-            <a class="nav-link"href="{%url 'datos'%}">Datos</a>
+            <a href="{%url 'datos'%}" class="nav-link {% if request.path == datos %} active {% endif %}" >Datos</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="{%url 'blogs' %}" >Noticias</a>
+            <a class="nav-link{% if request.path == blogs %} active {% endif %} " href="{%url 'blogs'%}" >Noticias</a>
           </li>
           
           <li class="nav-item">
-            <a class="nav-link" href="{%url 'AboutUs' %}">Sobre Nosotros</a>
+            <a class="nav-link {% if request.path == AboutUs %} active {% endif %}" href="{%url 'AboutUs' %}">Sobre Nosotros</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'Maps' %}">Mapa</a>
+            <a class="nav-link {% if request.path == Maps %} active {% endif %}" href="{% url 'Maps' %}">Mapa</a>
           </li>
 
           {% if user.is_authenticated %}
 
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'pruebabit' %}">Bitácora</a>
+              <a class="nav-link {% if request.path == pruebabit %} active {% endif %}" href="{% url 'pruebabit' %}">Bitácora</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'search' %}">Descargas</a>
+              <a class="nav-link {% if request.path == search %} active {% endif %}" href="{% url 'search' %}">Descargas</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'filterbit' %}">Filtro</a>
+              <a class="nav-link {% if request.path == filterbit %} active {% endif %}" href="{% url 'filterbit' %}">Filtro</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link {% block add_blogs_active %} {% endblock add_blogs_active %}" href="/add_blogs/">Add Blogs</a>
+              <a class="nav-link {% if request.path == add_blogs %} active {% endif %}" href="/add_blogs/">Add Blogs</a>
             </li>
 
           </ul>
