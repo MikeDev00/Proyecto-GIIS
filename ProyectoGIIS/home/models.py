@@ -62,7 +62,7 @@ class BlogPost(models.Model):
     title=models.CharField('Titulo',max_length=255)
     author= models.ForeignKey(User, on_delete=models.CASCADE)
     slug=models.CharField("Titulo-URL",max_length=130)
-    content=models.TextField("Contenido")
+    #content=models.TextField("Contenido")
     prueba = RichTextField(null=True, blank=True)
     image = models.ImageField("Imagen",upload_to="profile_pics", blank=True, null=True)
     dateTime=models.DateTimeField(auto_now_add=True)
@@ -78,7 +78,7 @@ class BlogPost(models.Model):
     
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    content = models.TextField()
+    #content = models.TextField()
     blog = models.ForeignKey(BlogPost, on_delete=models.CASCADE)
     prueba = RichTextField(null=True, blank=True)
     parent_comment = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)   
