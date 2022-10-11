@@ -136,9 +136,9 @@ class PruebaBitaForm(forms.ModelForm):
 class BlogPostForm(forms.ModelForm):
     class Meta:
         model = BlogPost
-        fields = ('title', 'slug', 'content', 'prueba','image')
+        fields = ('title', 'slug', 'prueba','image')
         widgets = {
             'title': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Título del Blog'}),
             'slug': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Copie el título sin espacios y con un guión en el medio'}),
-            'content': forms.Textarea(attrs={'class':'form-control', 'placeholder':'Contenido del Blog'}),
+            'prueba': forms.Textarea(attrs={'class':'form-control', 'placeholder':'Contenido del Blog'}),
         }

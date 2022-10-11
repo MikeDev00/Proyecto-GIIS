@@ -20,7 +20,7 @@
 <body>
   <h2 style="margin-top: 10px; text-align: center;">Desea añadir una noticia</h2>
     <form action="/add_blogs/" enctype="multipart/form-data" method="POST"> {% csrf_token %}
-        <div class="container mt-4">
+        <div class="container mt-12">
         {{ form.media}}
         {{ form.as_p }}
         <button class="btn btn-primary">Añadir Noticia</button>
