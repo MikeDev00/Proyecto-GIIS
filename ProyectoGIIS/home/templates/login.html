@@ -32,7 +32,8 @@
                 <div class="card-body p-5 ">
       
                   <h3 class="mb-5 text-center">Iniciar Sesión</h3>
-                  <form action="/login/" method="POST"> {% csrf_token %}
+                  <form method="POST"> 
+                    {%csrf_token%}
                   <div class="form-outline mb-4">
                     <label class="form-label" for="username">Nombre de Usuario</label>
                     <input type="text" class="form-control form-control-lg" id="username" name="username">
