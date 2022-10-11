@@ -79,6 +79,9 @@ def datos(request):
         
 #pagina de bitacora      
 def pruebabit(request):
+    myDB = connectDB()
+    nusuario = myDB["auth_user"]
+
     if request.method =='POST':
         pruebaform = PruebaBitaForm(request.POST, request.FILES)
         documentos = request.FILES.getlist('documento')
@@ -169,7 +172,6 @@ def maps(request):
     return render(request,"maps.html")
 
 
-# pagina del login sin crear
 
 
 def login_user(request):
@@ -310,7 +312,7 @@ def Delete_Blog_Post(request, slug):
         return redirect('/')
     return render(request, 'delete_blog_post.html', {'posts':posts})
 
-#@login_required(login_url = '/login')
+@login_required(login_url = '/login')
 def add_blogs(request):
     if request.method=="POST":
         form = BlogPostForm(data=request.POST, files=request.FILES)
@@ -330,6 +332,7 @@ class UpdatePostView(UpdateView):
     model = BlogPost
     template_name = 'edit_blog_post.html'
     fields = ['title', 'slug', 'content', 'image']
+    
 
 
 def blogs_comments(request, slug):
@@ -338,7 +341,8 @@ def blogs_comments(request, slug):
     if request.method=="POST":
         user = request.user
         content = request.POST.get('content','')
+        prueba = request.POST.get('content','')
         blog_id =request.POST.get('blog_id','')
-        comment = Comment(user = user, content = content, blog=post)
+        comment = Comment(user = user, content = content,prueba=prueba, blog=post)
         comment.save()
     return render(request, "blog_comments.html", {'post':post, 'comments':comments})

@@ -176,20 +176,22 @@
                                   <img src="/media/{{post.image}}" class="card-img-top" alt="..." height="250px">
                                   <div class="card-body">
                                     <h5 class="card-title">{{post.title}} <br><small>Realizada por: {{post.author}}</small></h5>
-                                    <a href="blog/{{post.slug}}" class="btn " style="background-color: #800a9b; color: white;">Leer más </a>
+                                    <a href="blog/{{post.slug}}" class="btn " style="background-color: #ad26cb; color: white;">Leer más </a>
                                   </div>
                                 </div>
+                              
                           </div>
                           {% endfor %}
-                      
                         </div>
+
+                        <center><a  href="{%url 'blogs' %}" class="btn" style="background-color: #800a9b; color: white;">Ver más Noticias</a></center>
                   </div>
               </div>
             </div>
       </div>
     </div>
 
-    <hr class="featurette-divider">
+    <br><br>
 
     <!-- /END THE FEATURETTES -->
 

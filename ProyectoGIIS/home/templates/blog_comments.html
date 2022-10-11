@@ -23,6 +23,8 @@
         padding-left: 10px;
         }
 
+        .texto-justificado{ text-align: justify;}
+
        
 </style>
 
@@ -36,18 +38,20 @@
 
   
 <div class="container w-75 my-4">
+     
+      
+      <a  href="{%url 'blogs' %}" class="btn" style="background-color: #08295e; color: white;" ><i class="bi bi-backspace" style="font-size: 20px;"&nbsp ></i >Atrás</a>
+      <hr size="8px" color="black" />
       <center> <h2 class="blog-post-title">{{post.title}}</h2> </center>
-      <br>
+      <hr size="8px" color="black" />
+
       <div class="media">
-            {% if post.author.profile.image %}
-            <img class="mr-3 rounded-circle" src="{{post.author.profile.image.url}}" width="50px" height="50px"
-                  alt="image">
-            {% endif %}
+            
             <div class="media-body">
-                  <h5 class="mt-0"><a href="/user_profile/{{post.author.id}}/">{{post.author}}
+                  <h5 class="mt-0"><a> Escrita por: {{post.author}}
                               {% if user.is_authenticated %}
                               {% if user.id == post.author.id %}
-                              <small><a href="/edit_blog_post/{{post.slug}}/" class="edit btn btn-warning">Edit Blog Post</a></small>
+                              <small><a href="/edit_blog_post/{{post.slug}}/" class="edit btn btn-warning">Editar Noticia</a></small>
                               {% endif %}
                               {% endif %}
                         </a></h5>
@@ -55,9 +59,12 @@
             </div>
       </div>
       <br>
-      <center><img src="/media/{{post.image}}" alt="" height="250px" width="500px"></center>
+      <center><img src="/media/{{post.image}}" alt="" height="350px" width="600px"></center>
       <br>
-      <p>{{post.content}}.</p>
+
+      <p class="texto-justificado">{{post.content}}.</p>
+
+      <p class="texto-justificado">{{post.prueba|safe}}.</p>
       <hr>
     
     </div>

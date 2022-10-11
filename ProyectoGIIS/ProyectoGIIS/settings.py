@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_filters',
     'widget_tweaks',
+    'ckeditor',
 ]
 
 
@@ -134,7 +135,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Panama'
 
 USE_I18N = True
 
@@ -165,3 +166,10 @@ MESSAGE_TAGS = {
         messages.WARNING: 'alert-warning',
         messages.ERROR: 'alert-danger',
  }
+ 
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar' : 'full',
+    }
+}

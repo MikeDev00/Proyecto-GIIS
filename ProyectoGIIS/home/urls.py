@@ -13,9 +13,8 @@ urlpatterns = [
     path('datos/',views.datos, name='datos'),
     path('aboutus/', views.aboutus,name='AboutUs'),
     path('Mapa/', views.maps,name='Maps'),
-    path('login/', views.login_user,name='login'),
+    path('login/', views.login,name='login'),
     path('Bitacora/', views.pruebabit,name='pruebabit'),
-    path("logout/", views.Logout, name="logout"),
 
     #URL Acciones del Blog
    
