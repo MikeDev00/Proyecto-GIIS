@@ -50,6 +50,7 @@ class PruebaBit(models.Model):
     Estruc= models.CharField('Estructura',max_length=100, blank=True, null = True)
     Traf= models.CharField('Trafico',max_length=100, blank=True, null = True)
     documento = models.FileField( upload_to='bitacora/', blank=True, null = False)
+    dateTime=models.DateTimeField(default=now)
     
     def __str__(self) -> str:
         return self.altitude,
