@@ -180,6 +180,7 @@ def login_user(request):
         password = request.POST['password']
         
         user = authenticate(username=username, password=password)
+        
         if user is not None:
             login(request, user)
             return redirect("home")
