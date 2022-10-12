@@ -332,7 +332,7 @@ def add_blogs(request):
 class UpdatePostView(UpdateView):
     model = BlogPost
     template_name = 'edit_blog_post.html'
-    fields = ['title', 'slug', 'content', 'image']
+    fields = ['title', 'slug','prueba', 'image']
     
 
 
