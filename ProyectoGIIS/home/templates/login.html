@@ -31,7 +31,11 @@
               <div class="card shadow-2-strong" style="border-radius: 1rem;">
                 <div class="card-body p-5 ">
       
-                  <h3 class="mb-5 text-center">Iniciar Sesión</h3>
+                  <h3 class="text-center">Iniciar Sesión</h3>
+                  <div class="text-center" style="padding: 15px;">
+                      <img src="{%static 'images/logo.png'%}" id="logo">
+                  </div>
+                  
                   <form method="POST"> 
                     {%csrf_token%}
                   <div class="form-outline mb-4">
