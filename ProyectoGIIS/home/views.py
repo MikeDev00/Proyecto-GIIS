@@ -127,7 +127,7 @@ def pruebabit(request):
                         #is_completed = request.POST.get('is_completed'),
                         revisado = request.POST.get('revisado'),
                         nombre = request.POST.get('nombre'),
-                      
+                       
                         autor = request.POST.get('autor'), 
                         
                         medtype = request.POST.get('medtype'),
@@ -136,7 +136,7 @@ def pruebabit(request):
                         clima = request.POST.get('clima'),
                         Estruc = request.POST.get('Estruc'),
                         Traf = request.POST.get('Traf'),
-                        
+                        author = request.user
         
                          )
                         
