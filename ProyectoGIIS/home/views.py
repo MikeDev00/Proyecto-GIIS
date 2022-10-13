@@ -172,6 +172,19 @@ def maps(request):
     return render(request,"maps.html")
 
 
+def Registro(request):
+    if request.method=="POST":   
+        username = request.POST['username']
+        email = request.POST['email']
+        first_name=request.POST['first_name']
+        last_name=request.POST['last_name']
+
+        user = User.objects.create_user(username, email)
+        user.first_name = first_name
+        user.last_name = last_name
+        user.save()
+        return render(request, 'login.html')   
+    return render(request, "registro.html")
 
 
 def login_user(request):
@@ -180,7 +193,7 @@ def login_user(request):
         password = request.POST['password']
         
         user = authenticate(username=username, password=password)
-        
+
         if user is not None:
             login(request, user)
             return redirect("home")

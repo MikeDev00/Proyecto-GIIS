@@ -16,6 +16,7 @@ urlpatterns = [
     path('login/', views.login_user,name='login'),
     path('Bitacora/', views.pruebabit,name='pruebabit'),
     path("logout/", views.Logout, name="logout"),
+    path("registro/", views.Registro, name="registro"),
 
 
     #URL Acciones del Blog

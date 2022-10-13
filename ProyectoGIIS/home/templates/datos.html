@@ -19,6 +19,7 @@
       .dataTables_wrapper{
         padding-left: 25px;
         padding-right: 25px;
+        padding-bottom: 30px;
       }
     </style>
 
@@ -153,6 +154,19 @@
   {% endblock %}
  </div>
 
+ <div style="text-align: center; justify-content: center; display: flex;">
+  <div class="card">
+    <div class="card-header " style="background-color: #af4ac5; color: white;">
+      <strong>¿Quieres descargar alguno de los archivos?</strong>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Solicita tu permiso</h5>
+      <p class="card-text">Llena el formulario que aparecerá al dar click en el botón, y nuestro equipo te enviará tu usuario y contraseña para que puedas acceder.</p>
+      <a href="/registro/" class="btn" style="background-color: #820d9d; color: white;">Solicitalo aquí</a>
+    </div>
+  </div>
+</div>
+
 
   <script style="padding: 15px ;">
     $(document).ready(function () {
@@ -186,6 +200,9 @@
     });
 });
 </script>
+    
+    
+    
 </body>
 
 <br>
