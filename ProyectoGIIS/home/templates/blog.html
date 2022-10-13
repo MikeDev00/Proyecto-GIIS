@@ -20,7 +20,11 @@
   <h1 style="margin-top: 10px; text-align: center;">Noticias</h1>
   
   <div class="container ">
-    {% if user.is_superuser %}<a  href="/add_blogs/" class="btn" style="background-color: #72157c; color: white;" ><i class="bi bi-plus-circle-fill" &nbsp  style="font-size: 17px;"  > </i >Añadir noticia</a>{% endif %}
+    {% if user.is_authenticated %}
+      {% for group in request.user.groups.all %}
+        {%if group.name == 'investigadores' %}<a  href="/add_blogs/" class="btn" style="background-color: #72157c; color: white;" ><i class="bi bi-plus-circle-fill" &nbsp  style="font-size: 17px;"  > </i >Añadir noticia</a>{% endif %}
+      {%endfor%}
+    {% endif %}
     <div class="row ">
         <div class="col-md-12  ">
             <div class="signup-form">

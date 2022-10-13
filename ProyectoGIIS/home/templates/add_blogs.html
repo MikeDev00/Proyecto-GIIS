@@ -1,5 +1,7 @@
 {%load static%}
-
+{% if user.is_authenticated %}
+  {% for group in request.user.groups.all %}
+   {%if group.name == 'investigadores' %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -36,4 +38,6 @@
 {%include "footer.html"%}
 
 </html>
-
+    {% endif %}
+  {%endfor%}
+{% endif %} 
