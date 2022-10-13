@@ -1,6 +1,5 @@
-
 {%load static%}
-
+{% if user.is_superuser %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -163,3 +162,4 @@
 
 </html>
 
+{% endif %}
