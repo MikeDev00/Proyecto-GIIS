@@ -64,7 +64,7 @@ class BlogPost(models.Model):
     author= models.ForeignKey(User, on_delete=models.CASCADE)
     slug=models.CharField("Titulo-URL",max_length=130)
     #content=models.TextField("Contenido")
-    prueba = RichTextField(null=True, blank=True)
+    prueba = RichTextField('Contenido',null=True, blank=True)
     image = models.ImageField("Imagen",upload_to="profile_pics", blank=True, null=True)
     dateTime=models.DateTimeField(auto_now_add=True)
     
