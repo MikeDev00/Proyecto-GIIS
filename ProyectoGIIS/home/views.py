@@ -129,6 +129,7 @@ def pruebabit(request):
                         nombre = request.POST.get('nombre'),
                       
                         autor = request.POST.get('autor'), 
+                        
                         medtype = request.POST.get('medtype'),
                         medicion = request.POST.get('medicion'),
                         unidad = request.POST.get('unidad'),

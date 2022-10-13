@@ -42,6 +42,7 @@ class PruebaBit(models.Model):
     revisado= models.CharField('Revisado por',max_length=100, blank=True, null = True)
     nombre = models.CharField('Nombre de Archivo',max_length=100, blank=True, null = True)
     autor = models.CharField('Autor del archivo',max_length=100, blank=True, null = True)
+    
     medtype = models.CharField(max_length=100, blank=True, null = True)
     medicion = models.FloatField(max_length=100, blank=True, null = True)
     unidad = models.CharField(max_length=100, blank=True, null = True)
@@ -51,9 +52,13 @@ class PruebaBit(models.Model):
     Traf= models.CharField('Trafico',max_length=100, blank=True, null = True)
     documento = models.FileField( upload_to='bitacora/', blank=True, null = False)
     dateNow=models.DateTimeField(default=now)
+
+    author= models.ForeignKey(User, on_delete=models.CASCADE)
     
     def __str__(self) -> str:
         return self.altitude,
+
+
 
 class Usuario(models.Model):
     class params:

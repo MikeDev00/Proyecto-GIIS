@@ -52,7 +52,7 @@ TIERRA = (
 
 CLIMA = (
     ('', 'Seleccionar...'),
-    ('Lluvia', 'Lluvia'),
+    ('lluvioso', 'Lluvia'),
     ('Soleado', 'Soleado'),
     ('Nublado', 'Nublado'),
 )
