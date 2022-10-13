@@ -46,23 +46,33 @@
           </li>
 
           {% if user.is_authenticated %}
+          
+            {% for group in request.user.groups.all %}
+            {%if group.name == 'investigadores' or group.name == 'estudiantes' %}
+              <li class="nav-item">
+                <a class="nav-link {% if request.path == search %} active {% endif %}" href="{% url 'search' %}">Descargas</a>
+              </li>
+              {% endif %}
 
-            <li class="nav-item">
-              <a class="nav-link {% if request.path == pruebabit %} active {% endif %}" href="{% url 'pruebabit' %}">Bitácora</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link {% if request.path == search %} active {% endif %}" href="{% url 'search' %}">Descargas</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link {% if request.path == filterbit %} active {% endif %}" href="{% url 'filterbit' %}">Filtro</a>
-            </li>
+            {%if group.name == 'investigadores' %}
 
-            <li class="nav-item">
-              <a class="nav-link {% if request.path == add_blogs %} active {% endif %}" href="/add_blogs/">Add Blogs</a>
-            </li>
+              <li class="nav-item">
+                <a class="nav-link {% if request.path == pruebabit %} active {% endif %}" href="{% url 'pruebabit' %}">Bitácora</a>
+              </li>
+                
+              <li class="nav-item">
+                <a class="nav-link {% if request.path == add_blogs %} active {% endif %}" href="/add_blogs/">Add Blogs</a>
+              </li>
+              {% endif %}
+            {%endfor%}
 
+            {% if user.is_superuser %}
+                <li class="nav-item">
+                  <a class="nav-link {% if request.path == filterbit %} active {% endif %}" href="{% url 'filterbit' %}">Edición de Bitácora</a>
+                </li>
+              </ul>
+            {% endif %}
           </ul>
-
           <div>
             <h4 class="nav-item" style="text-decoration: none;" >¡Hola {{request.user}}! &nbsp;</h4>
           </div>
