@@ -58,6 +58,7 @@ def datos(request):
     bitacora = myDB["home_pruebabit"]
         
     for bita in bitacora.find():
+
         datosbita.append({ 
             "fecha": bita["fecha"],
             "place": bita["place"], 
@@ -69,7 +70,9 @@ def datos(request):
             "freq2":bita["freq2"],
             "clima":bita["clima"],
             "groundtyp":bita["groundtyp"],
+            "author_id":bita["author_id"],
             })
+
     return render(request, 'datos.html', {'datosbita':datosbita})
 
 
@@ -102,7 +105,8 @@ def pruebabit(request):
                         
                     os.remove( f'{file.name}')   
                    
-                prueba = PruebaBit(documento= f"{nombre}.zip",
+                prueba = PruebaBit(
+                        documento= f"{nombre}.zip",
                         fecha = request.POST.get('fecha') ,
                         hour = request.POST.get('hour'),
                         place =request.POST.get('place'),
@@ -136,9 +140,10 @@ def pruebabit(request):
                         clima = request.POST.get('clima'),
                         Estruc = request.POST.get('Estruc'),
                         Traf = request.POST.get('Traf'),
-                        author = request.user
-        
-                         )
+                        author = request.User.username
+                       # username = request.POST['username']
+                        
+                        )
                         
 
                 #Path("/ProyectoGIIS/name").rename("/ProyectoGIIS/media/bitacora")
