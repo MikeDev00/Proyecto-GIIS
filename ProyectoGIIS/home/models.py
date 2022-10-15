@@ -10,7 +10,8 @@ from django.utils.timezone import now
 from ckeditor.fields import RichTextField 
 
 
-
+class Usuario(models.Model):
+    pass
 
 class PruebaBit(models.Model):
 
@@ -59,10 +60,18 @@ class PruebaBit(models.Model):
         return self.altitude,
 
 
+class Registros(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True, null=True)
+    first_name = models.TextField(blank=True, null=True)
+    last_name = models.TextField(blank=True, null=True)
+    email = models.EmailField(blank=True, null=True)
+    phone_no = models.IntegerField(blank=True, null=True)
+    centro = models.TextField(blank=True, null=True)
+    type = models.TextField(blank=True, null=True)
 
-class Usuario(models.Model):
-    class params:
-        db='users'
+    
+    def __str__(self):
+        return str(self.user)
 
 class BlogPost(models.Model):
     title=models.CharField('Titulo',max_length=255)

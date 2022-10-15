@@ -22,35 +22,68 @@
     {%include "navbar.html"%}
 </head>
 <body>
-<form action="/register/" method="POST"> {% csrf_token %}
-    <div class="container mt-5">
-        <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control" id="username" name="username">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-8 col-xl-6">
+            <div class="card rounded-3">
+            <div class="card-body p-4 p-md-5">
+                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2 text-center">Información de Registro</h3>
+    
+                <form class="px-md-2" method="POST"> {% csrf_token %}
+    
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                          <div class="form-outline">
+                            <label class="form-label" for="first_name">Nombre</label>
+                            <input type="text" class="form-control" id="first_name" name="first_name">
+                        </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                          <div class="form-outline">
+                            <label class="form-label" for="last_name">Apellido</label>
+                            <input type="text" class="form-control" id="last_name" name="last_name">
+                        </div>
+                        </div>
+                      </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Correo Electrónico</label>
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+    
+                    <div class="mb-3">
+                        <label class="form-label" for="centro">Centro Regional</label>
+                        <select class="form-select" id="centro" name="centro">
+                            <option value="Campus Central">Campus Central</option>
+                            <option value="Azuero">Azuero</option>
+                            <option value="Bocas del Toro">Bocas del Toro</option>
+                            <option value="Chiriquí">Chiriquí</option>
+                            <option value="Coclé">Coclé</option>
+                            <option value="Colón">Colón</option>
+                            <option value="Panamá Oeste">Panamá Oeste</option>
+                            <option value="Veraguas">Veraguas</option>
+                        </select>
+                    </div>
+    
+                    
+                    <div class="mb-3">
+                        <label class="form-label" for="type">Eres...</label>
+                        <select class="form-select" id="type" name="type">
+                            <option value="Estudiante o Profesor">Estudiante o Profesor</option>
+                            <option value="Investigador">Investigador</option>
+                        </select>
+                    </div>
+                    <div class="" style="text-align: center;">
+                        <button class="btn btn-lg btn-block" style="background-color: #af4ac5; color: white;" type="submit">Registrar</button>
+                    </div>
+                </div>
+    
+                </form>
+    
+            </div>
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="first_nam" class="form-label">First Name</label>
-            <input type="text" class="form-control" id="first_name" name="first_name">
         </div>
-        <div class="mb-3">
-            <label for="last_name" class="form-label">Last Name</label>
-            <input type="text" class="form-control" id="last_name" name="last_name">
-        </div>
-        <div class="mb-3">
-            <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="email" name="email">
-        </div>
-        <div class="mb-3">
-            <label for="password1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password1" name="password1">
-        </div>
-        <div class="mb-3">
-            <label for="password2" class="form-label">Confirm Password</label>
-            <input type="password" class="form-control" id="password2" name="password2">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
-</form>
 </body>
 
 <footer>

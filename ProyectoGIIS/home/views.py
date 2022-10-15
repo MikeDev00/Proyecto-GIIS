@@ -1,9 +1,10 @@
+from atexit import register
 from doctest import testfile
 import shutil
 from xml.dom.minidom import Element
 from django.shortcuts import render, redirect, get_object_or_404
 import pymongo
-from home.models import PruebaBit, BlogPost, Comment
+from home.models import PruebaBit, BlogPost, Comment, Registros
 import zipfile
 import os
 from django.contrib.auth  import authenticate,  login, logout
@@ -140,7 +141,7 @@ def pruebabit(request):
                         clima = request.POST.get('clima'),
                         Estruc = request.POST.get('Estruc'),
                         Traf = request.POST.get('Traf'),
-                        author = request.User.username
+                        author = request.user
                        # username = request.POST['username']
                         
                         )
@@ -180,15 +181,16 @@ def maps(request):
 
 def Registro(request):
     if request.method=="POST":   
-        username = request.POST['username']
-        email = request.POST['email']
         first_name=request.POST['first_name']
         last_name=request.POST['last_name']
+        email = request.POST['email']
+        centro = request.POST['centro']
+        type = request.POST['type']
+       
+        registro = Registros(first_name = first_name, last_name = last_name, email = email, centro = centro, type = type)
+        registro.save()
 
-        user = User.objects.create_user(username, email)
-        user.first_name = first_name
-        user.last_name = last_name
-        user.save()
+
         return render(request, 'login.html')   
     return render(request, "registro.html")
 
