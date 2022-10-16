@@ -334,6 +334,11 @@ def Delete_Blog_Post(request, slug):
         return redirect('/')
     return render(request, 'delete_blog_post.html', {'posts':posts})
 
+
+
+
+    
+
 @login_required(login_url = '/login')
 def add_blogs(request):
     if request.method=="POST":
@@ -368,3 +373,9 @@ def blogs_comments(request, slug):
         comment = Comment(user = user, content = content,prueba=prueba, blog=post)
         comment.save()
     return render(request, "blog_comments.html", {'post':post, 'comments':comments})
+
+
+
+
+def error_404(request, exception):
+    return(render, '404.html',{})

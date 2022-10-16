@@ -1,3 +1,4 @@
+from cgitb import handler
 from django.urls import path, re_path
 from . import views
 from django.conf import settings
@@ -10,6 +11,7 @@ urlpatterns = [
 
     #URL Basicos
     path('', views.home, name = 'home'),
+   
     path('datos/',views.datos, name='datos'),
     path('aboutus/', views.aboutus,name='AboutUs'),
     path('Mapa/', views.maps,name='Maps'),
@@ -46,6 +48,8 @@ urlpatterns = [
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+
+handler404 = 'home.views.error_404'
 
 
     
