@@ -42,6 +42,10 @@ urlpatterns = [
     path('editar2_<int:id>/', views.editar2, name= 'editar2'),
     path('eliminar_<int:id>/', views.eliminar, name= 'eliminar')
 
+
+    #Solcitudes
+    
+
     
 ]
 
