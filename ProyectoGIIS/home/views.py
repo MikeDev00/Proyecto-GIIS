@@ -337,7 +337,7 @@ def Delete_Blog_Post(request, slug):
 
 
 
-    
+
 
 @login_required(login_url = '/login')
 def add_blogs(request):
@@ -379,3 +379,8 @@ def blogs_comments(request, slug):
 
 def error_404(request, exception):
     return(render, '404.html',{})
+
+
+
+#Acciones de solicitudes 
+
