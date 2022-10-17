@@ -154,6 +154,7 @@
   {% endblock %}
  </div>
 
+ {% if not user.is_authenticated %}
  <div style="text-align: center; justify-content: center; display: flex;">
   <div class="card">
     <div class="card-header " style="background-color: #af4ac5; color: white;">
@@ -167,6 +168,7 @@
   </div>
 </div>
 
+{% endif %}
 
   <script style="padding: 15px ;">
     $(document).ready(function () {

@@ -68,6 +68,9 @@ class Registros(models.Model):
     phone_no = models.IntegerField(blank=True, null=True)
     centro = models.TextField(blank=True, null=True)
     type = models.TextField(blank=True, null=True)
+    observaciones = models.TextField(max_length=100, blank=True, null = True)
+    revisado = models.BooleanField('Revisado',default=False)
+
 
     
     def __str__(self):
