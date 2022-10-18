@@ -1,6 +1,8 @@
 from ast import operator
+from collections import UserList
 from dataclasses import fields
 from email.policy import default
+from mimetypes import init
 
 from pyexpat import model
 from tkinter import Place
@@ -87,8 +89,9 @@ ESTACION = (
 
 
 class PruebaBitaForm(forms.ModelForm):
-    place = forms.CharField( label='Lugar',widget=forms.TextInput(attrs={'placeholder': 'Insertar Lugar'}),required=False)
-    operator = forms.CharField( label='Operador',widget=forms.TextInput(attrs={'placeholder': 'Insertar Operador'}),required=False)
+
+    place = forms.CharField( label='Lugar',widget=forms.TextInput(attrs={'placeholder': 'Insertar Lugar'}, ),required=False)
+    operator = forms.CharField( label='Operador',widget=forms.TextInput(attrs={'placeholder': 'Insertar Operador'}),required=False )
     latitude= forms.FloatField(label='Latitud', widget=forms.TextInput(attrs={'placeholder': 'Insertar Latitud'}),required=True)
     longitude= forms.FloatField(label='Longitud', widget=forms.TextInput(attrs={'placeholder': 'Insertar Longitud'}),required=True)
     altitud= forms.DecimalField(label='Altitud',widget=forms.TextInput(attrs={'placeholder': 'Insertar Altitud'}),required=False)

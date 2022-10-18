@@ -52,7 +52,8 @@
 
                                 <!-- 2 Seccion del formulario -->
                                 <div class="mb-3 col-md-3 ">
-                                    {{pruebaform.operator|as_crispy_field}}
+                                    <label for="operator" class="form-label" style="margin-bottom: 0px">Operador</label>
+                                    <input type="text" class="form-control" id="operator" name="operator" value="{{request.user}}" disabled> 
                                 </div>
 
                     
