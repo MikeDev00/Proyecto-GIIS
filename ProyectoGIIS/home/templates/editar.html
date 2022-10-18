@@ -65,6 +65,10 @@
                                 <div class="mb-3 col-md-3 ">
                                     {{pruebaform.longitude|as_crispy_field}}
                                 </div>
+
+                                <div class="mb-3 col-md-3 ">
+                                    {{pruebaform.altitud|as_crispy_field}}
+                                </div>
                     
                              
                                 &nbsp; 
@@ -190,6 +194,23 @@
                                     {{pruebaform.documento|as_crispy_field}}
                                 </div>
                             -->
+
+
+
+                            <div class="col-md-6">
+                                <br>
+                                <h5 class="mb-4 text-secondary">Información adicional</h5>
+                                    <table class="table form-wrapper">
+                                        <tr>
+                                            <th style="width: 20% ;">{{pruebaform.medtype|as_crispy_field}}</th>
+                                            <th style="width: 15% ;">{{pruebaform.medición|as_crispy_field}}</th>
+                                            <th style="width: 10% ;">{{pruebaform.unidad|as_crispy_field}}</th>
+                                        </tr>
+                                    </table>  
+                                        
+                            </div>
+                            </div>
+
                                <br>
                 
                             </div>
