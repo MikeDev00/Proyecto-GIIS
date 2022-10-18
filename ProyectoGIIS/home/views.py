@@ -17,7 +17,7 @@ from django.views.generic import UpdateView
 from home.filters import UserFilter, BitFilter
 
 
-from .forms import BlogPostForm, PruebaBitaForm, SolcitudForm
+from .forms import BlogPostForm, ContatoForm, PruebaBitaForm, SolcitudForm
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -72,6 +72,7 @@ def datos(request):
             "clima":bita["clima"],
             "groundtyp":bita["groundtyp"],
             "author_id":bita["author_id"],
+            "is_completed":bita["is_completed"]
             })
 
     return render(request, 'datos.html', {'datosbita':datosbita})
@@ -163,10 +164,8 @@ def pruebabit(request):
         return redirect('datos')
         
     else:
-        pruebaform=PruebaBitaForm(user=request.user)
-    return render(request, 'pruebabit.html',  {
-            'pruebaform': pruebaform
-    })
+        pruebaform=PruebaBitaForm()
+    return render(request, 'pruebabit.html',  { 'pruebaform': pruebaform })
 
 
 
@@ -406,3 +405,14 @@ def editsol(request, id):
             pruebaform=SolcitudForm()
     return render(request, 'editsol.html',data)
 
+def contato(request):
+    form = ContatoForm(request.POST or None) 
+    if str(request.method) == 'POST':
+        if form.is_valid():
+            form.send_mail() 
+            messages.success(request, 'E-mail enviado com sucesso!')
+            form = ContatoForm() 
+        else:
+            messages.error(request, 'Erro ao enviar e-mail')
+    context = {'form': form}
+    return render(request, 'contato.html', context)
