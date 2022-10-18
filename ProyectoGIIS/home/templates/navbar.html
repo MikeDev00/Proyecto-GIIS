@@ -38,6 +38,7 @@
             <a class="nav-link{% if request.path == blogs %} active {% endif %} " href="{%url 'blogs'%}" >Noticias</a>
           </li>
           
+          
           <li class="nav-item">
             <a class="nav-link {% if request.path == AboutUs %} active {% endif %}" href="{%url 'AboutUs' %}">Sobre Nosotros</a>
           </li>
@@ -60,9 +61,7 @@
                 <a class="nav-link {% if request.path == pruebabit %} active {% endif %}" href="{% url 'pruebabit' %}">Bitácora</a>
               </li>
                 
-              <li class="nav-item">
-                <a class="nav-link {% if request.path == add_blogs %} active {% endif %}" href="/add_blogs/">Add Blogs</a>
-              </li>
+             
               {% endif %}
             {%endfor%}
 
@@ -70,6 +69,11 @@
                 <li class="nav-item">
                   <a class="nav-link {% if request.path == filterbit %} active {% endif %}" href="{% url 'filterbit' %}">Edición de Bitácora</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link{% if request.path == blogs %} active {% endif %} " href="{%url 'Solicitudes'%}" >Solicitudes</a>
+                </li>
+
+
               </ul>
             {% endif %}
           </ul>

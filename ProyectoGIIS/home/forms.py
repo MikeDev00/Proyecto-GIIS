@@ -6,7 +6,7 @@ from pyexpat import model
 from tkinter import Place
 from django import forms
 
-from .models import BlogPost, PruebaBit
+from .models import BlogPost, PruebaBit, Registros
 
 
   
@@ -83,6 +83,9 @@ ESTACION = (
 )
 
 
+
+
+
 class PruebaBitaForm(forms.ModelForm):
     place = forms.CharField( label='Lugar',widget=forms.TextInput(attrs={'placeholder': 'Insertar Lugar'}),required=False)
     operator = forms.CharField( label='Operador',widget=forms.TextInput(attrs={'placeholder': 'Insertar Operador'}),required=False)
@@ -142,3 +145,19 @@ class BlogPostForm(forms.ModelForm):
             'slug': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Copie el título sin espacios y con un guión en el medio'}),
             'prueba': forms.Textarea(attrs={'class':'form-control', 'placeholder':'Contenido del Blog'}),
         }
+
+
+class SolcitudForm(forms.ModelForm):
+     first_name = forms.CharField( label='Nombre',widget=forms.TextInput(attrs={'placeholder': 'Insertar Operador'}),required=False)
+     last_name = forms.CharField( label='Apellido',widget=forms.TextInput(attrs={'placeholder': 'Insertar Operador'}),required=False)
+     email = forms.CharField( label='Email',widget=forms.TextInput(attrs={'placeholder': 'Insertar Operador'}),required=False)
+     centro = forms.CharField( label='Sede',widget=forms.TextInput(attrs={'placeholder': 'Insertar Operador'}),required=False)
+     type = forms.CharField( label='Tipo de Usuario',widget=forms.TextInput(attrs={'placeholder': 'Insertar Operador'}),required=False)
+
+     class Meta:
+        model=Registros
+        fields = (
+            'first_name','last_name',
+            'email','centro', 'type',
+            'observaciones' , 'revisado'
+        )

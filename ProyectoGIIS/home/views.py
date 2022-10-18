@@ -17,7 +17,7 @@ from django.views.generic import UpdateView
 from home.filters import UserFilter, BitFilter
 
 
-from .forms import BlogPostForm, PruebaBitaForm
+from .forms import BlogPostForm, PruebaBitaForm, SolcitudForm
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -383,4 +383,25 @@ def error_404(request, exception):
 
 
 #Acciones de solicitudes 
+
+def Solicitudes(request):
+    bit_filt = Registros.objects.all()
+    bita_filter = BitFilter(request.GET, queryset= bit_filt)
+    return render(request, 'solicitudes.html',{'filter': bita_filter})
+
+
+
+def editsol(request, id):
+    bit = get_object_or_404(Registros, id = id)
+    data  = {'pruebaform':SolcitudForm(instance=bit) }
+    if request.method =='POST':
+        pruebaform = SolcitudForm(request.POST, instance=bit)
+       
+        if pruebaform.is_valid():
+        
+            pruebaform.save()
+            return redirect('Solicitudes')
+    else : 
+            pruebaform=SolcitudForm()
+    return render(request, 'editsol.html',data)
 

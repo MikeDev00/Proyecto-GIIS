@@ -40,11 +40,12 @@ urlpatterns = [
     # URL Con objetos ID para identificar elementos 
     path('editar_<int:id>/', views.editar, name= 'editar'),
     path('editar2_<int:id>/', views.editar2, name= 'editar2'),
-    path('eliminar_<int:id>/', views.eliminar, name= 'eliminar')
+    path('eliminar_<int:id>/', views.eliminar, name= 'eliminar'),
 
 
     #Solcitudes
-    
+    path(r'^Solicitudes/$', views.Solicitudes, name="Solicitudes"),
+     path('editsol<int:id>/', views.editsol, name= 'editsol'),
 
     
 ]

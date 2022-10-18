@@ -25,6 +25,7 @@
     <h2 style="text-align: center;">Manejo de Solicitudes</h2>
   
   {% block content %}
+  
 
     
     <table id="example"  class="table-bordered table table-hover">
@@ -32,45 +33,45 @@
       <thead  class="table-dark">
         <tr>
          
-          <th style="width:60px" >Operator</th>
-          <th style="width:70px">Fecha</th>
-          <th style="width:100px">Lugar</th>
-          <th style="width:110px" >Tipo de Sensor</th>
+          <th style="width:60px" >Usuario</th>
+          <th style="width:70px">Nombre</th>
+          <th style="width:100px">Apellido</th>
+          <th style="width:110px" >Email</th>
+          <th style="width:50px">Sede</th>
+          <th style="width:50px">Tipo de Usuario</th>
           <th style="width:25px">Revisado</th>
-          <th style="width:50px">Revisado por</th>
-          <th style="width:50px">Nombre Archivo</th>
           <th>Acciones </th>
         </tr>
       </thead>
       <tbody>
-        {% for PruebaBit in filter.qs %}
+        {% for Registros in filter.qs %}
           <tr>
             
-            <td style="width:60px"  >{{ PruebaBit.operator }}</td>
-            <td style="width:90px">{{ PruebaBit.fecha }}</td>
-            <td style="width:100px">{{ PruebaBit.place }}</td>
-            <td style="width:125px" >{{ PruebaBit.senstype }}</td>
+            <td style="width:60px"  >{{ Registros.user }}</td>
+            <td style="width:90px">{{ Registros.first_name }}</td>
+            <td style="width:100px">{{ Registros.last_name }}</td>
+            <td style="width:125px" >{{ Registros.email }}</td>
+            <td style="width:50px" >{{ Registros.centro }}</td>
+            <td style="width:50px" >{{ Registros.type }}</td>
             <td style="width:50px">
                 
-                {% if PruebaBit.is_completed%}
-                
-                Sí <i class="bi bi-check-circle-fill" style="color: green;"></i>
+              {% if Registros.revisado%}
+              
+              Sí <i class="bi bi-check-circle-fill" style="color: green;"></i>
 
-                {% else %}
+              {% else %}
 
-                No
+              No
 
-                {% endif %}
+              {% endif %}
 
-            </td>
-            <td style="width:50px" >{{ PruebaBit.revisado }}</td>
-            <td style="width:50px" >{{ PruebaBit.nombre }}</td>
+          </td>
 
             <td style="width:230px" >
                
-                <a href="{% url 'editar' PruebaBit.id  %}" class="btn btn-success m-1  btn-sm"> <i class="bi bi-pencil-square"></i> Bitacora</a>
-                <a href="{% url 'editar2' PruebaBit.id  %}" class="btn btn-warning m-1  btn-sm"> <i class="bi bi-pencil-square"></i> Archivos</a>
-                <a href="{% url 'eliminar' PruebaBit.id  %}" class="btn btn-danger m-1 btn-sm"> <i class="bi bi-x-circle"></i> Eliminar</a>
+              <a  href="{% url 'editsol' Registros.id  %}"  class="btn btn-success m-1  btn-sm"> <i class="bi bi-pencil-square"></i> Revisar</a>
+              <a  href="/admin/" class="btn btn-warning m-1  btn-sm"> <i class="bi bi-plus-circle"></i> Añadir</a>
+              <a  class="btn btn-danger m-1 btn-sm"> <i class="bi bi-x-circle"></i> Eliminar</a>
             </td>
           
           </tr>
@@ -88,14 +89,14 @@
   <script>
     $(document).ready(function () {
     $('#example').DataTable({
-      "searching": false,
+      
       
       "ininfoFilteredfo": false,
       
       
       language: {
         processing:     "Busqueda en curso...",
-        search:         "Rechercher&nbsp;:",
+        search:         "Buscar&nbsp;:",
         lengthMenu:     "Mostrar _MENU_ Elementos",
         info:           "Elementos del _START_ al _END_ de un total de _TOTAL_ elementos",
         infoEmpty:      "Elementos de l'&eacute;lement 0 &agrave; 0 sur 0 &eacute;l&eacute;ments",
