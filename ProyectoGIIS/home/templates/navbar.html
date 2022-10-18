@@ -3,6 +3,7 @@
 {% url 'home' as home %}
 {% url 'datos' as datos %}
 {% url 'blogs' as blogs %}
+{% url 'Solicitudes' as Solicitudes %}
 {% url 'AboutUs' as AboutUs %}
 {% url 'Maps' as Maps %}
 {% url 'pruebabit' as pruebabit %}
@@ -68,7 +69,7 @@
                   <a class="nav-link {% if request.path == filterbit %} active {% endif %}" href="{% url 'filterbit' %}">Edición de Bitácora</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link{% if request.path == blogs %} active {% endif %} " href="{%url 'Solicitudes'%}" >Solicitudes</a>
+                  <a class="nav-link{% if request.path == Solicitudes %} active {% endif %} " href="{%url 'Solicitudes'%}" >Solicitudes</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link{% if request.path == blogs %} active {% endif %} " href="{%url 'contato'%}" >contacto</a>

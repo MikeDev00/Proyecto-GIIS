@@ -35,7 +35,7 @@ def home(request):
     posts = BlogPost.objects.all()
     posts = BlogPost.objects.filter().order_by('-dateTime')[:3]
     if posts == "":
-        messages.success(request, 'Your request has been submitted, a representative will get back to you soon')
+        messages.success(request, 'No hay Noticias')
         return render(request, 'home.html')
     else:
         return render(request, "home.html", {'posts':posts})
@@ -46,6 +46,7 @@ def datos(request):
     user_list = PruebaBit.objects.all()
     user_filter = UserFilter(request.GET, queryset= user_list)
     if user_list == "":
+
         return render(request, 'user_list.html')
     else:
         return render(request, 'user_list.html', {'filter': user_filter})
@@ -294,7 +295,13 @@ def eliminar(request, id):
 def blogs(request):
     posts = BlogPost.objects.all()
     posts = BlogPost.objects.filter().order_by('-dateTime')
-    return render(request, "blog.html", {'posts':posts})
+    if posts == "":
+        messages.success(request, 'No hay Noticias')
+        return render(request, "blog.html")
+    else:
+        return render(request, "blog.html", {'posts':posts})
+
+    
 
 def Delete_Blog_Post(request, slug):
     posts = BlogPost.objects.get(slug=slug)
