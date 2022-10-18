@@ -41,34 +41,26 @@ def home(request):
         return render(request, "home.html", {'posts':posts})
     
 
-    
-
 # Filtros  en  la pantalla de descarga
-
 def datos(request):
     user_list = PruebaBit.objects.all()
     user_filter = UserFilter(request.GET, queryset= user_list)
-    return render(request, 'user_list.html', {'filter': user_filter})
+    if user_list == "":
+        return render(request, 'user_list.html')
+    else:
+        return render(request, 'user_list.html', {'filter': user_filter})
 
+    
 def filterbit (request):
     bit_filt = PruebaBit.objects.all()
     bita_filter = BitFilter(request.GET, queryset= bit_filt)
-    return render(request, 'datosfilt.html', {'filter': bita_filter})
-
-
-#Pagina para visualizar Datos
-
-
-
-
-
-
-        
+    if bit_filt == "":
+            return render(request, 'datosfilt.html')
+    else:
+            return render(request, 'datosfilt.html', {'filter': bita_filter})
+       
 #pagina de bitacora      
 def pruebabit(request):
-    myDB = connectDB()
-    nusuario = myDB["auth_user"]
-
     if request.method =='POST':
         
         pruebaform = PruebaBitaForm(request.POST, request.FILES)
@@ -113,21 +105,16 @@ def pruebabit(request):
                         groundtyp = request.POST.get('groundtyp'), 
                         remarksgro = request.POST.get('remarksgro'), 
                         observations = request.POST.get('observations'), 
-                        #is_completed = request.POST.get('is_completed'),
                         revisado = request.POST.get('revisado'),
                         nombre = request.POST.get('nombre'),
-                       
                         autor = request.POST.get('autor'), 
-                        
                         medtype = request.POST.get('medtype'),
-                        medicion = request.POST.get('medicion'),
+                        medición = request.POST.get('medición'),
                         unidad = request.POST.get('unidad'),
                         clima = request.POST.get('clima'),
                         Estruc = request.POST.get('Estruc'),
                         Traf = request.POST.get('Traf'),
-                        author = User.objects.get(pk=request.user.id)
-                       # username = request.POST['username']
-                        
+                        author = User.objects.get(pk=request.user.id)                        
                         )
                         
 
