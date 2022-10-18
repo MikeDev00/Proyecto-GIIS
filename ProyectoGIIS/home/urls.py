@@ -12,7 +12,7 @@ urlpatterns = [
     #URL Basicos
     path('', views.home, name = 'home'),
    
-    path('datos/',views.datos, name='datos'),
+   
     path('aboutus/', views.aboutus,name='AboutUs'),
     path('Mapa/', views.maps,name='Maps'),
     path('login/', views.login_user,name='login'),
@@ -33,7 +33,7 @@ urlpatterns = [
 
 
     #URL dinamicas 
-    re_path(r'^search/$', views.search, name='search'),
+    re_path(r'^datos/$', views.datos, name='datos'),
     re_path(r'^filterbit/$', views.filterbit, name='filterbit'),
 
 

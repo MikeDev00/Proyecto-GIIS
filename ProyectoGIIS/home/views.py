@@ -40,7 +40,7 @@ def home(request):
 
 # Filtros  en  la pantalla de descarga
 
-def search(request):
+def datos(request):
     user_list = PruebaBit.objects.all()
     user_filter = UserFilter(request.GET, queryset= user_list)
     return render(request, 'user_list.html', {'filter': user_filter})
@@ -52,30 +52,7 @@ def filterbit (request):
 
 
 #Pagina para visualizar Datos
-def datos(request):
-   
-    datosbita = []
-    myDB = connectDB()
-    bitacora = myDB["home_pruebabit"]
-        
-    for bita in bitacora.find():
 
-        datosbita.append({ 
-            "fecha": bita["fecha"],
-            "place": bita["place"], 
-            "operator": bita["operator"], 
-            "latitude":bita["latitude"],
-            "longitude":bita["longitude"],
-            "senstype":bita["senstype"],
-            "freq":bita["freq"],
-            "freq2":bita["freq2"],
-            "clima":bita["clima"],
-            "groundtyp":bita["groundtyp"],
-            "author_id":bita["author_id"],
-            "is_completed":bita["is_completed"]
-            })
-
-    return render(request, 'datos.html', {'datosbita':datosbita})
 
 
 
