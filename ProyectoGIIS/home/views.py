@@ -87,10 +87,11 @@ def pruebabit(request):
     nusuario = myDB["auth_user"]
 
     if request.method =='POST':
-        pruebaform = PruebaBitaForm(request.POST, request.FILES)
-        documentos = request.FILES.getlist('documento')
-        nombre = request.POST.get('nombre')
         
+        pruebaform = PruebaBitaForm(request.POST, request.FILES)
+        
+        documentos = request.FILES.getlist('documento')
+        nombre = request.POST.get('nombre')        
         
         if pruebaform.is_valid():
            
@@ -111,7 +112,7 @@ def pruebabit(request):
                         fecha = request.POST.get('fecha') ,
                         hour = request.POST.get('hour'),
                         place =request.POST.get('place'),
-                        operator = request.POST.get('operator'),
+                        operator = request.user,
                         latitude = request.POST.get('latitude'), 
                         longitude = request.POST.get('longitude'), 
                         altitud = request.POST.get('altitude'),
@@ -141,7 +142,7 @@ def pruebabit(request):
                         clima = request.POST.get('clima'),
                         Estruc = request.POST.get('Estruc'),
                         Traf = request.POST.get('Traf'),
-                        author = request.user
+                        author = User.objects.get(pk=request.user.id)
                        # username = request.POST['username']
                         
                         )
@@ -162,7 +163,7 @@ def pruebabit(request):
         return redirect('datos')
         
     else:
-        pruebaform=PruebaBitaForm()
+        pruebaform=PruebaBitaForm(user=request.user)
     return render(request, 'pruebabit.html',  {
             'pruebaform': pruebaform
     })
