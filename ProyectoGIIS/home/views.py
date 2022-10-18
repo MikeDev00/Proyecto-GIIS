@@ -34,9 +34,14 @@ def connectDB():
 def home(request):
     posts = BlogPost.objects.all()
     posts = BlogPost.objects.filter().order_by('-dateTime')[:3]
-    return render(request, "home.html", {'posts':posts})
-    return render (request, 'home.html')
+    if posts == "":
+        messages.success(request, 'Your request has been submitted, a representative will get back to you soon')
+        return render(request, 'home.html')
+    else:
+        return render(request, "home.html", {'posts':posts})
+    
 
+    
 
 # Filtros  en  la pantalla de descarga
 
