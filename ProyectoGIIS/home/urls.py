@@ -44,7 +44,7 @@ urlpatterns = [
 
 
     #Solcitudes
-    path(r'^Solicitudes/$', views.Solicitudes, name="Solicitudes"),
+    path('Solicitudes', views.Solicitudes, name="Solicitudes"),
     path('editsol<int:id>/', views.editsol, name= 'editsol'),
     path('contato', views.contato, name='contato'), 
 
