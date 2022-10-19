@@ -44,7 +44,7 @@ class PruebaBit(models.Model):
     nombre = models.CharField('Nombre de Archivo',max_length=100, blank=True, null = True)
     autor = models.CharField('Autor del archivo',max_length=100, blank=True, null = True)  
     medtype = models.CharField(max_length=100, blank=True, null = True)
-    medición = models.DecimalField(blank=True, null = True, default =None, max_digits=8, decimal_places=6,)
+    medición = models.DecimalField(null=True,blank=True, default =None, max_digits=8, decimal_places=6,)
     unidad = models.CharField(max_length=100, blank=True, null = True)
     clima= models.CharField('Clima',max_length=100, blank=True, null = True)
     Estruc= models.CharField('Estructura',max_length=100, blank=True, null = True)

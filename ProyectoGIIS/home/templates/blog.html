@@ -44,6 +44,12 @@
                               </div>
                             </div>
                       </div>
+                      {% empty %}
+                      <tr>
+                        <td colspan="5"> 
+                          <span class="text-muted">No hay noticias disponibles</span>
+                        </td>
+                      </tr>
                       {% endfor %}
                   </div>
               </div>
@@ -51,6 +57,7 @@
         </div>
     </div> 
   </div>
+  
 
 
 

@@ -110,7 +110,7 @@ def pruebabit(request):
                         nombre = request.POST.get('nombre'),
                         autor = request.POST.get('autor'), 
                         medtype = request.POST.get('medtype'),
-                        medición = request.POST.get('medición'),
+                        medición = request.POST.get('medicinn'),
                         unidad = request.POST.get('unidad'),
                         clima = request.POST.get('clima'),
                         Estruc = request.POST.get('Estruc'),
@@ -156,12 +156,10 @@ def Registro(request):
         email = request.POST['email']
         centro = request.POST['centro']
         type = request.POST['type']
-       
+
         registro = Registros(first_name = first_name, last_name = last_name, email = email, centro = centro, type = type)
         registro.save()
-
-
-        return render(request, 'login.html')   
+        return redirect('login')   
     return render(request, "registro.html")
 
 
@@ -193,9 +191,6 @@ def editar(request, id):
     data  = {'pruebaform':PruebaBitaForm(instance=bit) }
     if request.method =='POST':
         pruebaform = PruebaBitaForm(request.POST, instance=bit)
-        documentos = request.FILES.getlist('documento')
-        nombre = request.POST.get('nombre')
-        
 
         if pruebaform.is_valid():
         
@@ -392,3 +387,21 @@ def contato(request):
             messages.error(request, 'Erro ao enviar e-mail')
     context = {'form': form}
     return render(request, 'contato.html', context)
+
+
+def ver_bitacora(request,id):
+    bit = get_object_or_404(PruebaBit, id = id)
+    data  = {'pruebaform':PruebaBitaForm(instance=bit) }
+    if request.method =='POST':
+        pruebaform = PruebaBitaForm(request.POST, instance=bit)
+        documentos = request.FILES.getlist('documento')
+        nombre = request.POST.get('nombre')
+        
+
+        if pruebaform.is_valid():
+        
+            pruebaform.save()
+            return redirect('datos')
+    else : 
+            pruebaform=PruebaBitaForm()
+    return render(request, 'ver_bitacora.html',data)

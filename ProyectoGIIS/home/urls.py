@@ -47,6 +47,7 @@ urlpatterns = [
     path('Solicitudes', views.Solicitudes, name="Solicitudes"),
     path('editsol<int:id>/', views.editsol, name= 'editsol'),
     path('contato', views.contato, name='contato'), 
+    path('ver_bitacora_<int:id>/', views.ver_bitacora, name="ver_bitacora"),
 
     
 ]

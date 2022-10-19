@@ -27,6 +27,7 @@
 
   {% block content %}
     <form method="get">
+      {%csrf_token%}
       <div class="well px-5 ">
 
         <h2 style="text-align: center;">
@@ -165,7 +166,7 @@
                 <td>{{ list.nombre }}</td>
                 
                 <td style="text-align: center;">
-                  <a href="{{ list.documento.url }}" class="btn btn-sm" target="_blank" style="background-color: #3343d3; color: white;">
+                  <a href="{% url 'ver_bitacora' list.id  %}" class="btn btn-sm" style="background-color: #3343d3; color: white;">
                     ver más
                   </a>
                   <a href="{{ list.documento.url }}" class="btn btn-sm" target="_blank" style="background-color: #af4ac5; color: white;">
@@ -186,6 +187,22 @@
         </tbody>
       </table>
     </div>
+
+    {% if not user.is_authenticated %}
+      <div style="text-align: center; justify-content: center; display: flex;">
+        <div class="card">
+          <div class="card-header " style="background-color: #af4ac5; color: white;">
+            <strong>¿Quieres descargar alguno de los archivos?</strong>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Solicita tu permiso</h5>
+            <p class="card-text">Llena el formulario que aparecerá al dar click en el botón, y nuestro equipo te enviará tu usuario y contraseña para que puedas acceder.</p>
+            <a href="/registro/" class="btn" style="background-color: #820d9d; color: white;">Solicitalo aquí</a>
+          </div>
+        </div>
+      </div>
+
+{% endif %}
   {% endblock %}
   
   <script>
@@ -226,10 +243,9 @@
 </body>
 
 <br>
-{%include "footer.html"%}
-
-
-
-
 </html>
+
+<footer>
+  {%include "footer.html"%}
+</footer>
 

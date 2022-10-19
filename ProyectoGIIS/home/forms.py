@@ -116,7 +116,7 @@ class PruebaBitaForm(forms.ModelForm):
     groundtyp = forms.ChoiceField(label='Tipo de Suelo',choices=TIERRA)
     documento = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}))
     medtype = forms.CharField(label='Tipo de Medición', widget=forms.TextInput(attrs={'placeholder': ''}),required=False )
-    medición = forms.CharField(label='Medición', widget=forms.TextInput(attrs={'placeholder': ''}),required=False)
+    medición = forms.DecimalField(label='Medición', widget=forms.TextInput(attrs={'placeholder': ''}),required=False)
     unidad = forms.CharField(label='Unidad', widget=forms.TextInput(attrs={'placeholder': ''}),required=False)
 
     class Meta:
