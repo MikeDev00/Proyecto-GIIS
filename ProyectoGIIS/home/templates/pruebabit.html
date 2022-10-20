@@ -52,8 +52,7 @@
 
                                 <!-- 2 Seccion del formulario -->
                                 <div class="mb-3 col-md-3 ">
-                                    <label for="operator" class="form-label" style="margin-bottom: 0px">Operador</label>
-                                    <input type="text" class="form-control" id="operator" name="operator" value="{{request.user}}" disabled> 
+                                    {{pruebaform.operator|as_crispy_field}}
                                 </div>
 
                     
@@ -186,8 +185,9 @@
                                                     {{pruebaform.nombre|as_crispy_field}}
                                                 </div>
                                                 
-                                                <div class="mb-3 col-md-6 ">
-                                                    {{pruebaform.autor|as_crispy_field}}
+                                                <div class="mb-4 col-md-6 ">
+                                                    <label for="autor" class="form-label" style="margin-bottom: 0px">Autor</label>
+                                                    <input type="text" class="form-control" id="autor" name="autor" value="{{request.user}}" disabled> 
                                                 </div>
                                                 
                                                 &nbsp; 
