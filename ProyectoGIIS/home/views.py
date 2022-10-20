@@ -302,7 +302,7 @@ def Delete_Blog_Post(request, slug):
     posts = BlogPost.objects.get(slug=slug)
     if request.method == "POST":
         posts.delete()
-        return redirect('/')
+        return redirect('blogs')
     return render(request, 'delete_blog_post.html', {'posts':posts})
 
 
@@ -318,9 +318,9 @@ def add_blogs(request):
             blogpost = form.save(commit=False)
             blogpost.author = request.user
             blogpost.save()
-            obj = form.instance
-            alert = True
-            return render(request, "add_blogs.html",{'obj':obj, 'alert':alert})
+            #obj = form.instance
+           # alert = True
+            return redirect("blogs")
     else:
         form=BlogPostForm()
     return render(request, "add_blogs.html", {'form':form})

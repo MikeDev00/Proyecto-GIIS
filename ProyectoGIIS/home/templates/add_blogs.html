@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  {% load widget_tweaks %}
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,11 +21,15 @@
 
 <body>
   <h2 style="margin-top: 10px; text-align: center;">Desea añadir una noticia</h2>
-    <form action="/add_blogs/" enctype="multipart/form-data" method="POST"> {% csrf_token %}
-        <div class="container mt-12">
+    <form enctype="multipart/form-data" method="POST"> {% csrf_token %}
+        <div class="container mt-12 min-vh-100">
         {{ form.media}}
         {{ form.as_p }}
-        <button class="btn btn-primary">Añadir Noticia</button>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <input type="button"  class="btn btn-danger me-md-2" onclick="history.back()" name="Cancelar" value="Cancelar">
+          <button class="btn" style="background-color: #820d9d; color: white;">Añadir Noticia</button>
+        </div>
+        
         </div>
         </form>
 </div>
@@ -33,6 +37,15 @@
 
 
 </body>
+{% block js %}
+{% if alert %}
+<script>
+    
+    alert('Your Blog is added successfully.');
+
+</script>
+{% endif %}
+{% endblock %}
 
 <br>
 {%include "footer.html"%}

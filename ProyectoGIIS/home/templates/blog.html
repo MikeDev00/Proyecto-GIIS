@@ -19,7 +19,7 @@
 <body>
   <h1 style="margin-top: 10px; text-align: center;">Noticias</h1>
   
-  <div class="container ">
+  <div class="container min-vh-100 ">
     {% if user.is_authenticated %}
       {% for group in request.user.groups.all %}
         {%if group.name == 'investigadores' %}<a  href="/add_blogs/" class="btn" style="background-color: #72157c; color: white;" ><i class="bi bi-plus-circle-fill" &nbsp  style="font-size: 17px;"  > </i >Añadir noticia</a>{% endif %}
