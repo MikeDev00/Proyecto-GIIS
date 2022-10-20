@@ -1,0 +1,82 @@
+version: '3'
+
+networks:
+  giis_local:
+    driver: bridge
+  giis_proxy:
+    external: true
+    name: ${proxy_network}
+
+services:
+  djangoapp:
+    build: .
+    volumes:
+      - .:/opt/services/djangoapp/src
+      - static_volume:/opt/services/djangoapp/staticfiles  # <-- bind the static volume
+      - media_volume:/opt/services/djangoapp/media  # <-- bind the media volume
+    networks:
+      - ${project_name}_local
+    env_file:
+      - ./.env
+      
+  nginx:
+    image: nginx:stable-alpine
+    volumes:
+      - ./config/nginx/conf.d:/etc/nginx/conf.d
+      - static_volume:/opt/services/djangoapp/staticfiles  # <-- bind the static volume
+      - media_volume:/opt/services/djangoapp/media  # <-- bind the media volume
+      - ${root_directory}/config/${nginx_directory}/certbot/conf:/etc/letsencrypt
+      - ${root_directory}/config/${nginx_directory}/certbot/www:/var/www/certbot
+      - ${root_directory}/config/${nginx_directory}/certs:/etc/ssl
+    depends_on:
+      - djangoapp
+    # Here we define our settings for traefik how to proxy our service.
+    labels:
+      - "traefik.enable=true"
+      ## HTTP Routers
+      - "traefik.http.routers.${project_name}.entrypoints=https"
+      - "traefik.http.routers.${project_name}.rule=Host(`${dominio}`)"
+      - "traefik.http.routers.${project_name}.tls=true"
+      - "traefik.docker.network=giis_proxy"
+    networks:
+      - ${project_name}_local
+      - giis_proxy
+
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+  # mongo-express:
+  #   image: mongo-express:0.54.0
+  #   restart: unless-stopped
+  #   environment:
+  #     - ME_CONFIG_MONGODB_ADMINUSERNAME=root
+  #     - ME_CONFIG_MONGODB_ADMINPASSWORD=mongoadmin
+  #     - ME_CONFIG_MONGODB_SERVER=dockerpy_database1_1
+  #   labels:
+  #     - "traefik.enable=true"
+  #     ## HTTP Routers
+  #     - "traefik.http.routers.${project_name}.entrypoints=https"
+  #     - "traefik.http.routers.${project_name}.rule=Host(`${dominio}`)"
+  #     - "traefik.http.routers.${project_name}.tls=true"
+  #     - "traefik.docker.network=giis_proxy"
+  #   ports:
+  #     - "8082"
+  #   networks:
+  #     - ${project_name}_local
+  #     - database1_network
+  #   depends_on:
+  #     - database1
+
+volumes:
+  static_volume:  # <-- declare the static volume
+  media_volume:  # <-- declare the media volume
+
+
+# docker-compose -f ./docker-giis.yml build djangoapp
+# docker-compose -f ./docker-giis.yml run djangoapp python app/manage.py collectstatic --no-input
+# docker-compose -f ./docker-giis.yml up -d
+# docker exec -it proyecto-giis_djangoapp_1 python app/manage.py collectstatic --no-input
+# docker exec -it proyecto-giis_djangoapp_1 python /bin/bash -c "cd app; ./manage.py migrate"
+
+# docker exec -it proyecto-giis_djangoapp_1 python app/manage.py createsuperuser
+# docker image rm dockerpy_djangoapp
+# docker-compose down
+# docker-compose 

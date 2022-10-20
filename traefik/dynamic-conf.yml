@@ -1,0 +1,40 @@
+
+http:
+   routers:
+
+      traefik:
+         rule: "Host(`traefik.giis.dev`)"
+         service: "api@internal"
+         tls:
+            domains:
+               - main: "giis.dev"
+                 sans:
+                    - "*.giis.dev"
+
+
+tls:
+   certificates:
+      - certFile: "/etc/certs/mkcert+2.pem"
+        keyFile: "/etc/certs/mkcert+2-key.pem"
+
+
+#CONFIGIGURACION DE TLS DINAMICA
+
+#tls:
+#   options:
+#      default:
+#         minVersion: VersionTLS12
+#         sniStrict: true
+#         cipherSuites:
+#            - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+#            - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+#            - TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305
+#            - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+#            - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+#            - TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305
+#            - TLS_AES_128_GCM_SHA256
+#            - TLS_AES_256_GCM_SHA384
+#            - TLS_CHACHA20_POLY1305_SHA256
+#         curvePreferences:
+#            - CurveP521
+#            - CurveP384
