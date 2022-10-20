@@ -176,53 +176,59 @@
                              
                                 <!-- 8 Seccion del formulario -->
                                 <br>
-                                <h5 class="mb-8 text-secondary">Datos de Archivos</h5>
-                                
-                                <div class="mb-3 col-md-4 ">
-                                    {{pruebaform.nombre|as_crispy_field}}
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <br>
+                                            <div class="row">
+                                                <h5 class="mb-4 text-secondary">Datos de Archivos</h5>
+                                            </div>
+                                            <div>
+                                                <div class="mb-4 col-md-6 ">
+                                                    {{pruebaform.nombre|as_crispy_field}}
+                                                </div>
+                                                
+                                                <div class="mb-3 col-md-6 ">
+                                                    {{pruebaform.autor|as_crispy_field}}
+                                                </div>
+                                                
+                                                &nbsp; 
+                                                <div class="mb-3 col-md-6 ">
+                                                    {{pruebaform.documento|as_crispy_field}}
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-6">
+                                            <br>
+                                            <h5 class="mb-4 text-secondary">Información adicional</h5>
+                                                <table class="table form-wrapper">
+                                                    <tr>
+                                                        <th style="width: 20% ;">{{pruebaform.medtype|as_crispy_field}}</th>
+                                                        <th style="width: 15% ;">{{pruebaform.medición|as_crispy_field}}</th>
+                                                        <th style="width: 10% ;">{{pruebaform.unidad|as_crispy_field}}</th>
+                                                    </tr>
+                                                </table>  
+                                                    
+                                        </div>
+                                        </div>
+
                                 </div>
-                            
-                    
-                                <div class="mb-3 col-md-4 ">
-                                    {{pruebaform.autor|as_crispy_field}}
-                                </div>
-                            
-                                 
 
-                                &nbsp; 
-                                <div class="mb-3 col-md-4 ">
-                                    {{pruebaform.documento|as_crispy_field}}
-
-
-
-                                </div>
-
-
-                                <div class="col-md-6">
-                                    <br>
-                                    <h5 class="mb-4 text-secondary">Información adicional</h5>
-                                        <table class="table form-wrapper">
-                                            <tr>
-                                                <th style="width: 20% ;">{{pruebaform.medtype|as_crispy_field}}</th>
-                                                <th style="width: 15% ;">{{pruebaform.medición|as_crispy_field}}</th>
-                                                <th style="width: 10% ;">{{pruebaform.unidad|as_crispy_field}}</th>
-                                            </tr>
-                                        </table>  
-                                            
-                                </div>
                                 </div>
 
                             
                                <br>
-                
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <input type="button"  class="btn btn-danger me-md-2" onclick="history.back()" name="Cancelar" value="Cancelar">
+                                    <button type="submit" class="btn" style="background-color: #820d9d; color: white;" >Editar Archivo</button>
+                                </div>
                             </div>
                             <!--{{ pruebaform|crispy }}-->
                             
                            
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                <input type="button"  class="btn btn-danger me-md-2" onclick="history.back()" name="Cancelar" value="Cancelar">
-                                <button type="submit" class="btn btn-primary">Editar Archivo</button>
-                            </div>
+                            
                             
                         </form>
                     </div>
@@ -233,3 +239,7 @@
     </body>
 {%endblock%}
 </html>
+<br>
+<footer>
+    {%include "footer.html"%}
+</footer>

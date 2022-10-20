@@ -39,7 +39,7 @@ class PruebaBit(models.Model):
     groundtyp = models.CharField('Tipo de Suelo',max_length=100, blank=True, null = True)
     remarksgro = models.CharField('Observaciones de Tierra',max_length=100, blank=True, null = True)
     observations = models.TextField('Observaciones',max_length=100, blank=True, null = True)
-    is_completed = models.BooleanField('Revisado',default=False)
+    is_completed = models.BooleanField('Publicado',default=False)
     revisado= models.CharField('Revisado por',max_length=100, blank=True, null = True)
     nombre = models.CharField('Nombre de Archivo',max_length=100, blank=True, null = True)
     autor = models.CharField('Autor del archivo',max_length=100, blank=True, null = True)  
