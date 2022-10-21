@@ -106,7 +106,6 @@ def pruebabit(request):
                         groundtyp = request.POST.get('groundtyp'), 
                         remarksgro = request.POST.get('remarksgro'), 
                         observations = request.POST.get('observations'), 
-                        revisado = request.POST.get('revisado'),
                         nombre = request.POST.get('nombre'),
                         autor = request.user, 
                         medtype = request.POST.get('medtype'),
