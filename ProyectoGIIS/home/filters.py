@@ -19,6 +19,7 @@ class UserFilter(django_filters.FilterSet):
 
 class BitFilter(django_filters.FilterSet):
     operator = django_filters.CharFilter(lookup_expr='icontains', label='Operador')
+    fecha = django_filters.DateFilter(lookup_expr='icontains', label='Fecha')
     place= django_filters.CharFilter(lookup_expr='icontains', label='Lugar')
     senstype = django_filters.CharFilter(lookup_expr='icontains', label='Tipo de Sensor' )
     class Meta:

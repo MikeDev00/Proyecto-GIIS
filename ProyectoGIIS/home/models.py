@@ -92,15 +92,5 @@ class BlogPost(models.Model):
 
 
     
-class Comment(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    #content = models.TextField()
-    blog = models.ForeignKey(BlogPost, on_delete=models.CASCADE)
-    prueba = RichTextField(null=True, blank=True)
-    parent_comment = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)   
-    dateTime=models.DateTimeField(default=now)
 
-    def __str__(self):
-        return self.user.username +  " Comment: " + self.content
-    
 

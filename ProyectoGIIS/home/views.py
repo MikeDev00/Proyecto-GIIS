@@ -4,7 +4,7 @@ import shutil
 from xml.dom.minidom import Element
 from django.shortcuts import render, redirect, get_object_or_404
 import pymongo
-from home.models import PruebaBit, BlogPost, Comment, Registros
+from home.models import PruebaBit, BlogPost, Registros
 import zipfile
 import os
 from django.contrib.auth  import authenticate,  login, logout
@@ -44,7 +44,7 @@ def home(request):
 # Filtros  en  la pantalla de descarga
 def datos(request):
     user_list = PruebaBit.objects.all()
-    user_filter = UserFilter(request.GET, queryset= user_list)
+    user_filter = BitFilter(request.GET, queryset= user_list)
     if user_list == "":
 
         return render(request, 'user_list.html')
@@ -335,15 +335,7 @@ class UpdatePostView(UpdateView):
 
 def blogs_comments(request, slug):
     post = BlogPost.objects.filter(slug=slug).first()
-    comments = Comment.objects.filter(blog=post)
-    if request.method=="POST":
-        user = request.user
-        content = request.POST.get('content','')
-        prueba = request.POST.get('content','')
-        blog_id =request.POST.get('blog_id','')
-        comment = Comment(user = user, content = content,prueba=prueba, blog=post)
-        comment.save()
-    return render(request, "blog_comments.html", {'post':post, 'comments':comments})
+    return render(request, "blog_comments.html", {'post':post})
 
 
 
