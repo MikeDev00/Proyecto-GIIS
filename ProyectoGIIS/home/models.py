@@ -8,6 +8,7 @@ from djongo import models
 from django.contrib.auth.models import User
 from django.utils.timezone import now
 from ckeditor.fields import RichTextField 
+from autoslug import AutoSlugField
 
 
 class Usuario(models.Model):
@@ -77,7 +78,7 @@ class Registros(models.Model):
 class BlogPost(models.Model):
     title=models.CharField('Titulo',max_length=255)
     author= models.ForeignKey(User, on_delete=models.CASCADE)
-    slug=models.CharField("Titulo-URL",max_length=130)
+    slug = AutoSlugField(populate_from='title')
     #content=models.TextField("Contenido")
     prueba = RichTextField('Contenido',null=True, blank=True)
     image = models.ImageField("Imagen",upload_to="profile_pics", blank=True, null=True)

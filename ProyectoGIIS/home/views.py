@@ -11,7 +11,7 @@ from django.contrib.auth  import authenticate,  login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User, auth
-
+from django.template.defaultfilters import slugify
 from django.views.generic import UpdateView
 
 from home.filters import UserFilter, BitFilter
@@ -329,7 +329,7 @@ def add_blogs(request):
 class UpdatePostView(UpdateView):
     model = BlogPost
     template_name = 'edit_blog_post.html'
-    fields = ['title', 'slug','prueba', 'image']
+    fields = ['title','prueba', 'image']
     
 
 
