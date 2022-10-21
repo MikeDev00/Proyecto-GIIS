@@ -80,7 +80,7 @@ class BlogPost(models.Model):
     author= models.ForeignKey(User, on_delete=models.CASCADE)
     slug = AutoSlugField(populate_from='title')
     #content=models.TextField("Contenido")
-    prueba = RichTextField('Contenido',null=True, blank=True)
+    content = RichTextField('Contenido',null=True, blank=True)
     image = models.ImageField("Imagen",upload_to="profile_pics", blank=True, null=True)
     dateTime=models.DateTimeField(auto_now_add=True)
     

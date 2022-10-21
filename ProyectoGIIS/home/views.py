@@ -305,10 +305,6 @@ def Delete_Blog_Post(request, slug):
     return render(request, 'delete_blog_post.html', {'posts':posts})
 
 
-
-
-
-
 @login_required(login_url = '/login')
 def add_blogs(request):
     if request.method=="POST":
@@ -328,7 +324,7 @@ def add_blogs(request):
 class UpdatePostView(UpdateView):
     model = BlogPost
     template_name = 'edit_blog_post.html'
-    fields = ['title','prueba', 'image']
+    fields = ['title','content', 'image']
     
 
 
@@ -384,14 +380,11 @@ def ver_bitacora(request,id):
     bit = get_object_or_404(PruebaBit, id = id)
     data  = {'pruebaform':PruebaBitaForm(instance=bit) }
     if request.method =='POST':
-        pruebaform = PruebaBitaForm(request.POST, instance=bit)
-        documentos = request.FILES.getlist('documento')
-        nombre = request.POST.get('nombre')
-        
+        pruebaform = PruebaBitaForm(request.POST, instance=bit)        
 
         if pruebaform.is_valid():
         
-            pruebaform.save()
+            pruebaform()
             return redirect('datos')
     else : 
             pruebaform=PruebaBitaForm()
