@@ -102,7 +102,7 @@ class PruebaBitaForm(forms.ModelForm):
     freq = forms.FloatField(label='Frecuencia Inicial (Hz)',widget=forms.TextInput(attrs={'placeholder': 'Insertar Frecuencia'}),required=True)
     freq2 = forms.FloatField(label='Frecuencia Final (Hz)',widget=forms.TextInput(attrs={'placeholder': 'Insertar Frecuencia'}),required=True)
     duration  = forms.FloatField(label='Duración (Min)',widget=forms.TextInput(attrs={'placeholder': 'Insertar Duración'}),required=True)
-    temp = forms.FloatField(label='Temperatura',widget=forms.TextInput(attrs={'placeholder': 'Insertar Temperatura'}),required=True)
+    temperatura = forms.DecimalField(label='Temperatura',widget=forms.TextInput(attrs={'placeholder': 'Insertar Temperatura'}),required=False)
     remarkstemp = forms.CharField(label='Observaciones de Temperatura',widget=forms.TextInput(attrs={'placeholder': 'Insertar Remarks'}),empty_value=None, required=False)
     remarksgro = forms.CharField(label='Observaciones de Tierra',widget=forms.TextInput(attrs={'placeholder': 'Insertar remarks'}),empty_value=None, required=False)
     nombre = forms.CharField(label='Nombre del Archivo', widget=forms.TextInput(attrs={'placeholder': 'Inserte el nombre del archivo'}),empty_value=None, required=True)
@@ -126,7 +126,7 @@ class PruebaBitaForm(forms.ModelForm):
         'latitude', 'longitude', 'altitud',
         'statype', 'senstype', 'statnum', 'sensnum',
         'freq','freq2', 'duration', 'windopts',
-        'rainopts', 'temp','clima', 'remarkstemp', 
+        'rainopts', 'temperatura','clima', 'remarkstemp', 
         'groundtyp', 'remarksgro', 
         'Estruc','Traf',
         'observations', 'is_completed','revisado','nombre', 'autor',
