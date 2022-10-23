@@ -1,7 +1,5 @@
-from atexit import register
-from doctest import testfile
+import email
 import shutil
-from xml.dom.minidom import Element
 from django.shortcuts import render, redirect, get_object_or_404
 import pymongo
 from home.models import PruebaBit, BlogPost, Registros
@@ -11,17 +9,12 @@ from django.contrib.auth  import authenticate,  login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User, auth
-from django.template.defaultfilters import slugify
 from django.views.generic import UpdateView
-
+from django.core.mail import send_mail
 from home.filters import UserFilter, BitFilter
 
 
-from .forms import BlogPostForm, ContatoForm, PruebaBitaForm, SolcitudForm
-
-import numpy as np
-import matplotlib.pyplot as plt
-#import pyfftw as fftw
+from .forms import BlogPostForm, PruebaBitaForm, SolcitudForm
 
 # conector con la base de datos MongoDb
 def connectDB():
@@ -363,18 +356,6 @@ def editsol(request, id):
             pruebaform=SolcitudForm()
     return render(request, 'editsol.html',data)
 
-def contato(request):
-    form = ContatoForm(request.POST or None) 
-    if str(request.method) == 'POST':
-        if form.is_valid():
-            form.send_mail() 
-            messages.success(request, 'E-mail enviado com sucesso!')
-            form = ContatoForm() 
-        else:
-            messages.error(request, 'Erro ao enviar e-mail')
-    context = {'form': form}
-    return render(request, 'contato.html', context)
-
 
 def ver_bitacora(request,id):
     bit = get_object_or_404(PruebaBit, id = id)
@@ -389,3 +370,19 @@ def ver_bitacora(request,id):
     else : 
             pruebaform=PruebaBitaForm()
     return render(request, 'ver_bitacora.html',data)
+
+
+
+def contato(request):
+    bit = get_object_or_404(Registros, id = id)
+    data  = {'pruebaform':SolcitudForm(instance=bit) }
+    if request.method == "POST":
+        correo = request.POST["correo"]
+        nombre = request.POST["nombre"]
+        asunto=request.POST["asunto"]
+        mensaje = str(request.POST["mensaje"])
+        carta = f"Bienvenido Investigador(ra) {nombre} \nTu usuario y contraseña son los siguientes: {mensaje} \nNo comparta con nadie la información suministrada. \n \n  "
+        send_mail(asunto, carta, "proyectogiis@gmail.com",[correo])
+
+    return render(request, 'contato.html')
+

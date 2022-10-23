@@ -38,36 +38,46 @@
                                 <!-- 1 Seccion del formulario -->
                               
                                 
-                                <div class="mb-3 col-md-4 ">
-                                    {{form.nome|as_crispy_field}}
+                                <div class="mb-3 col-md-6 ">
+                                    <label for="nombre" class="col-4 col-form-label">Nombre</label> 
+                                   
+                                      <input id="nombre" name="nombre" type="text" class="form-control">
+                                </div>
+
+                                <div class="mb-3 col-md-6 ">
+                                    <label for="apellido" class="col-4 col-form-label">Apellido</label> 
+                                   
+                                      <input id="apellido" name="apellido" type="text" class="form-control">
                                 </div>
                     
-                                <div class="mb-3 col-md-4 ">
-                                    {{form.email|as_crispy_field}}
+                    
+                                <div class="mb-3 col-md-6 ">
+                                    <label for="correo" class="col-4 col-form-label">Correo</label> 
+                                  
+                                    <input id="correo" name="correo" type="text" class="form-control">
                                 </div>
 
 
-                                <div class="mb-3 col-md-4 ">
-                                    {{form.assunto|as_crispy_field}}
+                                <div class="mb-3 col-md-6 ">
+                                    <label for="asunto" class="col-4 col-form-label">Asunto</label> 
+                                   
+                                      <input id="asunto" name="asunto" type="text" class="form-control">
                                    
     
                                 </div>
                 
 
                                 <div class="mb-3 col-md-12 ">
-                                    {{form.mensagem|as_crispy_field}}
+                                    <label for="mensaje" class="col-4 col-form-label">Mensaje</label> 
+                                    
+                                    <textarea id="mensaje" name="mensaje" cols="40" rows="5" class="form-control"></textarea>
                                 </div>
-                    
-                               
-                          
-                          
-                          
-                               
+ 
                            
                            <br>
                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <input type="button"  class="btn btn-danger me-md-2" onclick="history.back()" name="Cancelar" value="Cancelar">
-                            <button type="submit" class="btn btn-primary"> Terminar revisión</button>
+                            <button type="submit" class="btn btn-primary"> Enviar Mesnaje</button>
                            </div>
                             
                            
@@ -77,7 +87,9 @@
                 </div>
             </div>
         </div>
-
+    
     </body>
+   
 {%endblock%}
+{%include "footer.html"%}
 </html>
