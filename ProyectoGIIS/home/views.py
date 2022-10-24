@@ -340,7 +340,19 @@ def Solicitudes(request):
     bita_filter = BitFilter(request.GET, queryset= bit_filt)
     return render(request, 'solicitudes.html',{'filter': bita_filter})
 
+def ver_bitacora(request,id):
+    bit = get_object_or_404(PruebaBit, id = id)
+    data  = {'pruebaform':PruebaBitaForm(instance=bit) }
+    if request.method =='POST':
+        pruebaform = PruebaBitaForm(request.POST, instance=bit)        
 
+        if pruebaform.is_valid():
+        
+            pruebaform()
+            return redirect('datos')
+    else : 
+            pruebaform=PruebaBitaForm()
+    return render(request, 'ver_bitacora.html',data)
 
 def editsol(request, id):
     bit = get_object_or_404(Registros, id = id)
@@ -356,26 +368,9 @@ def editsol(request, id):
             pruebaform=SolcitudForm()
     return render(request, 'editsol.html',data)
 
-
-def ver_bitacora(request,id):
-    bit = get_object_or_404(PruebaBit, id = id)
-    data  = {'pruebaform':PruebaBitaForm(instance=bit) }
-    if request.method =='POST':
-        pruebaform = PruebaBitaForm(request.POST, instance=bit)        
-
-        if pruebaform.is_valid():
-        
-            pruebaform()
-            return redirect('datos')
-    else : 
-            pruebaform=PruebaBitaForm()
-    return render(request, 'ver_bitacora.html',data)
-
-
-
 def contato(request):
-    bit = get_object_or_404(Registros, id = id)
-    data  = {'pruebaform':SolcitudForm(instance=bit) }
+    #bit = get_object_or_404(Registros, id = id)
+    #data  = {'pruebaform':SolcitudForm(instance=bit) }
     if request.method == "POST":
         correo = request.POST["correo"]
         nombre = request.POST["nombre"]
