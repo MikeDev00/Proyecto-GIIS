@@ -1,16 +1,4 @@
-#from ast import operator
-#from collections import UserList
-#from dataclasses import fields
-#from email.policy import default
-#from mimetypes import init
-from email import message
-
-
-#from pyexpat import model
-#from tkinter import Place
 from django import forms
-from requests import request
-
 from .models import BlogPost, PruebaBit, Registros
 
 

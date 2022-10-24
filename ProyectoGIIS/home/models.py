@@ -1,9 +1,4 @@
 from django.urls import reverse
-from email.policy import default
-#from unicodedata import name
-#from django import db
-#from django.db import models
-#from flask import Flask, jsonify
 from djongo import models
 from django.contrib.auth.models import User
 from django.utils.timezone import now

@@ -1,6 +1,6 @@
 
 {%load static%}
-
+{% if user.is_superuser %}
 
 <!DOCTYPE html>
 <html lang="es">
@@ -38,27 +38,23 @@
                                 <!-- 1 Seccion del formulario -->
                               
                                 
-                                <div class="mb-3 col-md-6 ">
+                                <div class="mb-3 col-md-4 ">
                                     <label for="nombre" class="col-4 col-form-label">Nombre</label> 
                                    
                                       <input id="nombre" name="nombre" type="text" class="form-control">
                                 </div>
 
-                                <div class="mb-3 col-md-6 ">
-                                    <label for="apellido" class="col-4 col-form-label">Apellido</label> 
-                                   
-                                      <input id="apellido" name="apellido" type="text" class="form-control">
-                                </div>
+                        
                     
                     
-                                <div class="mb-3 col-md-6 ">
+                                <div class="mb-3 col-md-4 ">
                                     <label for="correo" class="col-4 col-form-label">Correo</label> 
                                   
                                     <input id="correo" name="correo" type="text" class="form-control">
                                 </div>
 
 
-                                <div class="mb-3 col-md-6 ">
+                                <div class="mb-3 col-md-4 ">
                                     <label for="asunto" class="col-4 col-form-label">Asunto</label> 
                                    
                                       <input id="asunto" name="asunto" type="text" class="form-control">
@@ -91,5 +87,6 @@
     </body>
    
 {%endblock%}
+{%endif %}
 {%include "footer.html"%}
 </html>

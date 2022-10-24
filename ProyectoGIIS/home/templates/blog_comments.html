@@ -61,8 +61,9 @@
       <br>
       <center><img src="/media/{{post.image}}" alt="" height="350px" width="600px"></center>
       <br>
+     
 
-      <p class="texto-justificado">{{post.content}}.</p>
+      <p class="texto-justificado">{{post.content|safe}}</p>
 
       <p class="texto-justificado">{{post.prueba|safe}}.</p>
       <hr>

@@ -1,10 +1,5 @@
-import email
-import shutil
 from django.shortcuts import render, redirect, get_object_or_404
-import pymongo
 from home.models import PruebaBit, BlogPost, Registros
-import zipfile
-import os
 from django.contrib.auth  import authenticate,  login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -12,9 +7,17 @@ from django.contrib.auth.models import User, auth
 from django.views.generic import UpdateView
 from django.core.mail import send_mail
 from home.filters import UserFilter, BitFilter
-
-
 from .forms import BlogPostForm, PruebaBitaForm, SolcitudForm
+
+
+import shutil
+import pymongo
+import zipfile
+import os
+
+
+
+
 
 # conector con la base de datos MongoDb
 def connectDB():
@@ -307,7 +310,7 @@ def add_blogs(request):
             blogpost.author = request.user
             blogpost.save()
             #obj = form.instance
-           # alert = True
+            #alert = True
             return redirect("blogs")
     else:
         form=BlogPostForm()
@@ -323,6 +326,7 @@ class UpdatePostView(UpdateView):
 
 def blogs_comments(request, slug):
     post = BlogPost.objects.filter(slug=slug).first()
+
     return render(request, "blog_comments.html", {'post':post})
 
 
