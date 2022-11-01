@@ -27,7 +27,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 ("content", models.TextField()),
-                ("dateTime", models.DateTimeField(default=django.utils.timezone.now)),
+                ("dateTime", models.DateTimeField(default=1)),
                 (
                     "blog",
                     models.ForeignKey(

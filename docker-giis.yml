@@ -6,6 +6,8 @@ networks:
   giis_proxy:
     external: true
     name: ${proxy_network}
+  database1_network:
+    driver: bridge
 
 services:
   djangoapp:
@@ -16,8 +18,13 @@ services:
       - media_volume:/opt/services/djangoapp/media  # <-- bind the media volume
     networks:
       - ${project_name}_local
+      - database1_network
+    depends_on:
+      - database1
     env_file:
       - ./.env
+    links:
+      - database1
       
   nginx:
     image: nginx:stable-alpine
@@ -40,30 +47,28 @@ services:
       - "traefik.docker.network=giis_proxy"
     networks:
       - ${project_name}_local
+      - database1_network
       - giis_proxy
 
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
-  # mongo-express:
-  #   image: mongo-express:0.54.0
-  #   restart: unless-stopped
-  #   environment:
-  #     - ME_CONFIG_MONGODB_ADMINUSERNAME=root
-  #     - ME_CONFIG_MONGODB_ADMINPASSWORD=mongoadmin
-  #     - ME_CONFIG_MONGODB_SERVER=dockerpy_database1_1
-  #   labels:
-  #     - "traefik.enable=true"
-  #     ## HTTP Routers
-  #     - "traefik.http.routers.${project_name}.entrypoints=https"
-  #     - "traefik.http.routers.${project_name}.rule=Host(`${dominio}`)"
-  #     - "traefik.http.routers.${project_name}.tls=true"
-  #     - "traefik.docker.network=giis_proxy"
-  #   ports:
-  #     - "8082"
-  #   networks:
-  #     - ${project_name}_local
-  #     - database1_network
-  #   depends_on:
-  #     - database1
+
+  database1:
+    image: mongo:latest
+    restart: always
+    command: mongod --auth
+    container_name: database1
+    environment:
+      - MONGO_INITDB_DATABASE=giis
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=mongoadmin
+    ports:
+      - 27017:27017
+    networks:
+      - ${project_name}_local
+      - database1_network
+    volumes:
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - ./dbmongo/data:/data/db
 
 volumes:
   static_volume:  # <-- declare the static volume
@@ -74,7 +79,8 @@ volumes:
 # docker-compose -f ./docker-giis.yml run djangoapp python app/manage.py collectstatic --no-input
 # docker-compose -f ./docker-giis.yml up -d
 # docker exec -it proyecto-giis_djangoapp_1 python app/manage.py collectstatic --no-input
-# docker exec -it proyecto-giis_djangoapp_1 python /bin/bash -c "cd app; ./manage.py migrate"
+# docker exec -it proyecto-giis_djangoapp_1 python app/manage.py makemigrations
+# docker exec -it proyecto-giis_djangoapp_1 python app/manage.py migrate
 
 # docker exec -it proyecto-giis_djangoapp_1 python app/manage.py createsuperuser
 # docker image rm dockerpy_djangoapp

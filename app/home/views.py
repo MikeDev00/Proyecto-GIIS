@@ -28,7 +28,7 @@ import matplotlib.pyplot as plt
 
 # conector con la base de datos MongoDb
 def connectDB():
-    datosBitacora = pymongo.MongoClient("mongodb+srv://admin:1234@proyecto.hxkzzt7.mongodb.net/?retryWrites=true&w=majority")
+    datosBitacora = MongoClient("mongodb://admin:mongoadmin@database1:27017/?authMechanism=DEFAULT&authSource=admin")
     giisDB = datosBitacora.GIIS
     return giisDB
 

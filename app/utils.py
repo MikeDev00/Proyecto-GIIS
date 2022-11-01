@@ -1,9 +1,9 @@
 import pymongo
 
 
-conn_str ="mongodb+srv://admin:1234@giis.lszcdmn.mongodb.net/?retryWrites=true&w=majority"
+conn_str = "mongodb://admin:mongoadmin@database1:27017/?authMechanism=DEFAULT&authSource=admin" 
 try:
-    client = pymongo.MongoClient('conn_str')
+    client = MongoClient('conn_str')
 except Exception:
     print("Error: " + Exception)
 

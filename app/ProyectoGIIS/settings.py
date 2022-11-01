@@ -90,12 +90,10 @@ WSGI_APPLICATION = 'ProyectoGIIS.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'GIIS',
-        "CLIENT":{
-            'host': 'mongodb+srv://admin:1234@proyecto.hxkzzt7.mongodb.net/?retryWrites=true&w=majority',
-            'username': 'admin',
-            'password': '1234',
+      'ENGINE': 'djongo',
+      'ENFORCE_SCHEMA': False,
+        'CLIENT': {
+            'host': 'mongodb://admin:mongoadmin@database1:27017/?authMechanism=DEFAULT&authSource=admin'
         }
     },
 }
